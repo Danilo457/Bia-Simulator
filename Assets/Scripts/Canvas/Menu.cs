@@ -16,6 +16,7 @@ public class Menu : MonoBehaviour
     [SerializeField] GameObject fundoTrocaDeCabelos;
     [SerializeField] GameObject fundoActvCabelo;
     [SerializeField] GameObject panelSettings;
+    public GameObject controlSettings;
     public List<Button> buttonsToDisable;
 
     [Header("        Buttons")]
@@ -34,6 +35,7 @@ public class Menu : MonoBehaviour
     [HideInInspector] public int index;
     [HideInInspector] public bool actvBlusa;
     [HideInInspector] public bool actvCabelo;
+    [HideInInspector] public float sensibility = 5;
 
     bool sceneArmarios;
     bool boolSettings;
@@ -95,6 +97,7 @@ public class Menu : MonoBehaviour
         fundoTrocaDeCabelos.SetActive(false);
         fundoActvCabelo.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
+        controlSettings.SetActive(false);
     }
 
     public void Settings() {
@@ -107,6 +110,14 @@ public class Menu : MonoBehaviour
         fundoTrocaDeCabelos.SetActive(false);
         fundoActvCabelo.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
+    }
+
+    public void ControlSettings()
+    {
+        panelSettings.SetActive(false);
+        
+        
+        controlSettings.SetActive(true);
     }
 
     public void ButtonPersonalizarPlayer() {
@@ -150,22 +161,7 @@ public class Menu : MonoBehaviour
         if (index < 0)
             index = 7;
 
-        if (index == 0) 
-            trocaDeCabelo.texture = textureCabelo[0];
-        else if (index == 1)
-            trocaDeCabelo.texture = textureCabelo[1];
-        else if (index == 2)
-            trocaDeCabelo.texture = textureCabelo[2];
-        else if (index == 3)
-            trocaDeCabelo.texture = textureCabelo[3];
-        else if (index == 4)
-            trocaDeCabelo.texture = textureCabelo[4];
-        else if (index == 5)
-            trocaDeCabelo.texture = textureCabelo[5];
-        else if (index == 6)
-            trocaDeCabelo.texture = textureCabelo[6];
-        else if (index == 7)
-            trocaDeCabelo.texture = textureCabelo[7];
+        trocaDeCabelo.texture = textureCabelo[index];
     }
 
     public void ButtonAvansar() {
@@ -174,22 +170,7 @@ public class Menu : MonoBehaviour
         if (index > 7)
             index = 0;
 
-        if (index == 0)
-            trocaDeCabelo.texture = textureCabelo[0];
-        else if (index == 1)
-            trocaDeCabelo.texture = textureCabelo[1];
-        else if (index == 2)
-            trocaDeCabelo.texture = textureCabelo[2];
-        else if (index == 3)
-            trocaDeCabelo.texture = textureCabelo[3];
-        else if (index == 4)
-            trocaDeCabelo.texture = textureCabelo[4];
-        else if (index == 5)
-            trocaDeCabelo.texture = textureCabelo[5];
-        else if (index == 6)
-            trocaDeCabelo.texture = textureCabelo[6];
-        else if (index == 7)
-            trocaDeCabelo.texture = textureCabelo[7];
+        trocaDeCabelo.texture = textureCabelo[index];
     }
 
     public void ButtonSettingsCorVerdClaro() {
@@ -221,6 +202,8 @@ public class Menu : MonoBehaviour
 
         num = 4;
     }
+
+    public void SensibilitySlider(float value) => sensibility = value;
 
     public void ExitGame() =>
         Application.Quit();
