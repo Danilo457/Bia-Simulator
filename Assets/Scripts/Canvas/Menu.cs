@@ -16,6 +16,7 @@ public class Menu : MonoBehaviour
     [SerializeField] GameObject fundoTrocaDeCabelos;
     [SerializeField] GameObject fundoActvCabelo;
     [SerializeField] GameObject panelSettings;
+    public GameObject controlSettings;
     public List<Button> buttonsToDisable;
 
     [Header("        Buttons")]
@@ -34,6 +35,7 @@ public class Menu : MonoBehaviour
     [HideInInspector] public int index;
     [HideInInspector] public bool actvBlusa;
     [HideInInspector] public bool actvCabelo;
+    [HideInInspector] public float sensibility = 5;
 
     bool sceneArmarios;
     bool boolSettings;
@@ -95,6 +97,7 @@ public class Menu : MonoBehaviour
         fundoTrocaDeCabelos.SetActive(false);
         fundoActvCabelo.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
+        controlSettings.SetActive(false);
     }
 
     public void Settings() {
@@ -107,6 +110,14 @@ public class Menu : MonoBehaviour
         fundoTrocaDeCabelos.SetActive(false);
         fundoActvCabelo.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
+    }
+
+    public void ControlSettings()
+    {
+        panelSettings.SetActive(false);
+        
+        
+        controlSettings.SetActive(true);
     }
 
     public void ButtonPersonalizarPlayer() {
@@ -221,6 +232,8 @@ public class Menu : MonoBehaviour
 
         num = 4;
     }
+
+    public void SensibilitySlider(float value) => sensibility = value;
 
     public void ExitGame() =>
         Application.Quit();

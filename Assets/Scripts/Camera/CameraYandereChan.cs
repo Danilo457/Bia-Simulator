@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class CameraYandereChan : MonoBehaviour
 {
@@ -28,6 +26,11 @@ public class CameraYandereChan : MonoBehaviour
         menu = FindObjectOfType<Menu>();
 
         targetCamYan = GameObject.Find("targetComeraBiaChiqui").transform;
+    }
+
+    private void Start()
+    {
+        mouseSensivity = menu.sensibility;
     }
 
     void LateUpdate()
