@@ -8,18 +8,34 @@ public class UIManager : MonoBehaviour
 {
     public GameObject UIConteiner;
     public Image _image;
-    public Text _talkerName;
+    public TMP_Text _talkerName;
     public TMP_Text _dialogue;
+
+    public Animator anim;
 
     void Awake()
     {
-        
+        DialogueManager.NewTalker += NewTalker;
+        DialogueManager.ShowMessage += ShowText;
+        DialogueManager.ResetText += ResetText;
+        DialogueManager.UIState += UIContainerState;
     }
+
+    void OnDestroy()
+    {
+        DialogueManager.NewTalker -= NewTalker;
+        DialogueManager.ShowMessage -= ShowText;
+        DialogueManager.ResetText -= ResetText;
+        DialogueManager.UIState -= UIContainerState;
+    }
+
+    void Start() =>
+        anim.GetComponent<Animator>();
 
     void NewTalker(Dialogue talkerInformations) {
         _image.sprite = talkerInformations._talker._sprite;
         _talkerName.text = talkerInformations._talker.name;
-        _image.GetComponent<Animator>().SetTrigger("animation");
+        anim.Play("animation");
     }
 
     void ShowText(string message) =>
