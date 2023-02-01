@@ -1,4 +1,0 @@
-repository "Bia Simulator@Danilo_Pereira@cloud"
-  path "/"
-    br "/main"
-    co "/main"
