@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class OptionManager : MonoBehaviour
 {
-    [SerializeField] KeyCode _KeyIncrement, _KeyDecrement, _actionKey;
-
     [SerializeField] AudioClip _navigationClip, _actionClip;
 
     List<OptionObject> _optionList;
@@ -47,10 +45,16 @@ public class OptionManager : MonoBehaviour
     void HandleInputs() {
         HandleActionInput();
 
-        if (Input.GetKeyDown(_KeyDecrement))
-            HandleNavigationInput(_KeyDecrement);
-        else if (Input.GetKeyDown(_KeyIncrement))
-            HandleNavigationInput(_KeyIncrement);
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        {
+            HandleNavigationInput(KeyCode.UpArrow);
+            //HandleNavigationInput(KeyCode.S);
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        {
+            HandleNavigationInput(KeyCode.DownArrow);
+            //HandleNavigationInput(KeyCode.W);
+        }
     }
 
     void HandleNavigationInput(KeyCode _currentKey) {
@@ -58,7 +62,7 @@ public class OptionManager : MonoBehaviour
 
         _optionList[index].OnStateChange(isSelected: false);
 
-        if (_currentKey == _KeyIncrement) 
+        if (_currentKey == KeyCode.DownArrow || _currentKey == KeyCode.W) 
             index = index == maxIndex ? 0 : index + 1;
         else
             index = index == 0 ? maxIndex : index - 1;
@@ -67,7 +71,7 @@ public class OptionManager : MonoBehaviour
     }
 
     void HandleActionInput() {
-        if (Input.GetKeyDown(_actionKey))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
         {
             AudioManager.PlayAudio(_actionClip);
 

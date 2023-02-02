@@ -10,18 +10,22 @@ public class Menu : MonoBehaviour
     [HideInInspector] public int num;
 
     GameObject fundo;
-    [Header("        Fundos de Paineis")]
-    [SerializeField] GameObject fundoSettings;
-    [SerializeField] GameObject blusaTrocaDeCor;
+    [Header("        Menu Inicial")]
+    [SerializeField] GameObject spriteMenu;
+    [SerializeField] GameObject painelInicial;
+    [SerializeField] GameObject painelTitulo;
+    [SerializeField] GameObject spriteGarota;
+    [SerializeField] GameObject infoVersion;
+    [SerializeField] GameObject panelSettings;
+    [SerializeField] GameObject buttonsPersonPlayer;
+    [SerializeField] GameObject returnPanelConfig;
     [SerializeField] GameObject fundoTrocaDeCabelos;
     [SerializeField] GameObject fundoActvCabelo;
-    [SerializeField] GameObject panelSettings;
+    [SerializeField] GameObject blusaTrocaDeCor;
+    [SerializeField] GameObject cursor;
+
     public GameObject controlSettings;
     public List<Button> buttonsToDisable;
-
-    [Header("        Buttons")]
-    [SerializeField] GameObject buttonBlusaSintura;
-    [SerializeField] GameObject buttonTrocaCabelos;
 
     [Space]
 
@@ -35,19 +39,31 @@ public class Menu : MonoBehaviour
     [HideInInspector] public int index;
     [HideInInspector] public bool actvBlusa;
     [HideInInspector] public bool actvCabelo;
-    [HideInInspector] public float sensibility = 5;
+    [HideInInspector] public float sensibility;
 
     bool sceneArmarios;
     bool boolSettings;
-    bool boolBlusa;
-    bool boolCabelos;
 
     void Awake()
     {
         CaixaCores.color = cor[0];
         trocaDeCabelo.texture = textureCabelo[0];
 
+        spriteMenu.SetActive(true);
+        painelInicial.SetActive(true);
+        painelTitulo.SetActive(true);
+        spriteGarota.SetActive(true);
+        infoVersion.SetActive(true);
+
+        cursor.SetActive(true);
+
         panelSettings.SetActive(false);
+        buttonsPersonPlayer.SetActive(false);
+        returnPanelConfig.SetActive(false);
+        controlSettings.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
@@ -87,73 +103,84 @@ public class Menu : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public void SettingsInicial() {
-        fundoSettings.SetActive(true);
-        panelSettings.SetActive(true);
+    public void MenuInicial() {
+        painelInicial.SetActive(true);
+        painelTitulo.SetActive(true);
+        spriteGarota.SetActive(true);
 
-        buttonBlusaSintura.SetActive(false);
-        buttonTrocaCabelos.SetActive(false);
+        panelSettings.SetActive(false);
+    }
+
+    public void Settings() {
+        painelInicial.SetActive(false);
+        painelTitulo.SetActive(false);
+        spriteGarota.SetActive(false);
+        buttonsPersonPlayer.SetActive(false);
+
+        panelSettings.SetActive(true);
+    }
+
+    public void ButtonPersonalizarPlayer()
+    {
+        panelSettings.SetActive(false);
+        buttonsPersonPlayer.SetActive(true);
+    }
+
+    public void ButtonBlusaSintura()
+    {
+        blusaTrocaDeCor.SetActive(true);
+
+        buttonsPersonPlayer.SetActive(false);
+        returnPanelConfig.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void ButtonTrocaDeCabelo()
+    {
+        fundoTrocaDeCabelos.SetActive(true);
+        fundoActvCabelo.SetActive(true);
+
+        buttonsPersonPlayer.SetActive(false);
+        returnPanelConfig.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void ReturnPanelConfig()
+    {
+        buttonsPersonPlayer.SetActive(true);
+        returnPanelConfig.SetActive(false);
 
         fundoTrocaDeCabelos.SetActive(false);
         fundoActvCabelo.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
         controlSettings.SetActive(false);
-    }
 
-    public void Settings() {
-        fundoSettings.SetActive(false);
-        panelSettings.SetActive(false);
-
-        buttonBlusaSintura.SetActive(true);
-        buttonTrocaCabelos.SetActive(true);
-
-        fundoTrocaDeCabelos.SetActive(false);
-        fundoActvCabelo.SetActive(false);
-        blusaTrocaDeCor.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void ControlSettings()
     {
         panelSettings.SetActive(false);
-        
-        
+
+        returnPanelConfig.SetActive(true);
         controlSettings.SetActive(true);
-    }
 
-    public void ButtonPersonalizarPlayer() {
-        panelSettings.SetActive(false);
-
-
-        buttonBlusaSintura.SetActive(true);
-        buttonTrocaCabelos.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
 
-
-    public void ButtonBlusaSintura() {
-        boolBlusa = !boolBlusa;
-
-        blusaTrocaDeCor.SetActive(boolBlusa);
-
-        if (boolCabelos && boolBlusa)
-            ButtonTrocaDeCabelo();
-    }
 
     public void ToggleBlusaDaSintura() =>
         actvBlusa = !actvBlusa;
 
     public void ToggleCabelo() =>
         actvCabelo = !actvCabelo;
-
-    public void ButtonTrocaDeCabelo() {
-        boolCabelos = !boolCabelos;
-
-        fundoTrocaDeCabelos.SetActive(boolCabelos);
-        fundoActvCabelo.SetActive(boolCabelos);
-
-        if (boolBlusa && boolCabelos)
-            ButtonBlusaSintura();
-    }
 
     public void ButtonRetroceder() {
         index--;
