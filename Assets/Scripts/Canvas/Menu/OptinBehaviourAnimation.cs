@@ -1,0 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class OptinBehaviourAnimation : MonoBehaviour, IOptionBehaviour
+{
+    [SerializeField] Animator _animator;
+
+    const string KEY_STATE_ANIMATOR = "static";
+
+    public void OnStateChange(bool state)
+    {
+        _animator.SetBool(KEY_STATE_ANIMATOR, !state);
+    }
+}
