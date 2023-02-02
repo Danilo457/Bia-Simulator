@@ -10,6 +10,8 @@ public class OptinBehaviourAnimation : MonoBehaviour, IOptionBehaviour
 
     public void OnStateChange(bool state)
     {
+        Time.timeScale = 1; // UnPause
+
         _animator.SetBool(KEY_STATE_ANIMATOR, !state);
     }
 }
