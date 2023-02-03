@@ -7,7 +7,7 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
 
-    public static event Action<Dialogue> NewTalker;
+    public static event Action<DialogueContainer> NewTalker;
     public static event Action ResetText;
     public static event Action<string> ShowMessage;
     public static event Action<bool> UIState;
@@ -27,10 +27,9 @@ public class DialogueManager : MonoBehaviour
     }
 
     IEnumerator StartDialogue() {
-        for (int i = 0; i < currentDialogue._dialogues.Length; i++) {
+        for (int i = 0; i < currentDialogue._talker[0].dialogos.Count; i++) {
             ResetText?.Invoke();
-            NewTalker?.Invoke(currentDialogue._dialogues[i]);
-            StartCoroutine(ShowDialogue(currentDialogue._dialogues[i].messages));
+            StartCoroutine(ShowDialogue(currentDialogue._talker[0].dialogos[i].mensagens));
 
             yield return new WaitUntil(() => endCurrentTalk);
         }
@@ -38,7 +37,7 @@ public class DialogueManager : MonoBehaviour
         UIState?.Invoke(false);
     }
 
-    IEnumerator ShowDialogue(string[] messages) {
+    IEnumerator ShowDialogue(List<string> messages) {
         endCurrentTalk = false;
 
         foreach(var message in messages)

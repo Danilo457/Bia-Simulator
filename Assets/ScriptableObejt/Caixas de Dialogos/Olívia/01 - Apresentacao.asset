@@ -14,5 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogos:
   - assunto: "Apresenta\xE7\xE3o"
+    _sprite: {fileID: 21300000, guid: d814190c4ddae3e4b8b8a2d520bb6744, type: 3}
     mensagens:
-    - 
+    - "Ol\xE1 Loli como esta."
+    - Dormiu bem a noite?
+  - assunto: 
+    _sprite: {fileID: 21300000, guid: 1407824e7e5d29945ac38bd2f7d23e89, type: 3}
+    mensagens:
+    - Sim muito bem!
+    - Oni Chan, Doumiu comigo.
+    - Ficamos Brincando ate de Madrugada.
+  - assunto: 
+    _sprite: {fileID: 21300000, guid: 1407824e7e5d29945ac38bd2f7d23e89, type: 3}
+    mensagens:
+    - Fazendo oque?

@@ -13,5 +13,7 @@ public class ScriptableDialogos : ScriptableObject
 public class Dialogos
 {
     public string assunto;
+
+    public Sprite _sprite;
     [TextArea(5,10)] public List<string> mensagens = new List<string>();
 }

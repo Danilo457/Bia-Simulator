@@ -81,10 +81,10 @@ public class Menu : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
 
-                Time.timeScale = 0; // Pause
+     //           Time.timeScale = 0; // Pause
             }else {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+    //            Cursor.lockState = CursorLockMode.Locked;
+    //            Cursor.visible = false;
 
                 Time.timeScale = 1; // UnPause
             }

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 998
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Game
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 0
     width: 246
     height: 270
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 42
+  controlID: 44
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 97
+  controlID: 93
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 98
+  controlID: 94
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -423,7 +423,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -57438
+  m_LastSelectedObjectID: 1282546
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -493,22 +493,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Bia Chiqui\Documents\Unity Projetos\Bia Simulator\Bia-Simulator
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: 7e5d0000
-    m_LastClickedID: 23934
-    m_ExpandedIDs: 000000007e5d00008a5d0000965d00009a5d00009c5d000056f6000074f60000baf60000
+    m_SelectedIDs: 545e0000
+    m_LastClickedID: 24148
+    m_ExpandedIDs: 000000003e5e0000565e0000585e0000e8450f000a460f00
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -536,7 +536,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000007e5d0000
+    m_ExpandedIDs: 000000003e5e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -664,9 +664,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: e2970100
       m_LastClickedID: 0
-      m_ExpandedIDs: c8f5fbff123cfdffea39ffff36beffff54f6ffff6cf9ffff36fbfffff4ffffffba8f0000c0910000fe920000ca9400000a9c0000d4f2000018f3000006a104008477070062780700
+      m_ExpandedIDs: 88b1f7ff74d1f7ffbc07f8ff0e08f8ff227ef8ff0882f8ff50b8f8ffaef2f8ff12f6f8ff6631f9ffce4bf9ff1682f9ff04f8f9ffb82efaffde32fafff035faff386cfaffaca6faff2aabfaff14e7faff3824fbff8824fbff965afbff625dfbff745dfbff7080fbffc080fbffeeb7fbffccbafbffdebafbff36fbffff825a0000de5a0000965b000096e10a00dae40a00cc3d0b00e43d0b00f23d0b002c3e0b003e3e0b0028f40c005ef60c00d81e0f00f81e0f00101f0f00261f0f00601f0f0024b81000c2f11100f8911300
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -948,9 +948,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 943.80457, y: 543.76984, z: 1.2878293}
+    m_Target: {x: 936.6071, y: 531.1215, z: 10.895032}
     speed: 2
-    m_Value: {x: 943.80457, y: 543.76984, z: 1.2878293}
+    m_Value: {x: 936.6071, y: 531.1215, z: 10.895032}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1001,9 +1001,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 62.84966
+    m_Target: 596.8259
     speed: 2
-    m_Value: 62.84966
+    m_Value: 596.8259
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1021,7 +1021,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.0015134347, y: 0.97762674, z: -0.210224, w: -0.0070380513}
+  m_LastSceneViewRotation: {x: -0.13609266, y: 0.6021137, z: -0.10509931, w: -0.779676}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
