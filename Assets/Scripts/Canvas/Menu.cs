@@ -29,14 +29,14 @@ public class Menu : MonoBehaviour
 
     [Space]
 
-    [SerializeField] RawImage CaixaCores;
-
     [SerializeField] RawImage trocaDeCabelo;
+    [SerializeField] RawImage trocaDeCorBlusa;
 
-    [SerializeField] List<Color> cor = new List<Color>();
     [SerializeField] List<Texture2D> textureCabelo = new List<Texture2D>();
+    [SerializeField] List<Texture2D> textureBlusa = new List<Texture2D>();
 
-    [HideInInspector] public int index;
+    [HideInInspector] public int indexCanelo;
+    [HideInInspector] public int indexBlusa;
     [HideInInspector] public bool actvBlusa;
     [HideInInspector] public bool actvCabelo;
     [HideInInspector] public float sensibility;
@@ -46,8 +46,8 @@ public class Menu : MonoBehaviour
 
     void Awake()
     {
-        CaixaCores.color = cor[0];
         trocaDeCabelo.texture = textureCabelo[0];
+        trocaDeCorBlusa.texture = textureBlusa[0];
 
         spriteMenu.SetActive(true);
         painelInicial.SetActive(true);
@@ -61,6 +61,7 @@ public class Menu : MonoBehaviour
         buttonsPersonPlayer.SetActive(false);
         returnPanelConfig.SetActive(false);
         controlSettings.SetActive(false);
+        blusaTrocaDeCor.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -183,51 +184,39 @@ public class Menu : MonoBehaviour
         actvCabelo = !actvCabelo;
 
     public void ButtonRetroceder() {
-        index--;
+        indexCanelo--;
 
-        if (index < 0)
-            index = 7;
+        if (indexCanelo < 0)
+            indexCanelo = 7;
 
-        trocaDeCabelo.texture = textureCabelo[index];
+        trocaDeCabelo.texture = textureCabelo[indexCanelo];
     }
 
     public void ButtonAvansar() {
-        index++;
+        indexCanelo++;
 
-        if (index > 7)
-            index = 0;
+        if (indexCanelo > 7)
+            indexCanelo = 0;
 
-        trocaDeCabelo.texture = textureCabelo[index];
+        trocaDeCabelo.texture = textureCabelo[indexCanelo];
     }
 
-    public void ButtonSettingsCorVerdClaro() {
-        CaixaCores.color = cor[0];
+    public void ButtonRetrocederBlusa() {
+        indexBlusa--;
 
-        num = 0;
+        if (indexBlusa < 0)
+            indexBlusa = 4;
+
+        trocaDeCorBlusa.texture = textureBlusa[indexBlusa];
     }
 
-    public void ButtonSettingsCorAzulClaro() {
-        CaixaCores.color = cor[1];
+    public void ButtonAvansarBlusa() {
+        indexBlusa++;
 
-        num = 1;
-    }
+        if (indexBlusa > 4)
+            indexBlusa = 0;
 
-    public void ButtonSettingsCorAmarelo() {
-        CaixaCores.color = cor[2];
-
-        num = 2;
-    }
-
-    public void ButtonSettingsCorRosa() {
-        CaixaCores.color = cor[3];
-
-        num = 3;
-    }
-
-    public void ButtonSettingsCorRoxo() {
-        CaixaCores.color = cor[4];
-
-        num = 4;
+        trocaDeCorBlusa.texture = textureBlusa[indexBlusa];
     }
 
     public void SensibilitySlider(float value) => sensibility = value;

@@ -46,15 +46,9 @@ public class OptionManager : MonoBehaviour
         HandleActionInput();
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-        {
             HandleNavigationInput(KeyCode.UpArrow);
-            //HandleNavigationInput(KeyCode.S);
-        }
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-        {
             HandleNavigationInput(KeyCode.DownArrow);
-            //HandleNavigationInput(KeyCode.W);
-        }
     }
 
     void HandleNavigationInput(KeyCode _currentKey) {

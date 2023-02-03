@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        DialogueManager.NewTalker += NewTalker;
         DialogueManager.ShowMessage += ShowText;
         DialogueManager.ResetText += ResetText;
         DialogueManager.UIState += UIContainerState;
@@ -21,7 +20,6 @@ public class UIManager : MonoBehaviour
 
     void OnDestroy()
     {
-        DialogueManager.NewTalker -= NewTalker;
         DialogueManager.ShowMessage -= ShowText;
         DialogueManager.ResetText -= ResetText;
         DialogueManager.UIState -= UIContainerState;
@@ -30,8 +28,8 @@ public class UIManager : MonoBehaviour
     void Start() =>
         anim.GetComponent<Animator>();
 
-    void NewTalker(DialogueContainer talkerInformations) =>
-        anim.Play("animation");
+    //void NewTalker(DialogueContainer talkerInformations) =>
+    //    anim.Play("animation");
 
     void ShowText(string message) =>
         _dialogue.text = message;

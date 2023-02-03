@@ -7,7 +7,6 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
 
-    public static event Action<DialogueContainer> NewTalker;
     public static event Action ResetText;
     public static event Action<string> ShowMessage;
     public static event Action<bool> UIState;

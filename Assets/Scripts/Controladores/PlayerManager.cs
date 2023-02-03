@@ -36,13 +36,13 @@ public class PlayerManager : MonoBehaviour
         myListManager.Add("Blusa Amarrada na Sintura", acessorios[0]);
 
         myListManager.TryGetValue("Blusa Amarrada na Sintura", out GameObject blusa);
-        blusa.GetComponent<SkinnedMeshRenderer>().material = dadosPer.alunos.material[menu.num];
+        blusa.GetComponent<SkinnedMeshRenderer>().material = dadosPer.alunos.material[menu.indexBlusa];
 
         blusa.SetActive(!menu.actvBlusa);
 
         for (int i = 0; i < cabelos.Count; i++)
             cabelos[i].SetActive(false);
 
-        cabelos[menu.index].SetActive(!menu.actvCabelo);
+        cabelos[menu.indexCanelo].SetActive(!menu.actvCabelo);
     }
 }
