@@ -18,6 +18,7 @@ public class Menu : MonoBehaviour
     [SerializeField] GameObject infoVersion;
     [SerializeField] GameObject panelSettings;
     [SerializeField] GameObject buttonsPersonPlayer;
+    [SerializeField] GameObject returnPanelInicial;
     [SerializeField] GameObject returnPanelConfig;
     [SerializeField] GameObject fundoTrocaDeCabelos;
     [SerializeField] GameObject fundoActvCabelo;
@@ -59,6 +60,7 @@ public class Menu : MonoBehaviour
 
         panelSettings.SetActive(false);
         buttonsPersonPlayer.SetActive(false);
+        returnPanelInicial.SetActive(false);
         returnPanelConfig.SetActive(false);
         controlSettings.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
@@ -82,10 +84,10 @@ public class Menu : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
 
-     //           Time.timeScale = 0; // Pause
+                Time.timeScale = 0; // Pause
             }else {
-    //            Cursor.lockState = CursorLockMode.Locked;
-    //            Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
 
                 Time.timeScale = 1; // UnPause
             }
@@ -117,6 +119,9 @@ public class Menu : MonoBehaviour
         painelTitulo.SetActive(false);
         spriteGarota.SetActive(false);
         buttonsPersonPlayer.SetActive(false);
+        controlSettings.SetActive(false);
+        returnPanelInicial.SetActive(false);
+        returnPanelConfig.SetActive(false);
 
         panelSettings.SetActive(true);
     }
@@ -153,6 +158,7 @@ public class Menu : MonoBehaviour
     public void ReturnPanelConfig()
     {
         buttonsPersonPlayer.SetActive(true);
+        returnPanelInicial.SetActive(false);
         returnPanelConfig.SetActive(false);
 
         fundoTrocaDeCabelos.SetActive(false);
@@ -168,7 +174,7 @@ public class Menu : MonoBehaviour
     {
         panelSettings.SetActive(false);
 
-        returnPanelConfig.SetActive(true);
+        returnPanelInicial.SetActive(true);
         controlSettings.SetActive(true);
 
         Cursor.lockState = CursorLockMode.None;
