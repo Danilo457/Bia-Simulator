@@ -4605,6 +4605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   escape: 0
   num: 0
+  namePainelMenu: Painel do menu Essencial
   spriteMenu: {fileID: 1165166627}
   painelInicial: {fileID: 983204362}
   painelTitulo: {fileID: 1574173860}

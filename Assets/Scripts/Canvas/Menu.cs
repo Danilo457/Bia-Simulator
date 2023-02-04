@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour
     [HideInInspector] public int num;
 
     GameObject fundo;
+    [SerializeField] string namePainelMenu;
     [Header("        Menu Inicial")]
     [SerializeField] GameObject spriteMenu;
     [SerializeField] GameObject painelInicial;
@@ -75,7 +76,7 @@ public class Menu : MonoBehaviour
             escape = !escape;
 
             if (fundo == null)
-                fundo = GameObject.Find("Panel");
+                fundo = GameObject.Find(namePainelMenu);
 
             if (sceneArmarios)
                 fundo.GetComponent<Image>().enabled = escape;
