@@ -10,9 +10,14 @@ public class CanvasManager : MonoBehaviour
     /* Button, Start - Exit - volta ao Menu */
     [SerializeField] GameObject[] buttons;
 
+    [SerializeField] GameObject[] componentsInteracoes;
+
     void Awake()
     {
         menu = FindObjectOfType<Menu>();
+
+        for (int i = 0; i < componentsInteracoes.Length; i++)
+            componentsInteracoes[i].SetActive(true);
     }
 
     void Update()

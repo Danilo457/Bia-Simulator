@@ -9,8 +9,11 @@ public class SystemPersonagens : MonoBehaviour
     [SerializeField] Detecta localPlayer;
 
     GameObject localDestination;
+    GameObject caixaEscolhas;
 
     float time;
+
+    bool atvCaixaEscolhas;
 
     void Awake()
     {
@@ -22,10 +25,14 @@ public class SystemPersonagens : MonoBehaviour
         telaIndicativa = GameObject.Find("Indicador de Tecla para das Interações").GetComponent<RectTransform>();
         localDestination = GameObject.Find("Pai do Indicador");
 
+        caixaEscolhas = GameObject.Find("Caixa de Escolhas");
+
         time = 150;
 
         telaIndicativa.SetParent(localDestination.transform, true);
         telaIndicativa.anchoredPosition = new Vector2(0, time);
+
+        caixaEscolhas.SetActive(false);
     }
 
     void Update()
@@ -34,6 +41,11 @@ public class SystemPersonagens : MonoBehaviour
             time -= Time.deltaTime * 100;
 
             telaIndicativa.anchoredPosition = new Vector2(0, time);
+
+            if (Input.GetKeyDown(KeyCode.E))
+                atvCaixaEscolhas = !atvCaixaEscolhas;
+
+            caixaEscolhas.SetActive(atvCaixaEscolhas);
 
             if (time < 0)
                 time = 0;
