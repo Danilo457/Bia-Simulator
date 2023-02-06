@@ -15,6 +15,7 @@ public class BiaChiqui : MonoBehaviour
 
     PlayerManager playerManager;
     Menu menu;
+    SystemPersonagens scriptPerson;
 
     Animation anim;
     AudioSource audioToks;
@@ -38,6 +39,7 @@ public class BiaChiqui : MonoBehaviour
     {
         playerManager = FindObjectOfType<PlayerManager>();
         menu = FindObjectOfType<Menu>();
+        scriptPerson = FindObjectOfType<SystemPersonagens>();
 
         anim = GetComponent<Animation>();
 
@@ -74,9 +76,10 @@ public class BiaChiqui : MonoBehaviour
         else
             velocidade = speed;
 
-        Rotation();
+        if (!scriptPerson.atvCaixaEscolhas)
+            Rotation();
 
-        if (!menu.escape)
+        if (!menu.escape && !scriptPerson.atvCaixaEscolhas)
             Animation();
     }
 
@@ -124,7 +127,7 @@ public class BiaChiqui : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (movimento)
+        if (movimento && !scriptPerson.atvCaixaEscolhas)
             rb.MovePosition(rb.position + velocidade * Time.fixedDeltaTime * transform.forward);
 
         //rb.AddForce(new Vector3(0, -1, 0) * 3.0f, ForceMode.Impulse);

@@ -13,7 +13,7 @@ public class SystemPersonagens : MonoBehaviour
 
     float time;
 
-    bool atvCaixaEscolhas;
+    [HideInInspector] public bool atvCaixaEscolhas;
 
     void Awake()
     {
@@ -42,15 +42,16 @@ public class SystemPersonagens : MonoBehaviour
 
             telaIndicativa.anchoredPosition = new Vector2(0, time);
 
-            if (Input.GetKeyDown(KeyCode.E))
-                atvCaixaEscolhas = !atvCaixaEscolhas;
-
-            caixaEscolhas.SetActive(atvCaixaEscolhas);
-
             if (time < 0)
                 time = 0;
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.E) && localPlayer.local) {
+            atvCaixaEscolhas = !atvCaixaEscolhas;
+
+            caixaEscolhas.SetActive(atvCaixaEscolhas);
+        }
+
         if (!localPlayer.local) {
             time += Time.deltaTime * 150;
 

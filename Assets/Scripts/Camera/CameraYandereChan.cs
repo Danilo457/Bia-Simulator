@@ -4,6 +4,7 @@ using UnityEngine;
 public class CameraYandereChan : MonoBehaviour
 {
     Menu menu;
+    SystemPersonagens scriptPerson;
 
     Transform targetCamYan;
 
@@ -24,6 +25,7 @@ public class CameraYandereChan : MonoBehaviour
     void Awake()
     {
         menu = FindObjectOfType<Menu>();
+        scriptPerson = FindObjectOfType<SystemPersonagens>();
 
         targetCamYan = GameObject.Find("targetComeraBiaChiqui").transform;
     }
@@ -39,7 +41,7 @@ public class CameraYandereChan : MonoBehaviour
         y -= Input.GetAxis("Mouse Y") * mouseSensivity;
         y = Mathf.Clamp(y, pitchMinMax.x, pitchMinMax.y);
 
-        if (!menu.escape) {
+        if (!menu.escape && !scriptPerson.atvCaixaEscolhas) {
             currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(y, x),
             /***/ ref rotationSmoothVelocity, rotationSmoothTime);
             transform.eulerAngles = currentRotation;

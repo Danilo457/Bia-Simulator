@@ -125,6 +125,9 @@ public class Menu : MonoBehaviour
         returnPanelConfig.SetActive(false);
 
         panelSettings.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void ButtonPersonalizarPlayer()
