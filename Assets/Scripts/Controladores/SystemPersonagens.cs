@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class SystemPersonagens : MonoBehaviour
@@ -11,13 +12,18 @@ public class SystemPersonagens : MonoBehaviour
     GameObject localDestination;
     GameObject caixaEscolhas;
 
+    Image imageTime;
+
     float time;
+    float timeImage;
 
     [HideInInspector] public bool atvCaixaEscolhas;
 
     void Awake()
     {
         localPlayer.GetComponent<Detecta>();
+
+        timeImage = 1.0f;
     }
 
     void Start()
@@ -26,6 +32,7 @@ public class SystemPersonagens : MonoBehaviour
         localDestination = GameObject.Find("Pai do Indicador");
 
         caixaEscolhas = GameObject.Find("Caixa de Escolhas");
+        imageTime = GameObject.Find("CarregamentoTime").GetComponent<Image>();
 
         time = 150;
 
@@ -37,7 +44,7 @@ public class SystemPersonagens : MonoBehaviour
 
     void Update()
     {
-        if (time > 0 && localPlayer.local) {
+        if (time > 0 && localPlayer.local && !atvCaixaEscolhas) {
             time -= Time.deltaTime * 100;
 
             telaIndicativa.anchoredPosition = new Vector2(0, time);
@@ -46,13 +53,26 @@ public class SystemPersonagens : MonoBehaviour
                 time = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && localPlayer.local) {
+        if (Input.GetKeyDown(KeyCode.E) && timeImage > 0 && localPlayer.local && !atvCaixaEscolhas) {
             atvCaixaEscolhas = !atvCaixaEscolhas;
 
             caixaEscolhas.SetActive(atvCaixaEscolhas);
         }
 
-        if (!localPlayer.local) {
+        if (atvCaixaEscolhas) {
+            timeImage -= Time.deltaTime / 10.0f;
+
+            imageTime.fillAmount = timeImage;
+
+            if (timeImage <= 0) {
+                timeImage = 1.0f;
+                atvCaixaEscolhas = false;
+            }
+
+            caixaEscolhas.SetActive(atvCaixaEscolhas);
+        }
+
+        if (!localPlayer.local || atvCaixaEscolhas) {
             time += Time.deltaTime * 150;
 
             telaIndicativa.anchoredPosition = new Vector2(0, time);
