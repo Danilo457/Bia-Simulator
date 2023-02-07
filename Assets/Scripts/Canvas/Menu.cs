@@ -73,7 +73,7 @@ public class Menu : MonoBehaviour
     {
         mouseCursor = FindObjectOfType<MouseController>();
 
-        mouseCursor.MouseDesativ();
+        mouseCursor.MouseLockedFalse();
     }
 
     void Update()
@@ -88,11 +88,11 @@ public class Menu : MonoBehaviour
                 fundo.GetComponent<Image>().enabled = escape;
 
             if (escape) { /* Cursor Mouse */
-                mouseCursor.MouseActiv();
+                mouseCursor.MouseNoneTrue();
 
                 Time.timeScale = 0; // Pause
             }else {
-                mouseCursor.MouseDesativ();
+                mouseCursor.MouseLockedFalse();
 
                 Time.timeScale = 1; // UnPause
             }
@@ -107,7 +107,7 @@ public class Menu : MonoBehaviour
 
         sceneArmarios = true;
 
-        mouseCursor.MouseDesativ();
+        mouseCursor.MouseLockedFalse();
     }
 
     public void MenuInicial() {
@@ -129,7 +129,7 @@ public class Menu : MonoBehaviour
 
         panelSettings.SetActive(true);
 
-        mouseCursor.MouseDesativ();
+        mouseCursor.MouseLockedFalse();
     }
 
     public void ButtonPersonalizarPlayer()
@@ -145,7 +145,7 @@ public class Menu : MonoBehaviour
         buttonsPersonPlayer.SetActive(false);
         returnPanelConfig.SetActive(true);
 
-        mouseCursor.MouseActiv();
+        mouseCursor.MouseNoneTrue();
     }
 
     public void ButtonTrocaDeCabelo()
@@ -156,7 +156,7 @@ public class Menu : MonoBehaviour
         buttonsPersonPlayer.SetActive(false);
         returnPanelConfig.SetActive(true);
 
-        mouseCursor.MouseActiv();
+        mouseCursor.MouseNoneTrue();
     }
 
     public void ReturnPanelConfig()
@@ -170,7 +170,7 @@ public class Menu : MonoBehaviour
         blusaTrocaDeCor.SetActive(false);
         controlSettings.SetActive(false);
 
-        mouseCursor.MouseDesativ();
+        mouseCursor.MouseLockedFalse();
     }
 
     public void ControlSettings()
@@ -180,7 +180,7 @@ public class Menu : MonoBehaviour
         returnPanelInicial.SetActive(true);
         controlSettings.SetActive(true);
 
-        mouseCursor.MouseActiv();
+        mouseCursor.MouseNoneTrue();
     }
 
 

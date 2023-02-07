@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class MouseController : MonoBehaviour
 {
-    public void MouseCenterCeletor() {
+    public void MouseConfined() {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
     }
 
-    public void MouseActiv() {
+    public void MouseNoneTrue() {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 
-    public void MouseDesativ() {
+    public void MouseLockedFalse() {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

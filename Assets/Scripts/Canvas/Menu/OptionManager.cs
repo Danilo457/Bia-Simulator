@@ -49,6 +49,8 @@ public class OptionManager : MonoBehaviour
             HandleNavigationInput(KeyCode.UpArrow);
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             HandleNavigationInput(KeyCode.DownArrow);
+
+        _optionList[index].OnStateChange(isSelected: true);
     }
 
     void HandleNavigationInput(KeyCode _currentKey) {
@@ -60,8 +62,6 @@ public class OptionManager : MonoBehaviour
             index = index == maxIndex ? 0 : index + 1;
         else
             index = index == 0 ? maxIndex : index - 1;
-
-        _optionList[index].OnStateChange(isSelected: true);
     }
 
     void HandleActionInput() {

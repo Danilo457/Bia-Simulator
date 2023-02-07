@@ -12,12 +12,13 @@ public class CanvasManager : MonoBehaviour
 
     [SerializeField] GameObject[] componentsInteracoes;
 
+    [HideInInspector] public bool carregamento;
+
     void Awake()
     {
         menu = FindObjectOfType<Menu>();
 
-        for (int i = 0; i < componentsInteracoes.Length; i++)
-            componentsInteracoes[i].SetActive(true);
+        componentsInteracoes[0].SetActive(true);
     }
 
     void Update()
@@ -41,6 +42,10 @@ public class CanvasManager : MonoBehaviour
 
     /* Buttons Circulo de Escolhas */
 
-    public void ButtonSocialize() =>
-        Debug.Log("Uma escolha de Assunto para comesar um Dialogo");
+    public void ButtonSocialize() {
+        carregamento = true;
+
+        componentsInteracoes[0].SetActive(false);
+        componentsInteracoes[1].SetActive(true);
+    }
 }

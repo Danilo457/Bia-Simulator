@@ -9,11 +9,14 @@ public class SystemPersonagens : MonoBehaviour
 
     [SerializeField] Detecta localPlayer;
     MouseController cursor;
+    CanvasManager canvasManager;
 
     GameObject localDestination;
     GameObject caixaEscolhas;
 
     Image imageTime;
+
+    bool trava;
 
     float time;
     float timeImage;
@@ -30,6 +33,7 @@ public class SystemPersonagens : MonoBehaviour
     void Start()
     {
         cursor = FindObjectOfType<MouseController>();
+        canvasManager = FindObjectOfType<CanvasManager>();
 
         telaIndicativa = GameObject.Find("Indicador de Tecla para das Interações").GetComponent<RectTransform>();
         localDestination = GameObject.Find("Pai do Indicador");
@@ -62,7 +66,7 @@ public class SystemPersonagens : MonoBehaviour
             caixaEscolhas.SetActive(atvCaixaEscolhas);
         }
 
-        if (atvCaixaEscolhas) {
+        if (atvCaixaEscolhas && !trava) {
             timeImage -= Time.deltaTime / 10.0f;
 
             imageTime.fillAmount = timeImage;
@@ -72,13 +76,11 @@ public class SystemPersonagens : MonoBehaviour
                 atvCaixaEscolhas = false;
             }
 
-            cursor.MouseCenterCeletor();
-
-            caixaEscolhas.SetActive(atvCaixaEscolhas);
+            cursor.MouseConfined();
         }
 
         if (!atvCaixaEscolhas && time < 150)
-            cursor.MouseDesativ();
+            cursor.MouseLockedFalse();
 
         if (!localPlayer.local || atvCaixaEscolhas) {
             time += Time.deltaTime * 150;
@@ -87,6 +89,15 @@ public class SystemPersonagens : MonoBehaviour
 
             if (time > 150)
                 time = 150;
+        }
+
+        if (canvasManager.carregamento) {
+            timeImage = 1.0f;
+
+            cursor.MouseLockedFalse();
+
+            trava = true;
+            canvasManager.carregamento = false;
         }
     }
 }
