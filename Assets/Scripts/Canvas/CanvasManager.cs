@@ -38,4 +38,9 @@ public class CanvasManager : MonoBehaviour
 
     public void ExitGame() =>
         Application.Quit();
+
+    /* Buttons Circulo de Escolhas */
+
+    public void ButtonSocialize() =>
+        Debug.Log("Uma escolha de Assunto para comesar um Dialogo");
 }

@@ -8,6 +8,7 @@ public class SystemPersonagens : MonoBehaviour
     RectTransform telaIndicativa;
 
     [SerializeField] Detecta localPlayer;
+    MouseController cursor;
 
     GameObject localDestination;
     GameObject caixaEscolhas;
@@ -28,6 +29,8 @@ public class SystemPersonagens : MonoBehaviour
 
     void Start()
     {
+        cursor = FindObjectOfType<MouseController>();
+
         telaIndicativa = GameObject.Find("Indicador de Tecla para das Interações").GetComponent<RectTransform>();
         localDestination = GameObject.Find("Pai do Indicador");
 
@@ -69,8 +72,13 @@ public class SystemPersonagens : MonoBehaviour
                 atvCaixaEscolhas = false;
             }
 
+            cursor.MouseCenterCeletor();
+
             caixaEscolhas.SetActive(atvCaixaEscolhas);
         }
+
+        if (!atvCaixaEscolhas && time < 150)
+            cursor.MouseDesativ();
 
         if (!localPlayer.local || atvCaixaEscolhas) {
             time += Time.deltaTime * 150;

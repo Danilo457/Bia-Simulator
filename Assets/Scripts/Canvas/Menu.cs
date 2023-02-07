@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class Menu : MonoBehaviour
 {
+    MouseController mouseCursor;
+
     [HideInInspector] public bool escape;
 
     [HideInInspector] public int num;
@@ -65,9 +67,13 @@ public class Menu : MonoBehaviour
         returnPanelConfig.SetActive(false);
         controlSettings.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
+    }
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+    void Start()
+    {
+        mouseCursor = FindObjectOfType<MouseController>();
+
+        mouseCursor.MouseDesativ();
     }
 
     void Update()
@@ -82,13 +88,11 @@ public class Menu : MonoBehaviour
                 fundo.GetComponent<Image>().enabled = escape;
 
             if (escape) { /* Cursor Mouse */
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                mouseCursor.MouseActiv();
 
                 Time.timeScale = 0; // Pause
             }else {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                mouseCursor.MouseDesativ();
 
                 Time.timeScale = 1; // UnPause
             }
@@ -103,8 +107,7 @@ public class Menu : MonoBehaviour
 
         sceneArmarios = true;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        mouseCursor.MouseDesativ();
     }
 
     public void MenuInicial() {
@@ -126,8 +129,7 @@ public class Menu : MonoBehaviour
 
         panelSettings.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        mouseCursor.MouseDesativ();
     }
 
     public void ButtonPersonalizarPlayer()
@@ -143,8 +145,7 @@ public class Menu : MonoBehaviour
         buttonsPersonPlayer.SetActive(false);
         returnPanelConfig.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        mouseCursor.MouseActiv();
     }
 
     public void ButtonTrocaDeCabelo()
@@ -155,8 +156,7 @@ public class Menu : MonoBehaviour
         buttonsPersonPlayer.SetActive(false);
         returnPanelConfig.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        mouseCursor.MouseActiv();
     }
 
     public void ReturnPanelConfig()
@@ -170,8 +170,7 @@ public class Menu : MonoBehaviour
         blusaTrocaDeCor.SetActive(false);
         controlSettings.SetActive(false);
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        mouseCursor.MouseDesativ();
     }
 
     public void ControlSettings()
@@ -181,8 +180,7 @@ public class Menu : MonoBehaviour
         returnPanelInicial.SetActive(true);
         controlSettings.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        mouseCursor.MouseActiv();
     }
 
 
