@@ -12,3 +12,128 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b61eebdb224f1a448591e53cb6461a0, type: 3}
   m_Name: Global Dados
   m_EditorClassIdentifier: 
+  listNames:
+  - Agatha
+  - Alana
+  - "Al\xEDcia"
+  - Alice
+  - Aline
+  - Amai Odayaka
+  - Amanda
+  - Amora
+  - Ana
+  - Ana Beatriz
+  - Ana Clara
+  - Ana Carolina
+  - Ana Julia
+  - Ana Laura
+  - Ana Luiza
+  - "Ana L\xEDvia"
+  - Ana Sophia
+  - Antonella
+  - Antonia
+  - "B\xE1rbara"
+  - Beatriz
+  - Betina
+  - Bianca
+  - Bruna
+  - Brenda
+  - Camila
+  - Caroline
+  - Carmina
+  - Carolina
+  - Catarina
+  - "Cec\xEDlia"
+  - Clara
+  - Delfina
+  - "D\xE9bora"
+  - Eduarda
+  - Elisa
+  - "Elo\xE1"
+  - Emanuelly
+  - Ester
+  - Emily
+  - Evelyn
+  - Francisca
+  - Fernanda
+  - Fernanda
+  - "Fl\xE1via"
+  - Giovanna
+  - Geovana
+  - Gabriela
+  - Gabrielly
+  - Helena
+  - Heloisa
+  - Isabella
+  - Isabel
+  - Isabelle
+  - Isadora
+  - Julia
+  - Joana
+  - Juliana
+  - Juliana
+  - Jennifer
+  - Kamilly
+  - "K\xE1tia"
+  - Laura
+  - Luiza
+  - "L\xEDvia"
+  - Lorena
+  - Larissa
+  - Luna
+  - "Lav\xEDnia"
+  - Luiz
+  - Luana
+  - "La\xEDs"
+  - Lara
+  - "Let\xEDcia"
+  - Manuela
+  - Maria Eduarda
+  - "Maria J\xFAlia"
+  - Maria
+  - Melissa
+  - Marina
+  - Mariana
+  - Maria Sophia
+  - Marcia
+  - Maria Fernanda
+  - Maria Clara
+  - Maria Luiza
+  - Mariah
+  - "Maria Cec\xEDlia"
+  - "Mait\xEA"
+  - Mirella
+  - Mariane
+  - Maria Alice
+  - Marcela
+  - "Maria Vit\xF3ria"
+  - Maria
+  - Milena
+  - Nicole
+  - "Nat\xE1lia"
+  - Nina
+  - Nadja
+  - Olivia
+  - Pietra
+  - Paola
+  - Patricia
+  - "Quit\xE9ria"
+  - Rebeca
+  - Rayssa
+  - Raquel
+  - Rafaela
+  - Sarah
+  - Sophie
+  - Selma
+  - Stella
+  - Stefany
+  - Sophia
+  - Sabrina
+  - "T\xE2mara"
+  - "Uir\xE1"
+  - "Vit\xF3ria"
+  - Valentina
+  - Ximena
+  - Yasmin
+  - Yara
+  - "Z\xE9lia"

@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ScriptableObject", menuName = "Scriptable/Banco de Dados")]
 public class ScriptableBancoDeDados : ScriptableObject
 {
-    
+    public List<string> listNames = new List<string>();
 }

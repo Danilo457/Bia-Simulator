@@ -12,12 +12,19 @@ public class DialogueManager : MonoBehaviour
     public static event Action<bool> UIState;
 
     DialogueContainer currentDialogue;
+    MouseController mouse;
+    SystemPersonagens systemPersonagens;
 
     bool endCurrentTalk = true;
     bool buttonClicked = false;
 
-    void Awake() =>
+    void Awake()
+    {
         instance = this;
+
+        mouse = FindObjectOfType<MouseController>();
+        systemPersonagens = FindObjectOfType<SystemPersonagens>();
+    }
 
     public void StartConversation(DialogueContainer container) {
         currentDialogue = container;
@@ -32,6 +39,8 @@ public class DialogueManager : MonoBehaviour
 
             yield return new WaitUntil(() => endCurrentTalk);
         }
+
+        DialogueFim();
 
         UIState?.Invoke(false);
     }
@@ -51,6 +60,13 @@ public class DialogueManager : MonoBehaviour
     void ShowAllMessage(string message) {
         ShowMessage?.Invoke(message);
         buttonClicked = false;
+    }
+
+    void DialogueFim() {
+        mouse.MouseLockedFalse();
+
+        systemPersonagens.trava = false;
+        systemPersonagens.atvCaixaEscolhas = false;
     }
 
     public void ButtonWasClicked() =>

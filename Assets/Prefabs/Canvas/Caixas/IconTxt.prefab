@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Text, text, text, text, text, text, text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29e44a9b7e374614d8d087291b17f873, type: 2}
-  m_sharedMaterial: {fileID: 2443052389865617167, guid: 29e44a9b7e374614d8d087291b17f873, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8996bc586f66cfd4a9db6e9d83f2d9f8, type: 2}
+  m_sharedMaterial: {fileID: -3192647706073813131, guid: 8996bc586f66cfd4a9db6e9d83f2d9f8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24.18
+  m_fontSizeBase: 24.18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -146,6 +146,8 @@ GameObject:
   - component: {fileID: 5973261765164206425}
   - component: {fileID: 5973261765164206431}
   - component: {fileID: 5973261765164206430}
+  - component: {fileID: 6384953539089454836}
+  - component: {fileID: 3448833133072808515}
   m_Layer: 5
   m_Name: IconTxt
   m_TagString: Untagged
@@ -212,3 +214,59 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6384953539089454836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5973261765164206424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e10446a6380da040af649ef0b36144e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onStateChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onActionFired:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3448833133072808515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5973261765164206424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1063e35610ad40747b9b1b1efc04ca97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 7001937104341876155}
+  cor: {r: 1, g: 0.3254717, b: 0.93405473, a: 1}

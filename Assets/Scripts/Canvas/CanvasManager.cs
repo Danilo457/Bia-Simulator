@@ -6,6 +6,8 @@ using UnityEngine;
 public class CanvasManager : MonoBehaviour
 {
     Menu menu;
+    MouseController mouse;
+    DialogueTrigger dialogueTrigger;
 
     /* Button, Start - Exit - volta ao Menu */
     [SerializeField] GameObject[] buttons;
@@ -14,9 +16,14 @@ public class CanvasManager : MonoBehaviour
 
     [HideInInspector] public bool carregamento;
 
+    [Header("        Ativar os Dialogos")]
+    [SerializeField] GameObject UIManager;
+
     void Awake()
     {
         menu = FindObjectOfType<Menu>();
+        mouse = FindObjectOfType<MouseController>();
+        dialogueTrigger = FindObjectOfType<DialogueTrigger>();
 
         componentsInteracoes[0].SetActive(true);
     }
@@ -47,5 +54,15 @@ public class CanvasManager : MonoBehaviour
 
         componentsInteracoes[0].SetActive(false);
         componentsInteracoes[1].SetActive(true);
+    }
+
+    public void CaixaEscolhas() {
+        componentsInteracoes[1].SetActive(false);
+
+        UIManager.SetActive(true);
+
+        dialogueTrigger.StartDialogue();
+
+        mouse.MouseConfined();
     }
 }

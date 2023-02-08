@@ -16,10 +16,10 @@ public class SystemPersonagens : MonoBehaviour
 
     Image imageTime;
 
-    bool trava;
+    [HideInInspector] public bool trava;
 
     float time;
-    float timeImage;
+    [HideInInspector] public float timeImage;
 
     [HideInInspector] public bool atvCaixaEscolhas;
 
@@ -63,7 +63,7 @@ public class SystemPersonagens : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && timeImage > 0 && localPlayer.local && !atvCaixaEscolhas) {
             atvCaixaEscolhas = !atvCaixaEscolhas;
 
-            caixaEscolhas.SetActive(atvCaixaEscolhas);
+            caixaEscolhas.SetActive(true);
         }
 
         if (atvCaixaEscolhas && !trava) {

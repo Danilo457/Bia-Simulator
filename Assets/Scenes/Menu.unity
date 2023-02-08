@@ -4674,9 +4674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41aad467bc284f4c8fc2f6aa53f8c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dadosPer:
-  - {fileID: 11400000, guid: 0e723735d66599a4cb609ef28800dcc3, type: 2}
-  - {fileID: 11400000, guid: 9fc5ead384967a94f94e02b333a1bf0b, type: 2}
+  bancoDados: {fileID: 11400000, guid: 03bf93ad9a1d4ca4f8386a48fbaf5476, type: 2}
 --- !u!1 &1036184901
 GameObject:
   m_ObjectHideFlags: 0
