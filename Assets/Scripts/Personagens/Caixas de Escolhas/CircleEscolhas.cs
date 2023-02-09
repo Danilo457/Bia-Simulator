@@ -14,34 +14,22 @@ public class CircleEscolhas : MonoBehaviour
 
     public TextMeshProUGUI itemText;
 
-    //public Image selectedItem;
-
-    //public Sprite icon;
-
     bool selected;
 
-    void Start()
-    {
+    void Start() =>
         anim = GetComponent<Animator>();
-    }
 
     void Update()
     {
-        if (selected) {
-            //selectedItem.sprite = icon;
+        if (selected) 
             itemText.text = itemName;
-        }   
     }
 
-    public void Selected()
-    {
+    public void Selected() =>
         selected = true;
-    }
 
-    public void Deselected()
-    {
+    public void Deselected() =>
         selected = false;
-    }
 
     public void HoverEnter()
     {

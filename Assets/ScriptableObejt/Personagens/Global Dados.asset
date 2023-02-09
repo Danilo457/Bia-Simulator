@@ -137,3 +137,21 @@ MonoBehaviour:
   - Yasmin
   - Yara
   - "Z\xE9lia"
+  material:
+  - {fileID: 2100000, guid: c4558bed453277945a8e16ddb1948157, type: 2}
+  - {fileID: 2100000, guid: 4a561e4eb93be5548ab51757054549ab, type: 2}
+  - {fileID: 2100000, guid: a031fd5912052394faf4a74322dc7e0c, type: 2}
+  - {fileID: 2100000, guid: 23845d2a66023f34792156fee184ce36, type: 2}
+  - {fileID: 2100000, guid: 8db67e6a71eb40f4388190fa65747f09, type: 2}
+  - {fileID: 2100000, guid: b150222b46ac5c347bc4b4b4a08fffac, type: 2}
+  - {fileID: 2100000, guid: c124374c96c4a804a8d550f769bac844, type: 2}
+  - {fileID: 2100000, guid: 8c2e8355157358844812cd679307b7ab, type: 2}
+  - {fileID: 2100000, guid: e0a1409870fc93544a9ef5cc679c8f1b, type: 2}
+  - {fileID: 2100000, guid: 0818775f58c380c43a9a4f71fa5ec3f0, type: 2}
+  - {fileID: 2100000, guid: 94c79230eab5c4b42b93a2ac466ff490, type: 2}
+  - {fileID: 2100000, guid: 56ebad324dde25641801f12ec7c380d3, type: 2}
+  - {fileID: 2100000, guid: 89c76cf70879e4741955d4d2a45c179f, type: 2}
+  - {fileID: 2100000, guid: 27557917cc3862f4db1845e4b2911b7b, type: 2}
+  mesh:
+  - {fileID: 4300000, guid: da7ee523fc619264087e1778ac7444af, type: 2}
+  avatarFeminino: {fileID: 7701179236251244617, guid: 769f01841a22320428b5f324960507ca, type: 3}

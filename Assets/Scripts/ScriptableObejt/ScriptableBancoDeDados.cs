@@ -6,4 +6,9 @@ using UnityEngine;
 public class ScriptableBancoDeDados : ScriptableObject
 {
     public List<string> listNames = new List<string>();
+
+    public List<Material> material = new List<Material>();
+    public List<Mesh> mesh = new List<Mesh>();
+
+    public GameObject avatarFeminino;
 }
