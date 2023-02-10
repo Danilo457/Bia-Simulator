@@ -12,8 +12,6 @@ public class GeneratePersons : MonoBehaviour
 
     [HideInInspector] public bool espera;
 
-    [HideInInspector] public int indexAvatar;
-
     void Start()
     {
         
@@ -31,7 +29,8 @@ public class GeneratePersons : MonoBehaviour
             {
                 SpamSalaDosArmarios();
                 MeshAvatar();
-                SetMatirials();
+                MaterialAvatar();
+                AddGameObject();
 
                 spamSalaDosArmarios.spam = false;
             }
@@ -46,19 +45,36 @@ public class GeneratePersons : MonoBehaviour
             {
                 case "Amai Odayaka":
                     
-                    Instantiate(bancoDados.avatar[indexAvatar], spamPosition[0].position, spamPosition[0].rotation);
+                    Instantiate(bancoDados.avatar, spamPosition[0].position, spamPosition[0].rotation);
 
                     break;
             }
     }
 
-    void MeshAvatar()
+    void AddGameObject()
     {
-        
+        bancoDados.addGameObject.AddMesh("RightIris - Nemesis", "LeftIris - Nemesis");
+
+        bancoDados.components.MeshIris("RightIris - Nemesis").mesh = bancoDados.mesh[4];
+        bancoDados.components.MeshIris("LeftIris - Nemesis").mesh = bancoDados.mesh[4];
+
+        bancoDados.components.MaterialIris("RightIris - Nemesis").material = bancoDados.material[6];
+        bancoDados.components.MaterialIris("LeftIris - Nemesis").material = bancoDados.material[6];
     }
 
-    void SetMatirials()
+    void MeshAvatar()
     {
-        
+        bancoDados.components.AvatarCuston().sharedMesh = bancoDados.mesh[1];
+    }
+
+    void MaterialAvatar()
+    {
+        bancoDados.components.AvatarCuston().materials[0].shader = bancoDados.material[15].shader;
+        bancoDados.components.AvatarCuston().materials[1].shader = bancoDados.material[15].shader;
+        bancoDados.components.AvatarCuston().materials[2].shader = bancoDados.material[1].shader;
+
+        bancoDados.components.AvatarCuston().materials[0].mainTexture = bancoDados.material[15].mainTexture;
+        bancoDados.components.AvatarCuston().materials[1].mainTexture = bancoDados.material[15].mainTexture;
+        bancoDados.components.AvatarCuston().materials[2].mainTexture = bancoDados.material[1].mainTexture;
     }
 }

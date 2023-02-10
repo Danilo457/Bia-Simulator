@@ -4676,7 +4676,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bancoDados: {fileID: 11400000, guid: 03bf93ad9a1d4ca4f8386a48fbaf5476, type: 2}
   espera: 0
-  indexAvatar: 0
 --- !u!1 &1036184901
 GameObject:
   m_ObjectHideFlags: 0

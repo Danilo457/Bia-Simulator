@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b61eebdb224f1a448591e53cb6461a0, type: 3}
   m_Name: Global Dados
   m_EditorClassIdentifier: 
+  avatar: {fileID: 783337837598449463, guid: 4eb3d431f945420439a0d49168be5d18, type: 3}
   listNames:
   - Agatha
   - Alana
@@ -139,8 +140,11 @@ MonoBehaviour:
   - "Z\xE9lia"
   material:
   - {fileID: 2100000, guid: c4558bed453277945a8e16ddb1948157, type: 2}
+  - {fileID: 2100000, guid: ea2f35870a3837e418d35b748652ad9a, type: 2}
   - {fileID: 2100000, guid: 4a561e4eb93be5548ab51757054549ab, type: 2}
   - {fileID: 2100000, guid: a031fd5912052394faf4a74322dc7e0c, type: 2}
+  - {fileID: 2100000, guid: 7d50d4501d750e541a517fd8620fa6a9, type: 2}
+  - {fileID: 2100000, guid: 0297d15d4d4ca2945a974707314857d7, type: 2}
   - {fileID: 2100000, guid: 23845d2a66023f34792156fee184ce36, type: 2}
   - {fileID: 2100000, guid: 8db67e6a71eb40f4388190fa65747f09, type: 2}
   - {fileID: 2100000, guid: b150222b46ac5c347bc4b4b4a08fffac, type: 2}
@@ -152,12 +156,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 56ebad324dde25641801f12ec7c380d3, type: 2}
   - {fileID: 2100000, guid: 89c76cf70879e4741955d4d2a45c179f, type: 2}
   - {fileID: 2100000, guid: 27557917cc3862f4db1845e4b2911b7b, type: 2}
-  - {fileID: 2100000, guid: ea2f35870a3837e418d35b748652ad9a, type: 2}
   mesh:
   - {fileID: 4300000, guid: da7ee523fc619264087e1778ac7444af, type: 2}
   - {fileID: 4300000, guid: cdd0b92175151f94d9557b270db95741, type: 2}
   - {fileID: 4300000, guid: 021f15d0839764c4999d9b407c8903bf, type: 2}
-  avatar:
-  - {fileID: 6750600167260434773, guid: 356863b9cf9e5b941bef3456ba65886d, type: 3}
-  - {fileID: 2171172261388743365, guid: 193996fc42adea24dba9d3aad673fa93, type: 3}
-  - {fileID: 1388923193951787471, guid: 4040c1d160837e543a2e568a810c6dc9, type: 3}
+  - {fileID: 4300000, guid: 14b3ba9780f63fd409b89972cd0a00eb, type: 2}
+  - {fileID: 4300000, guid: 9913f3630cd64c34f83ee04862970d12, type: 2}

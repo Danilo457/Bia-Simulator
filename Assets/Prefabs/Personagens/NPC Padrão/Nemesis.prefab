@@ -42198,7 +42198,7 @@ GameObject:
   - component: {fileID: 7701179236251094214}
   - component: {fileID: 7701179236251127720}
   m_Layer: 9
-  m_Name: RightEmptyEyeNemesis
+  m_Name: RightIrisNemesis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42406,7 +42406,7 @@ GameObject:
   - component: {fileID: 7701179236251094217}
   - component: {fileID: 7701179236251127723}
   m_Layer: 9
-  m_Name: LeftEmptyEyeNemesis
+  m_Name: LeftIrisNemesis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

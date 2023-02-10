@@ -5,7 +5,6 @@ using UnityEngine;
 public class Spam : MonoBehaviour
 {
     [SerializeField] bool atvAvatar;
-    [SerializeField, Range(0, 2)] int modeloAvatar;
 
     GeneratePersons generatePersons;
 
@@ -14,8 +13,6 @@ public class Spam : MonoBehaviour
     void Start()
     {
         generatePersons = FindObjectOfType<GeneratePersons>();
-
-        generatePersons.indexAvatar = modeloAvatar;
 
         if (atvAvatar)
             generatePersons.espera = true;
