@@ -9,12 +9,15 @@ public class GeneratePersons : MonoBehaviour
     List<Transform> spamPosition = new List<Transform>();
 
     Spam spamSalaDosArmarios;
+    Menu menu;
+    MouseController mouseCursor;
 
     [HideInInspector] public bool espera;
 
     void Start()
     {
-        
+        menu = FindObjectOfType<Menu>();
+        mouseCursor = FindObjectOfType<MouseController>();
     }
 
     void Update()
@@ -76,5 +79,14 @@ public class GeneratePersons : MonoBehaviour
         bancoDados.components.AvatarCuston().materials[0].mainTexture = bancoDados.material[15].mainTexture;
         bancoDados.components.AvatarCuston().materials[1].mainTexture = bancoDados.material[15].mainTexture;
         bancoDados.components.AvatarCuston().materials[2].mainTexture = bancoDados.material[1].mainTexture;
+    }
+
+    public void UniformeCustons()
+    {
+        menu.buttonsPersonPlayer.SetActive(false);
+
+        mouseCursor.MouseNoneTrue();
+
+        menu.returnPanelConfig.SetActive(true);
     }
 }

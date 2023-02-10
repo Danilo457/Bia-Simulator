@@ -20,9 +20,9 @@ public class Menu : MonoBehaviour
     [SerializeField] GameObject spriteGarota;
     [SerializeField] GameObject infoVersion;
     [SerializeField] GameObject panelSettings;
-    [SerializeField] GameObject buttonsPersonPlayer;
+    public GameObject buttonsPersonPlayer;
     [SerializeField] GameObject returnPanelInicial;
-    [SerializeField] GameObject returnPanelConfig;
+    public GameObject returnPanelConfig;
     [SerializeField] GameObject fundoTrocaDeCabelos;
     [SerializeField] GameObject fundoActvCabelo;
     [SerializeField] GameObject blusaTrocaDeCor;
