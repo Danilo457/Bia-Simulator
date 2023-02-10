@@ -42198,7 +42198,7 @@ GameObject:
   - component: {fileID: 7701179236251094214}
   - component: {fileID: 7701179236251127720}
   m_Layer: 9
-  m_Name: RightEmptyEye
+  m_Name: RightEmptyEyeNemesis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42406,7 +42406,7 @@ GameObject:
   - component: {fileID: 7701179236251094217}
   - component: {fileID: 7701179236251127723}
   m_Layer: 9
-  m_Name: LeftEmptyEye
+  m_Name: LeftEmptyEyeNemesis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61693,7 +61693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7701179236251315385}
   m_Layer: 9
-  m_Name: f02
+  m_Name: f02Nemesis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

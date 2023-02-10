@@ -152,6 +152,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 56ebad324dde25641801f12ec7c380d3, type: 2}
   - {fileID: 2100000, guid: 89c76cf70879e4741955d4d2a45c179f, type: 2}
   - {fileID: 2100000, guid: 27557917cc3862f4db1845e4b2911b7b, type: 2}
+  - {fileID: 2100000, guid: ea2f35870a3837e418d35b748652ad9a, type: 2}
   mesh:
   - {fileID: 4300000, guid: da7ee523fc619264087e1778ac7444af, type: 2}
-  avatarFeminino: {fileID: 7701179236251244617, guid: 769f01841a22320428b5f324960507ca, type: 3}
+  - {fileID: 4300000, guid: cdd0b92175151f94d9557b270db95741, type: 2}
+  - {fileID: 4300000, guid: 021f15d0839764c4999d9b407c8903bf, type: 2}
+  avatar:
+  - {fileID: 6750600167260434773, guid: 356863b9cf9e5b941bef3456ba65886d, type: 3}
+  - {fileID: 2171172261388743365, guid: 193996fc42adea24dba9d3aad673fa93, type: 3}
+  - {fileID: 1388923193951787471, guid: 4040c1d160837e543a2e568a810c6dc9, type: 3}
