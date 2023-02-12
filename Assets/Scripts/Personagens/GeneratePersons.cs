@@ -9,6 +9,7 @@ public class GeneratePersons : MonoBehaviour
     List<Transform> spamPosition = new List<Transform>();
 
     Spam spamSalaDosArmarios;
+    //Menu menu;
 
     [HideInInspector] public bool espera;
 
@@ -26,6 +27,8 @@ public class GeneratePersons : MonoBehaviour
 
     private void Awake()
     {
+        //menu = FindObjectOfType<Menu>();
+
         saveModelosSprites.Add(bancoDados.sprites[0]);
         saveModelosSprites.Add(bancoDados.sprites[2]);
 
@@ -40,7 +43,7 @@ public class GeneratePersons : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
     void Update()
@@ -90,17 +93,24 @@ public class GeneratePersons : MonoBehaviour
 
     void MeshAvatar()
     {
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").sharedMesh = AvatarMesh(modelosIndex);
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").sharedMesh = 
+            AvatarMesh(modelosIndex);
     }
 
     void MaterialAvatar()
     {
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[0].shader = AvatarMaterialCorpo(modelosIndex).shader;
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[1].shader = AvatarMaterialCorpo(modelosIndex).shader;
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[2].shader = AvatarMaterialFace(0).shader;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[0].shader = 
+            AvatarMaterialCorpo(modelosIndex).shader;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[1].shader = 
+            AvatarMaterialCorpo(modelosIndex).shader;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[2].shader = 
+            AvatarMaterialFace(0).shader;
 
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[0].mainTexture = AvatarMaterialCorpo(modelosIndex).mainTexture;
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[1].mainTexture = AvatarMaterialCorpo(modelosIndex).mainTexture;
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[2].mainTexture = AvatarMaterialFace(0).mainTexture;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[0].mainTexture = 
+            AvatarMaterialCorpo(modelosIndex).mainTexture;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[1].mainTexture = 
+            AvatarMaterialCorpo(modelosIndex).mainTexture;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[2].mainTexture = 
+            AvatarMaterialFace(0).mainTexture;
     }
 }

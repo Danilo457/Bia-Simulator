@@ -81,6 +81,8 @@ public class Menu : MonoBehaviour
 
         mouseCursor.MouseLockedFalse();
 
+        generatePersons.modelosIndex = 0;
+
         preVill.sprite = generatePersons.Modelos(generatePersons.modelosIndex);
     }
 
