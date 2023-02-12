@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b61eebdb224f1a448591e53cb6461a0, type: 3}
   m_Name: Global Dados
   m_EditorClassIdentifier: 
+  namesHierarchy:
+    nameCorpoNemesis: CorpoNemesis - Nemesis
   avatar: {fileID: 783337837598449463, guid: 4eb3d431f945420439a0d49168be5d18, type: 3}
   listNames:
   - Agatha

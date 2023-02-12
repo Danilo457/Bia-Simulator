@@ -5,8 +5,12 @@ using System.Collections.Generic;
 
 public class Menu : MonoBehaviour
 {
+    public ScriptableBancoDeDados bancoDados;
+
+    GeneratePersons generatePersons = new GeneratePersons();
+
     MouseController mouseCursor;
-    GeneratePersons generatePersons;
+    Spam spamSalaDosArmarios;
 
     [HideInInspector] public bool escape;
 
@@ -49,11 +53,13 @@ public class Menu : MonoBehaviour
     [HideInInspector] public bool actvCabelo;
     [HideInInspector] public float sensibility;
 
+    [HideInInspector] public bool espera;
+
     bool sceneArmarios;
 
     void Awake()
     {
-        generatePersons = FindObjectOfType<GeneratePersons>();
+        spamSalaDosArmarios = FindObjectOfType<Spam>();
 
         trocaDeCabelo.texture = textureCabelo[0];
         trocaDeCorBlusa.texture = textureBlusa[0];
@@ -73,6 +79,8 @@ public class Menu : MonoBehaviour
         controlSettings.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
         painelEscolhasCustom.SetActive(false);
+
+        generatePersons.AddSavesLists(bancoDados);
     }
 
     void Start()
@@ -106,6 +114,25 @@ public class Menu : MonoBehaviour
 
                 Time.timeScale = 1; // UnPause
             }
+        }
+
+        if (espera)
+        {
+            spamSalaDosArmarios = GameObject.Find("Spam ID 001").GetComponent<Spam>();
+
+            generatePersons.spamPosition.Add(GameObject.Find("Avatar Feminino 001").transform);
+
+            if (spamSalaDosArmarios.spam)
+            {
+                generatePersons.SpamSalaDosArmarios(bancoDados);
+                generatePersons.MeshAvatar(bancoDados);
+                generatePersons.MaterialAvatar(bancoDados);
+                generatePersons.AddGameObject(bancoDados);
+
+                spamSalaDosArmarios.spam = false;
+            }
+
+            espera = false;
         }
     }
 

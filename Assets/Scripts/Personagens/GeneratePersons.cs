@@ -2,33 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneratePersons : MonoBehaviour
+public class GeneratePersons
 {
-    [SerializeField] ScriptableBancoDeDados bancoDados;
+    public int modelosIndex;
 
-    List<Transform> spamPosition = new List<Transform>();
+    public List<Transform> spamPosition = new List<Transform>();
 
-    Spam spamSalaDosArmarios;
-    //Menu menu;
-
-    [HideInInspector] public bool espera;
-
-    [HideInInspector] public int modelosIndex;
-
-    List<Sprite> saveModelosSprites = new List<Sprite>();
-    List<Mesh> saveMeshAvatar = new List<Mesh>();
-    List<Material> saveMaterialCorpo = new List<Material>();
-    List<Material> saveMaterialFace = new List<Material>();
+    public List<Sprite> saveModelosSprites = new List<Sprite>();
+    public List<Mesh> saveMeshAvatar = new List<Mesh>();
+    public List<Material> saveMaterialCorpo = new List<Material>();
+    public List<Material> saveMaterialFace = new List<Material>();
 
     public Sprite Modelos(int num) { return saveModelosSprites[num]; }
-    Mesh AvatarMesh(int num) { return saveMeshAvatar[num]; }
-    Material AvatarMaterialCorpo(int num) { return saveMaterialCorpo[num]; }
-    Material AvatarMaterialFace(int num) { return saveMaterialFace[num]; }
+    public Mesh AvatarMesh(int num) { return saveMeshAvatar[num]; }
+    public Material AvatarMaterialCorpo(int num) { return saveMaterialCorpo[num]; }
+    public Material AvatarMaterialFace(int num) { return saveMaterialFace[num]; }
 
-    private void Awake()
+    public void AddSavesLists(ScriptableBancoDeDados bancoDados)
     {
-        //menu = FindObjectOfType<Menu>();
-
         saveModelosSprites.Add(bancoDados.sprites[0]);
         saveModelosSprites.Add(bancoDados.sprites[2]);
 
@@ -41,46 +32,7 @@ public class GeneratePersons : MonoBehaviour
         saveMaterialFace.Add(bancoDados.material[6]);
     }
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        if (espera)
-        {
-            spamSalaDosArmarios = GameObject.Find("Spam ID 001").GetComponent<Spam>();
-
-            spamPosition.Add(GameObject.Find("Avatar Feminino 001").transform);
-
-            if (spamSalaDosArmarios.spam)
-            {
-                SpamSalaDosArmarios();
-                MeshAvatar();
-                MaterialAvatar();
-                AddGameObject();
-
-                spamSalaDosArmarios.spam = false;
-            }
-
-            espera = false;
-        }
-    }
-
-    void SpamSalaDosArmarios() {
-        for (int i = 0; i < bancoDados.listNames.Count; i++)
-            switch (bancoDados.listNames[i])
-            {
-                case "Amai Odayaka":
-                    
-                    Instantiate(bancoDados.avatar, spamPosition[0].position, spamPosition[0].rotation);
-
-                    break;
-            }
-    }
-
-    void AddGameObject()
+    public void AddGameObject(ScriptableBancoDeDados bancoDados)
     {
         bancoDados.addGameObject.AddMesh("RightIris - Nemesis", "LeftIris - Nemesis");
 
@@ -91,26 +43,39 @@ public class GeneratePersons : MonoBehaviour
         bancoDados.components.MaterialIris("LeftIris - Nemesis").material = bancoDados.material[6];
     }
 
-    void MeshAvatar()
+    public void MeshAvatar(ScriptableBancoDeDados bancoDados)
     {
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").sharedMesh = 
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).sharedMesh =
             AvatarMesh(modelosIndex);
     }
 
-    void MaterialAvatar()
+    public void SpamSalaDosArmarios(ScriptableBancoDeDados bancoDados)
     {
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[0].shader = 
+        for (int i = 0; i < bancoDados.listNames.Count; i++)
+            switch (bancoDados.listNames[i])
+            {
+                case "Amai Odayaka":
+
+                    Object.Instantiate(bancoDados.avatar, spamPosition[0].position, spamPosition[0].rotation);
+
+                    break;
+            }
+    }
+
+    public void MaterialAvatar(ScriptableBancoDeDados bancoDados)
+    {
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).materials[0].shader =
             AvatarMaterialCorpo(modelosIndex).shader;
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[1].shader = 
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).materials[1].shader =
             AvatarMaterialCorpo(modelosIndex).shader;
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[2].shader = 
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).materials[2].shader =
             AvatarMaterialFace(0).shader;
 
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[0].mainTexture = 
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).materials[0].mainTexture =
             AvatarMaterialCorpo(modelosIndex).mainTexture;
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[1].mainTexture = 
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).materials[1].mainTexture =
             AvatarMaterialCorpo(modelosIndex).mainTexture;
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[2].mainTexture = 
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).materials[2].mainTexture =
             AvatarMaterialFace(0).mainTexture;
     }
 }

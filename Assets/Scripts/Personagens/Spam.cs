@@ -6,16 +6,16 @@ public class Spam : MonoBehaviour
 {
     [SerializeField] bool atvAvatar;
 
-    GeneratePersons generatePersons;
+    Menu menu;
 
     [HideInInspector] public bool spam;
 
     void Start()
     {
-        generatePersons = FindObjectOfType<GeneratePersons>();
+        menu = FindObjectOfType<Menu>();
 
         if (atvAvatar)
-            generatePersons.espera = true;
+            menu.espera = true;
 
         spam = true;
     }

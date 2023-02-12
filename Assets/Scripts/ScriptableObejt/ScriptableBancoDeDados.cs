@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [CreateAssetMenu(fileName = "ScriptableObject", menuName = "Scriptable/Banco de Dados")]
 public class ScriptableBancoDeDados : ScriptableObject
@@ -16,6 +17,8 @@ public class ScriptableBancoDeDados : ScriptableObject
     public List<Mesh> mesh = new List<Mesh>();
 
     public List<Sprite> sprites = new List<Sprite>();
+
+    public NamesHierarchy namesHierarchy = new NamesHierarchy();
 }
 
 public class Components
@@ -39,4 +42,10 @@ public class AddGameObject
         GameObject.Find(nameTipo1).AddComponent<MeshRenderer>();
         GameObject.Find(nameTipo2).AddComponent<MeshRenderer>();
     }
+}
+
+[Serializable]
+public class NamesHierarchy
+{
+    public string nameCorpoNemesis;
 }
