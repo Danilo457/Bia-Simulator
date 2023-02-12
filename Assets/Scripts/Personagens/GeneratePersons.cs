@@ -9,26 +9,38 @@ public class GeneratePersons : MonoBehaviour
     List<Transform> spamPosition = new List<Transform>();
 
     Spam spamSalaDosArmarios;
-    Menu menu;
-    MouseController mouseCursor;
 
     [HideInInspector] public bool espera;
 
-    int modelosIndex;
+    [HideInInspector] public int modelosIndex;
 
     List<Sprite> saveModelosSprites = new List<Sprite>();
+    List<Mesh> saveMeshAvatar = new List<Mesh>();
+    List<Material> saveMaterialCorpo = new List<Material>();
+    List<Material> saveMaterialFace = new List<Material>();
 
-    Sprite Modelos(int num) { return saveModelosSprites[num]; }
+    public Sprite Modelos(int num) { return saveModelosSprites[num]; }
+    Mesh AvatarMesh(int num) { return saveMeshAvatar[num]; }
+    Material AvatarMaterialCorpo(int num) { return saveMaterialCorpo[num]; }
+    Material AvatarMaterialFace(int num) { return saveMaterialFace[num]; }
 
-    void Start()
+    private void Awake()
     {
-        menu = FindObjectOfType<Menu>();
-        mouseCursor = FindObjectOfType<MouseController>();
-
         saveModelosSprites.Add(bancoDados.sprites[0]);
         saveModelosSprites.Add(bancoDados.sprites[2]);
 
-        menu.preVill.sprite = Modelos(modelosIndex);
+        saveMeshAvatar.Add(bancoDados.mesh[0]);
+        saveMeshAvatar.Add(bancoDados.mesh[3]);
+
+        saveMaterialCorpo.Add(bancoDados.material[3]);
+        saveMaterialCorpo.Add(bancoDados.material[4]);
+
+        saveMaterialFace.Add(bancoDados.material[6]);
+    }
+
+    void Start()
+    {
+
     }
 
     void Update()
@@ -78,47 +90,17 @@ public class GeneratePersons : MonoBehaviour
 
     void MeshAvatar()
     {
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").sharedMesh = bancoDados.mesh[1];
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").sharedMesh = AvatarMesh(modelosIndex);
     }
 
     void MaterialAvatar()
     {
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[0].shader = bancoDados.material[15].shader;
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[1].shader = bancoDados.material[15].shader;
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[2].shader = bancoDados.material[1].shader;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[0].shader = AvatarMaterialCorpo(modelosIndex).shader;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[1].shader = AvatarMaterialCorpo(modelosIndex).shader;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[2].shader = AvatarMaterialFace(0).shader;
 
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[0].mainTexture = bancoDados.material[15].mainTexture;
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[1].mainTexture = bancoDados.material[15].mainTexture;
-        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[2].mainTexture = bancoDados.material[1].mainTexture;
-    }
-
-    public void UniformeCustons()
-    {
-        menu.buttonsPersonPlayer.SetActive(false);
-
-        mouseCursor.MouseConfined();
-
-        menu.returnPanelConfig.SetActive(true);
-        menu.painelEscolhasCustom.SetActive(true);
-    }
-
-    public void ButtonAvansar()
-    {
-        modelosIndex++;
-
-        if (modelosIndex > 1)
-            modelosIndex = 0;
-
-        menu.preVill.sprite = Modelos(modelosIndex);
-    }
-
-    public void ButtonRetroceder()
-    {
-        modelosIndex--;
-
-        if (modelosIndex < 0)
-            modelosIndex = 1;
-
-        menu.preVill.sprite = Modelos(modelosIndex);
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[0].mainTexture = AvatarMaterialCorpo(modelosIndex).mainTexture;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[1].mainTexture = AvatarMaterialCorpo(modelosIndex).mainTexture;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[2].mainTexture = AvatarMaterialFace(0).mainTexture;
     }
 }

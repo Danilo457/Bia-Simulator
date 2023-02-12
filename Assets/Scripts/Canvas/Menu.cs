@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class Menu : MonoBehaviour
 {
     MouseController mouseCursor;
+    GeneratePersons generatePersons;
 
     [HideInInspector] public bool escape;
 
@@ -52,6 +53,8 @@ public class Menu : MonoBehaviour
 
     void Awake()
     {
+        generatePersons = FindObjectOfType<GeneratePersons>();
+
         trocaDeCabelo.texture = textureCabelo[0];
         trocaDeCorBlusa.texture = textureBlusa[0];
 
@@ -77,6 +80,8 @@ public class Menu : MonoBehaviour
         mouseCursor = FindObjectOfType<MouseController>();
 
         mouseCursor.MouseLockedFalse();
+
+        preVill.sprite = generatePersons.Modelos(generatePersons.modelosIndex);
     }
 
     void Update()
@@ -227,6 +232,38 @@ public class Menu : MonoBehaviour
             indexBlusa = 0;
 
         trocaDeCorBlusa.texture = textureBlusa[indexBlusa];
+    }
+
+    /* Parte de Customizar - Avatar, Mesh, Uniforme */
+
+    public void UniformeCustons()
+    {
+        buttonsPersonPlayer.SetActive(false);
+
+        mouseCursor.MouseConfined();
+
+        returnPanelConfig.SetActive(true);
+        painelEscolhasCustom.SetActive(true);
+    }
+
+    public void CustonButtonAvansar()
+    {
+        generatePersons.modelosIndex++;
+
+        if (generatePersons.modelosIndex > 1)
+            generatePersons.modelosIndex = 0;
+
+        preVill.sprite = generatePersons.Modelos(generatePersons.modelosIndex);
+    }
+
+    public void CustonButtonRetroceder()
+    {
+        generatePersons.modelosIndex--;
+
+        if (generatePersons.modelosIndex < 0)
+            generatePersons.modelosIndex = 1;
+
+        preVill.sprite = generatePersons.Modelos(generatePersons.modelosIndex);
     }
 
     public void SensibilitySlider(float value) => sensibility = value;

@@ -458,9 +458,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 999017283}
-        m_TargetAssemblyTypeName: GeneratePersons, Assembly-CSharp
-        m_MethodName: ButtonAvansar
+      - m_Target: {fileID: 999017281}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: CustonButtonAvansar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1766,8 +1766,8 @@ MonoBehaviour:
   _onActionFired:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 999017283}
-        m_TargetAssemblyTypeName: GeneratePersons, Assembly-CSharp
+      - m_Target: {fileID: 999017281}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: UniformeCustons
         m_Mode: 1
         m_Arguments:
@@ -3508,9 +3508,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 999017283}
-        m_TargetAssemblyTypeName: GeneratePersons, Assembly-CSharp
-        m_MethodName: ButtonRetroceder
+      - m_Target: {fileID: 999017281}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: CustonButtonRetroceder
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5344,6 +5344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bancoDados: {fileID: 11400000, guid: 03bf93ad9a1d4ca4f8386a48fbaf5476, type: 2}
   espera: 0
+  modelosIndex: 0
 --- !u!1 &1032225013
 GameObject:
   m_ObjectHideFlags: 0
@@ -6928,7 +6929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1204772066
 RectTransform:
   m_ObjectHideFlags: 0
