@@ -9,8 +9,6 @@ public class Menu : MonoBehaviour
 
     [HideInInspector] public bool escape;
 
-    [HideInInspector] public int num;
-
     GameObject fundo;
     [SerializeField] string namePainelMenu;
     [Header("        Menu Inicial")]
@@ -26,10 +24,15 @@ public class Menu : MonoBehaviour
     [SerializeField] GameObject fundoTrocaDeCabelos;
     [SerializeField] GameObject fundoActvCabelo;
     [SerializeField] GameObject blusaTrocaDeCor;
+    public GameObject painelEscolhasCustom;
     [SerializeField] GameObject cursor;
+    [Header("        Custon Personagens")]
+    public Image preVill;
+
+    [Space]
 
     public GameObject controlSettings;
-    public List<Button> buttonsToDisable;
+    public List<Button> buttonsToDisable; // Variavel não atribuida
 
     [Space]
 
@@ -46,7 +49,6 @@ public class Menu : MonoBehaviour
     [HideInInspector] public float sensibility;
 
     bool sceneArmarios;
-    bool boolSettings;
 
     void Awake()
     {
@@ -67,6 +69,7 @@ public class Menu : MonoBehaviour
         returnPanelConfig.SetActive(false);
         controlSettings.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
+        painelEscolhasCustom.SetActive(false);
     }
 
     void Start()
@@ -145,7 +148,7 @@ public class Menu : MonoBehaviour
         buttonsPersonPlayer.SetActive(false);
         returnPanelConfig.SetActive(true);
 
-        mouseCursor.MouseNoneTrue();
+        mouseCursor.MouseConfined();
     }
 
     public void ButtonTrocaDeCabelo()
@@ -156,7 +159,7 @@ public class Menu : MonoBehaviour
         buttonsPersonPlayer.SetActive(false);
         returnPanelConfig.SetActive(true);
 
-        mouseCursor.MouseNoneTrue();
+        mouseCursor.MouseConfined();
     }
 
     public void ReturnPanelConfig()
@@ -169,6 +172,7 @@ public class Menu : MonoBehaviour
         fundoActvCabelo.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
         controlSettings.SetActive(false);
+        painelEscolhasCustom.SetActive(false);
 
         mouseCursor.MouseLockedFalse();
     }
@@ -180,10 +184,8 @@ public class Menu : MonoBehaviour
         returnPanelInicial.SetActive(true);
         controlSettings.SetActive(true);
 
-        mouseCursor.MouseNoneTrue();
+        mouseCursor.MouseConfined();
     }
-
-
 
     public void ToggleBlusaDaSintura() =>
         actvBlusa = !actvBlusa;

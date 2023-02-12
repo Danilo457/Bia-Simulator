@@ -14,10 +14,21 @@ public class GeneratePersons : MonoBehaviour
 
     [HideInInspector] public bool espera;
 
+    int modelosIndex;
+
+    List<Sprite> saveModelosSprites = new List<Sprite>();
+
+    Sprite Modelos(int num) { return saveModelosSprites[num]; }
+
     void Start()
     {
         menu = FindObjectOfType<Menu>();
         mouseCursor = FindObjectOfType<MouseController>();
+
+        saveModelosSprites.Add(bancoDados.sprites[0]);
+        saveModelosSprites.Add(bancoDados.sprites[2]);
+
+        menu.preVill.sprite = Modelos(modelosIndex);
     }
 
     void Update()
@@ -67,26 +78,47 @@ public class GeneratePersons : MonoBehaviour
 
     void MeshAvatar()
     {
-        bancoDados.components.AvatarCuston().sharedMesh = bancoDados.mesh[1];
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").sharedMesh = bancoDados.mesh[1];
     }
 
     void MaterialAvatar()
     {
-        bancoDados.components.AvatarCuston().materials[0].shader = bancoDados.material[15].shader;
-        bancoDados.components.AvatarCuston().materials[1].shader = bancoDados.material[15].shader;
-        bancoDados.components.AvatarCuston().materials[2].shader = bancoDados.material[1].shader;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[0].shader = bancoDados.material[15].shader;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[1].shader = bancoDados.material[15].shader;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[2].shader = bancoDados.material[1].shader;
 
-        bancoDados.components.AvatarCuston().materials[0].mainTexture = bancoDados.material[15].mainTexture;
-        bancoDados.components.AvatarCuston().materials[1].mainTexture = bancoDados.material[15].mainTexture;
-        bancoDados.components.AvatarCuston().materials[2].mainTexture = bancoDados.material[1].mainTexture;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[0].mainTexture = bancoDados.material[15].mainTexture;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[1].mainTexture = bancoDados.material[15].mainTexture;
+        bancoDados.components.AvatarCuston("CorpoNemesis - Nemesis").materials[2].mainTexture = bancoDados.material[1].mainTexture;
     }
 
     public void UniformeCustons()
     {
         menu.buttonsPersonPlayer.SetActive(false);
 
-        mouseCursor.MouseNoneTrue();
+        mouseCursor.MouseConfined();
 
         menu.returnPanelConfig.SetActive(true);
+        menu.painelEscolhasCustom.SetActive(true);
+    }
+
+    public void ButtonAvansar()
+    {
+        modelosIndex++;
+
+        if (modelosIndex > 1)
+            modelosIndex = 0;
+
+        menu.preVill.sprite = Modelos(modelosIndex);
+    }
+
+    public void ButtonRetroceder()
+    {
+        modelosIndex--;
+
+        if (modelosIndex < 0)
+            modelosIndex = 1;
+
+        menu.preVill.sprite = Modelos(modelosIndex);
     }
 }

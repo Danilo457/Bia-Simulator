@@ -14,12 +14,14 @@ public class ScriptableBancoDeDados : ScriptableObject
 
     public List<Material> material = new List<Material>();
     public List<Mesh> mesh = new List<Mesh>();
+
+    public List<Sprite> sprites = new List<Sprite>();
 }
 
 public class Components
 {
-    public SkinnedMeshRenderer AvatarCuston() { 
-        return GameObject.Find("CorpoNemesis - Nemesis").GetComponent<SkinnedMeshRenderer>(); }
+    public SkinnedMeshRenderer AvatarCuston(string name) { 
+        return GameObject.Find(name).GetComponent<SkinnedMeshRenderer>(); }
 
     public MeshFilter MeshIris(string name) { 
         return GameObject.Find(name).GetComponent<MeshFilter>(); }
