@@ -125,9 +125,6 @@ public class Menu : MonoBehaviour
             if (spamSalaDosArmarios.spam)
             {
                 generatePersons.SpamSalaDosArmarios(bancoDados);
-                generatePersons.MeshAvatar(bancoDados);
-                generatePersons.MaterialAvatar(bancoDados);
-                generatePersons.AddGameObject(bancoDados);
 
                 spamSalaDosArmarios.spam = false;
             }

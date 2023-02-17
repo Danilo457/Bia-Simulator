@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GeneratePersons
 {
+    Estudantes estudantes;
+
     public int modelosIndex;
 
     public List<Transform> spamPosition = new List<Transform>();
@@ -32,20 +34,9 @@ public class GeneratePersons
         saveMaterialFace.Add(bancoDados.material[6]);
     }
 
-    public void AddGameObject(ScriptableBancoDeDados bancoDados)
+    void MeshAvatar(ScriptableBancoDeDados bancoDados, int num)
     {
-        bancoDados.addGameObject.AddMesh("RightIris - Nemesis", "LeftIris - Nemesis");
-
-        bancoDados.components.MeshIris("RightIris - Nemesis").mesh = bancoDados.mesh[4];
-        bancoDados.components.MeshIris("LeftIris - Nemesis").mesh = bancoDados.mesh[4];
-
-        bancoDados.components.MaterialIris("RightIris - Nemesis").material = bancoDados.material[6];
-        bancoDados.components.MaterialIris("LeftIris - Nemesis").material = bancoDados.material[6];
-    }
-
-    public void MeshAvatar(ScriptableBancoDeDados bancoDados)
-    {
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).sharedMesh =
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).sharedMesh =
             AvatarMesh(modelosIndex);
     }
 
@@ -55,27 +46,91 @@ public class GeneratePersons
             switch (bancoDados.listNames[i])
             {
                 case "Amai Odayaka":
+                    Object obj = Object.Instantiate(bancoDados.avatar, spamPosition[0].position, spamPosition[0].rotation);
+                    obj.name = bancoDados.listNames[i];
 
-                    Object.Instantiate(bancoDados.avatar, spamPosition[0].position, spamPosition[0].rotation);
+                    RenomeCorpo(obj.name);
+                    RenomeCabelo(obj.name);
+                    MeshAvatar(bancoDados, 0);
+                    MaterialAvatar(bancoDados, 0);
+                    AddCobelos(bancoDados, 0, obj.name);
+                    Olhos(bancoDados, obj.name, 0);
+                    AddComponents(obj.name);
+
+                    break;
+                case "Alícia":
+                    Object obj2 = Object.Instantiate(bancoDados.avatar, spamPosition[0].position, spamPosition[0].rotation);
+                    obj2.name = bancoDados.listNames[i];
+
+                    RenomeCorpo(obj2.name);
+                    RenomeCabelo(obj2.name);
+                    MeshAvatar(bancoDados, 1);
+                    MaterialAvatar(bancoDados, 1);
+                    AddCobelos(bancoDados, 1, obj2.name);
+                    Olhos(bancoDados, obj2.name, 1);
+                    AddComponents(obj2.name);
 
                     break;
             }
     }
 
-    public void MaterialAvatar(ScriptableBancoDeDados bancoDados)
+    void MaterialAvatar(ScriptableBancoDeDados bancoDados, int num)
     {
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).materials[0].shader =
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[0].shader =
             AvatarMaterialCorpo(modelosIndex).shader;
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).materials[1].shader =
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[1].shader =
             AvatarMaterialCorpo(modelosIndex).shader;
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).materials[2].shader =
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[2].shader =
             AvatarMaterialFace(0).shader;
 
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).materials[0].mainTexture =
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[0].mainTexture =
             AvatarMaterialCorpo(modelosIndex).mainTexture;
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).materials[1].mainTexture =
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[1].mainTexture =
             AvatarMaterialCorpo(modelosIndex).mainTexture;
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis).materials[2].mainTexture =
-            AvatarMaterialFace(0).mainTexture;
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[2].mainTexture =
+            AvatarMaterialFace(0).mainTexture;        
+    }
+
+    void AddComponents(string name)
+    {
+        GameObject.Find(name).AddComponent<Estudantes>();
+
+        estudantes = GameObject.Find(name).GetComponent<Estudantes>();
+        estudantes.StartEsts(name);
+    }
+
+    void AddCobelos(ScriptableBancoDeDados bancoDados, int num, string name)
+    {
+        GameObject obj = Object.Instantiate(bancoDados.cabelos[num]);
+        obj.transform.SetParent(GameObject.Find("CabelosPer - " + name).transform, false);
+    }
+
+    void Olhos(ScriptableBancoDeDados bancoDados, string name, int num)
+    {
+        Object obj = GameObject.Find("RightIris - Nemesis");
+        obj.name = "RightIris - " + name + num;
+
+        Object obj2 = GameObject.Find("LeftIris - Nemesis");
+        obj2.name = "LeftIris - " + name + num;
+
+        bancoDados.addGameObject.AddMesh("RightIris - " + name + num, "LeftIris - " + name + num);
+
+        bancoDados.components.MeshIris("RightIris - " + name + num).mesh = bancoDados.mesh[4];
+        bancoDados.components.MeshIris("LeftIris - " + name + num).mesh = bancoDados.mesh[4];
+
+        bancoDados.components.MaterialIris("RightIris - " + name + num).material = bancoDados.material[7];
+        bancoDados.components.MaterialIris("LeftIris - " + name + num).material = bancoDados.material[7];
+    }
+
+    void RenomeCorpo(string name)
+    {
+        Object obj = GameObject.Find("CorpoNemesis - Nemesis");
+        obj.name = "CorpoNemesis - " + name;
+    }
+
+    void RenomeCabelo(string name)
+    {
+        Object obj = GameObject.Find("CabelosPer - Nemesis");
+        obj.name = "CabelosPer - " + name;
     }
 }
