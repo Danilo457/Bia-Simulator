@@ -156,6 +156,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 56ebad324dde25641801f12ec7c380d3, type: 2}
   - {fileID: 2100000, guid: 89c76cf70879e4741955d4d2a45c179f, type: 2}
   - {fileID: 2100000, guid: 27557917cc3862f4db1845e4b2911b7b, type: 2}
+  - {fileID: 2100000, guid: 0fc64c80a13305f479781a913b317410, type: 2}
+  - {fileID: 2100000, guid: 7cbf6786245837d478780989b78d4439, type: 2}
+  - {fileID: 2100000, guid: 82dfed959f868fa46af6b996674b30e5, type: 2}
+  - {fileID: 2100000, guid: 8dcb9b6a1b18a394cab1cd29f11bc265, type: 2}
+  - {fileID: 2100000, guid: 131881179ebcf944bada10898b173395, type: 2}
   mesh:
   - {fileID: 4300000, guid: da7ee523fc619264087e1778ac7444af, type: 2}
   - {fileID: 4300000, guid: cdd0b92175151f94d9557b270db95741, type: 2}
@@ -171,6 +176,14 @@ MonoBehaviour:
   - {fileID: 6412351479276720407, guid: 26ba60a9327441d4583475a8596b6284, type: 3}
   - {fileID: 7908816659358260586, guid: 372c6bcbd5e75de46ac4d8e128a5118f, type: 3}
   - {fileID: 5611150099964169419, guid: b9f1e7bc88b6adc42ae239ae4e1e3b78, type: 3}
+  clip:
+  - {fileID: 7400000, guid: 18001a373cee2fb4eb79731cc79270f8, type: 2}
+  - {fileID: 7400000, guid: 101fc6a1f28218e4fbfd1970e258df1b, type: 2}
+  - {fileID: 7400000, guid: 1547bcd8b8b43ef43affa351cefb8029, type: 2}
+  - {fileID: 7400000, guid: 0f6a2e6e70ec0cb4c90e133931ecfcfa, type: 2}
+  - {fileID: 7400000, guid: a525f14c715cf6f4b872dfeaf2447985, type: 2}
+  audio:
+  - {fileID: 8300000, guid: 218252c1b1360e142bf0a8f7d6b274ed, type: 3}
   sprites:
   - {fileID: 21300000, guid: 2e6590f3e33a64b45b76e2b0f391ce8d, type: 3}
   - {fileID: 21300000, guid: d26aa2c365eaa01478bc48b22fda0925, type: 3}

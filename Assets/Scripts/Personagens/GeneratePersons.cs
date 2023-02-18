@@ -55,7 +55,7 @@ public class GeneratePersons
                     MaterialAvatar(bancoDados, 0);
                     AddCobelos(bancoDados, 0, obj.name);
                     Olhos(bancoDados, obj.name, 0);
-                    AddComponents(obj.name);
+                    AddComponents(bancoDados, obj.name);
 
                     break;
                 case "Alícia":
@@ -68,7 +68,7 @@ public class GeneratePersons
                     MaterialAvatar(bancoDados, 1);
                     AddCobelos(bancoDados, 1, obj2.name);
                     Olhos(bancoDados, obj2.name, 1);
-                    AddComponents(obj2.name);
+                    AddComponents(bancoDados, obj2.name);
 
                     break;
             }
@@ -91,12 +91,14 @@ public class GeneratePersons
             AvatarMaterialFace(0).mainTexture;        
     }
 
-    void AddComponents(string name)
+    void AddComponents(ScriptableBancoDeDados bancoDados, string name)
     {
         GameObject.Find(name).AddComponent<Estudantes>();
 
         estudantes = GameObject.Find(name).GetComponent<Estudantes>();
         estudantes.StartEsts(name);
+
+        estudantes.ListsAnimClips(bancoDados);
     }
 
     void AddCobelos(ScriptableBancoDeDados bancoDados, int num, string name)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BiaChiqui : MonoBehaviour
 {
-    [SerializeField] ScriptablePersonagens dadosPer;
+    [SerializeField] ScriptableBancoDeDados bancoDados;
 
     [SerializeField] float speed;
     [SerializeField] float speedShift;
@@ -99,9 +99,9 @@ public class BiaChiqui : MonoBehaviour
     void Animation() {
         if (!movimento && !Input.GetKey(KeyCode.LeftShift) || !movimento && Input.GetKey(KeyCode.LeftShift)) {
             if (!animSegurar && !animAbrirTrancaArmario)
-                anim.Play(dadosPer.alunos.clip[0].name);
+                anim.Play(bancoDados.clip[0].name);
             else if (!animAbrirTrancaArmario)
-                anim.Play(dadosPer.alunos.clip[4].name);
+                anim.Play(bancoDados.clip[4].name);
         }
 
         if (animAbrirTrancaArmario) {
@@ -110,7 +110,7 @@ public class BiaChiqui : MonoBehaviour
             transform.position = targetPositionArmario.transform.position;
             transform.rotation = targetPositionArmario.transform.rotation;
 
-            anim.Play(dadosPer.alunos.clip[3].name);
+            anim.Play(bancoDados.clip[3].name);
 
             if (time >= 2.0f) {
                 time = 0.0f;
@@ -119,10 +119,10 @@ public class BiaChiqui : MonoBehaviour
         }
             
         if (movimento && !Input.GetKey(KeyCode.LeftShift) && !animAbrirTrancaArmario)
-            anim.Play(dadosPer.alunos.clip[1].name);
+            anim.Play(bancoDados.clip[1].name);
 
         if (movimento && Input.GetKey(KeyCode.LeftShift))
-            anim.Play(dadosPer.alunos.clip[2].name);
+            anim.Play(bancoDados.clip[2].name);
     }
     
     void FixedUpdate()

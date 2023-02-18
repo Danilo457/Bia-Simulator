@@ -5743,6 +5743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bancoDados: {fileID: 11400000, guid: 03bf93ad9a1d4ca4f8386a48fbaf5476, type: 2}
+  dadosPers: {fileID: 11400000, guid: 0e723735d66599a4cb609ef28800dcc3, type: 2}
   escape: 0
   namePainelMenu: Painel do menu Essencial
   spriteMenu: {fileID: 1165166627}

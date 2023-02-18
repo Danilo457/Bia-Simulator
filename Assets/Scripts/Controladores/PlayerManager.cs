@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] ScriptablePersonagens dadosPer;
+    [SerializeField] ScriptableBancoDeDados bancoDados;
 
     Menu menu;
 
@@ -14,11 +14,21 @@ public class PlayerManager : MonoBehaviour
     public Dictionary<string, GameObject> myListManager = new Dictionary<string, GameObject>();
     public Dictionary<string, AudioClip> myListAudios = new Dictionary<string, AudioClip>();
 
+    List<Material> saveMateralBlusa = new List<Material>();
+
+    Material MaterialBlusa(int num) { return saveMateralBlusa[num]; }
+
     void Awake()
     {
         menu = FindObjectOfType<Menu>();
 
-        myListAudios.Add("Tranca do Armario", dadosPer.alunos.audio[0]);
+        myListAudios.Add("Tranca do Armario", bancoDados.audio[0]);
+
+        saveMateralBlusa.Add(bancoDados.material[17]);
+        saveMateralBlusa.Add(bancoDados.material[18]);
+        saveMateralBlusa.Add(bancoDados.material[19]);
+        saveMateralBlusa.Add(bancoDados.material[20]);
+        saveMateralBlusa.Add(bancoDados.material[21]);
     }
 
     void Start()
@@ -36,7 +46,7 @@ public class PlayerManager : MonoBehaviour
         myListManager.Add("Blusa Amarrada na Sintura", acessorios[0]);
 
         myListManager.TryGetValue("Blusa Amarrada na Sintura", out GameObject blusa);
-        blusa.GetComponent<SkinnedMeshRenderer>().material = dadosPer.alunos.material[menu.indexBlusa];
+        blusa.GetComponent<SkinnedMeshRenderer>().material = MaterialBlusa(menu.indexBlusa); // bancoDados.material[menu.indexBlusa];
 
         blusa.SetActive(!menu.actvBlusa);
 

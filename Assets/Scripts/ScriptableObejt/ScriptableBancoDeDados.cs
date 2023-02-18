@@ -16,6 +16,8 @@ public class ScriptableBancoDeDados : ScriptableObject
     public List<Material> material = new List<Material>();
     public List<Mesh> mesh = new List<Mesh>();
     public List<GameObject> cabelos = new List<GameObject>();
+    public List<AnimationClip> clip = new List<AnimationClip>();
+    public List<AudioClip> audio = new List<AudioClip>();
 
     public List<Sprite> sprites = new List<Sprite>();
 

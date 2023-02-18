@@ -16,23 +16,21 @@ public class Estudantes : MonoBehaviour
 
     Rigidbody rb;
 
-    void Awake()
+    public void ListsAnimClips(ScriptableBancoDeDados bancoDados)
     {
-    //    anim = GetComponent<Animation>();
-    //    audioToks = GetComponent<AudioSource>();
-    //    rb = GetComponent<Rigidbody>();
-
     //    myListClips.Add("Anim Parada Normal", dadosPer.alunos.clip[0]);
     //    myListClips.Add("Anim Parada Estilo 02", dadosPer.alunos.clip[1]);
     //    myListClips.Add("Anim Parada Abrir Armario", dadosPer.alunos.clip[2]);
 
-    //    myListAudios.Add("AudioClip Abrir tranca Armaio", dadosPer.alunos.audio[0]);
+        myListAudios.Add("AudioClip Abrir tranca Armaio", bancoDados.audio[0]);
+
+        myListAudios.TryGetValue("AudioClip Abrir tranca Armaio", out playAudio);
     }
 
     public void StartEsts(string name)
     {
         anim = GameObject.Find(name).GetComponent<Animation>();
-
+        audioToks = GameObject.Find(name).GetComponent<AudioSource>();
         rb = GameObject.Find(name).GetComponent<Rigidbody>();
 
         targetArmario = GameObject.Find("Target Position - " + name).transform;
@@ -44,18 +42,16 @@ public class Estudantes : MonoBehaviour
 
     //    myListClips.TryGetValue("Anim Parada Abrir Armario", out AnimationClip a);
 
-    //    myListAudios.TryGetValue("AudioClip Abrir tranca Armaio", out playAudio);
-
         anim.Play("Juntar npc");
     }
 
     public void EventAudioArmarioTranca() {
-    //    audioToks.clip = playAudio;
-    //    audioToks.loop = false;
-    //    audioToks.volume = 0.3f;
-    //    audioToks.minDistance = 0.5f;
-    //    audioToks.maxDistance = 1.22f;
+        audioToks.clip = playAudio;
+        audioToks.loop = false;
+        audioToks.volume = 0.3f;
+        audioToks.minDistance = 0.5f;
+        audioToks.maxDistance = 1.22f;
 
-    //    audioToks.Play();
+        audioToks.Play();
     }
 }
