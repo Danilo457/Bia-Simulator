@@ -14,8 +14,10 @@ public class PlayerManager : MonoBehaviour
     public Dictionary<string, GameObject> myListManager = new Dictionary<string, GameObject>();
     public Dictionary<string, AudioClip> myListAudios = new Dictionary<string, AudioClip>();
 
+    List<Mesh> saveMesh = new List<Mesh>();
     List<Material> saveMateralBlusa = new List<Material>();
 
+    Mesh MeshPlayer(int num) { return saveMesh[num]; }
     Material MaterialBlusa(int num) { return saveMateralBlusa[num]; }
 
     void Awake()
@@ -29,6 +31,9 @@ public class PlayerManager : MonoBehaviour
         saveMateralBlusa.Add(bancoDados.material[19]);
         saveMateralBlusa.Add(bancoDados.material[20]);
         saveMateralBlusa.Add(bancoDados.material[21]);
+
+        saveMesh.Add(bancoDados.mesh[0]);
+        saveMesh.Add(bancoDados.mesh[3]);
     }
 
     void Start()
@@ -54,5 +59,28 @@ public class PlayerManager : MonoBehaviour
             cabelos[i].SetActive(false);
 
         cabelos[menu.indexCanelo].SetActive(!menu.actvCabelo);
+
+        ModeloEscolha(menu.index);
+    }
+    
+    void ModeloEscolha(int num)
+    {
+        GameObject.Find(bancoDados.namesHierarchy.nameCorpoNemesis[2]).GetComponent<SkinnedMeshRenderer>().sharedMesh =
+            MeshPlayer(num);
+
+        if (num == 0) {
+            GameObject.Find(bancoDados.namesHierarchy.nameCorpoNemesis[2]).
+                GetComponent<SkinnedMeshRenderer>().materials[0].shader = bancoDados.material[3].shader;
+
+            GameObject.Find(bancoDados.namesHierarchy.nameCorpoNemesis[2]).
+                GetComponent<SkinnedMeshRenderer>().materials[0].mainTexture = bancoDados.material[3].mainTexture;
+
+        }else {
+            GameObject.Find(bancoDados.namesHierarchy.nameCorpoNemesis[2]).
+                GetComponent<SkinnedMeshRenderer>().materials[1].shader = bancoDados.material[4].shader;
+
+            GameObject.Find(bancoDados.namesHierarchy.nameCorpoNemesis[2]).
+                GetComponent<SkinnedMeshRenderer>().materials[1].mainTexture = bancoDados.material[4].mainTexture;
+        }
     }
 }

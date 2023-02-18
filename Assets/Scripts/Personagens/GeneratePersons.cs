@@ -6,7 +6,12 @@ public class GeneratePersons
 {
     Estudantes estudantes;
 
-    public int modelosIndex;
+    int modelosIndex;
+
+    public int IndexValue {
+        get { return modelosIndex; }
+        set { modelosIndex = value; }
+    }
 
     public List<Transform> spamPosition = new List<Transform>();
 
@@ -37,7 +42,7 @@ public class GeneratePersons
     void MeshAvatar(ScriptableBancoDeDados bancoDados, int num)
     {
         bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).sharedMesh =
-            AvatarMesh(modelosIndex);
+            AvatarMesh(IndexValue);
     }
 
     public void SpamSalaDosArmarios(ScriptableBancoDeDados bancoDados)

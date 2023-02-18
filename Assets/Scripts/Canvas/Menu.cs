@@ -57,6 +57,8 @@ public class Menu : MonoBehaviour
 
     bool sceneArmarios;
 
+    public int index;
+
     void Awake()
     {
         spamSalaDosArmarios = FindObjectOfType<Spam>();
@@ -89,9 +91,9 @@ public class Menu : MonoBehaviour
 
         mouseCursor.MouseLockedFalse();
 
-        generatePersons.modelosIndex = 0;
+        generatePersons.IndexValue = 0;
 
-        preVill.sprite = generatePersons.Modelos(generatePersons.modelosIndex);
+        preVill.sprite = generatePersons.Modelos(generatePersons.IndexValue);
     }
 
     void Update()
@@ -274,22 +276,26 @@ public class Menu : MonoBehaviour
 
     public void CustonButtonAvansar()
     {
-        generatePersons.modelosIndex++;
+        generatePersons.IndexValue++;
 
-        if (generatePersons.modelosIndex > 1)
-            generatePersons.modelosIndex = 0;
+        if (generatePersons.IndexValue > 1)
+            generatePersons.IndexValue = 0;
 
-        preVill.sprite = generatePersons.Modelos(generatePersons.modelosIndex);
+        index = generatePersons.IndexValue;
+
+        preVill.sprite = generatePersons.Modelos(generatePersons.IndexValue);
     }
 
     public void CustonButtonRetroceder()
     {
-        generatePersons.modelosIndex--;
+        generatePersons.IndexValue--;
 
-        if (generatePersons.modelosIndex < 0)
-            generatePersons.modelosIndex = 1;
+        if (generatePersons.IndexValue < 0)
+            generatePersons.IndexValue = 1;
 
-        preVill.sprite = generatePersons.Modelos(generatePersons.modelosIndex);
+        index = generatePersons.IndexValue;
+
+        preVill.sprite = generatePersons.Modelos(generatePersons.IndexValue);
     }
 
     public void SensibilitySlider(float value) => sensibility = value;
