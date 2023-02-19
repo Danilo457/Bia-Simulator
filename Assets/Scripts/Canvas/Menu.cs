@@ -58,6 +58,7 @@ public class Menu : MonoBehaviour
     bool sceneArmarios;
 
     public int index;
+    public int indexMesh;
 
     void Awake()
     {
@@ -281,7 +282,12 @@ public class Menu : MonoBehaviour
         if (generatePersons.IndexValue > 1)
             generatePersons.IndexValue = 0;
 
+        indexMesh = generatePersons.IndexValue;
         index = generatePersons.IndexValue;
+
+        generatePersons.IndexSaia = 0;
+
+        ValorMesh(generatePersons.IndexValue);
 
         preVill.sprite = generatePersons.Modelos(generatePersons.IndexValue);
     }
@@ -293,10 +299,102 @@ public class Menu : MonoBehaviour
         if (generatePersons.IndexValue < 0)
             generatePersons.IndexValue = 1;
 
+        indexMesh = generatePersons.IndexValue;
         index = generatePersons.IndexValue;
+
+        generatePersons.IndexSaia = 0;
+
+        ValorMesh(generatePersons.IndexValue);
 
         preVill.sprite = generatePersons.Modelos(generatePersons.IndexValue);
     }
+
+    public void CustonSaiaButtonAvansar()
+    {
+        if (generatePersons.IndexValue == 0)
+        {
+            generatePersons.IndexSaia++;
+
+            if (generatePersons.IndexSaia > 1)
+                generatePersons.IndexSaia = 0;
+
+            if (generatePersons.IndexSaia == 0)
+                generatePersons.IndexValue = 0;
+
+            if (generatePersons.IndexSaia == 1)
+                generatePersons.IndexValue = 3;
+
+            index = generatePersons.IndexSaia;
+
+            ValorMesh(generatePersons.IndexValue);
+
+            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia);
+        }
+        else
+        {
+            generatePersons.IndexSaia++;
+
+            if (generatePersons.IndexSaia > 1)
+                generatePersons.IndexSaia = 0;
+
+            if (generatePersons.IndexSaia == 0)
+                generatePersons.IndexValue = 1;
+
+            if (generatePersons.IndexSaia == 1)
+                generatePersons.IndexValue = 2;
+
+            index = generatePersons.IndexSaia + 1;
+
+            ValorMesh(1);
+
+            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia + 1);
+        }
+    }
+
+    public void CustonSaiaButtonRetroceder()
+    {
+        if (generatePersons.IndexValue == 0)
+        {
+            generatePersons.IndexSaia--;
+
+            if (generatePersons.IndexSaia < 0)
+                generatePersons.IndexSaia = 1;
+
+            if (generatePersons.IndexSaia == 0)
+                generatePersons.IndexValue = 0;
+
+            if (generatePersons.IndexSaia == 1)
+                generatePersons.IndexValue = 3;
+
+            index = generatePersons.IndexSaia;
+
+            ValorMesh(generatePersons.IndexValue);
+
+            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia);
+        }
+        else
+        {
+            generatePersons.IndexSaia--;
+
+            if (generatePersons.IndexSaia < 0)
+                generatePersons.IndexSaia = 1;
+
+            if (generatePersons.IndexSaia == 0)
+                generatePersons.IndexValue = 1;
+
+            if (generatePersons.IndexSaia == 1)
+                generatePersons.IndexValue = 2;
+
+            index = generatePersons.IndexSaia + 1;
+
+            ValorMesh(1);
+
+            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia + 1);
+        }
+    }
+
+    void ValorMesh(int num) =>
+        generatePersons.indexMesh = num;
 
     public void SensibilitySlider(float value) => sensibility = value;
 

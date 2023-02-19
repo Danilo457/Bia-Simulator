@@ -161,6 +161,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 82dfed959f868fa46af6b996674b30e5, type: 2}
   - {fileID: 2100000, guid: 8dcb9b6a1b18a394cab1cd29f11bc265, type: 2}
   - {fileID: 2100000, guid: 131881179ebcf944bada10898b173395, type: 2}
+  - {fileID: 2100000, guid: 48e17ab5719293e4dbdae8025cf37c73, type: 2}
   mesh:
   - {fileID: 4300000, guid: da7ee523fc619264087e1778ac7444af, type: 2}
   - {fileID: 4300000, guid: cdd0b92175151f94d9557b270db95741, type: 2}

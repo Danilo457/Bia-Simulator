@@ -1913,7 +1913,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2e6590f3e33a64b45b76e2b0f391ce8d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d26aa2c365eaa01478bc48b22fda0925, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5743,7 +5743,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bancoDados: {fileID: 11400000, guid: 03bf93ad9a1d4ca4f8386a48fbaf5476, type: 2}
-  dadosPers: {fileID: 11400000, guid: 0e723735d66599a4cb609ef28800dcc3, type: 2}
   escape: 0
   namePainelMenu: Painel do menu Essencial
   spriteMenu: {fileID: 1165166627}
@@ -5791,6 +5790,8 @@ MonoBehaviour:
   actvCabelo: 0
   sensibility: 5
   espera: 0
+  index: 0
+  indexMesh: 0
 --- !u!114 &999017282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12836,13 +12837,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 999017277}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 999017281}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: CustonSaiaButtonAvansar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -13895,13 +13896,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 999017277}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 999017281}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: CustonSaiaButtonRetroceder
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

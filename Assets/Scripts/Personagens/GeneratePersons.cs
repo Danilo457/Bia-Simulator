@@ -6,11 +6,19 @@ public class GeneratePersons
 {
     Estudantes estudantes;
 
+    public int indexMesh;
+
     int modelosIndex;
+    int saiaIndex;
 
     public int IndexValue {
         get { return modelosIndex; }
         set { modelosIndex = value; }
+    }
+    public int IndexSaia
+    {
+        get { return saiaIndex; }
+        set { saiaIndex = value; }
     }
 
     public List<Transform> spamPosition = new List<Transform>();
@@ -29,12 +37,16 @@ public class GeneratePersons
     {
         saveModelosSprites.Add(bancoDados.sprites[0]);
         saveModelosSprites.Add(bancoDados.sprites[2]);
+        saveModelosSprites.Add(bancoDados.sprites[3]);
+        saveModelosSprites.Add(bancoDados.sprites[1]);
 
         saveMeshAvatar.Add(bancoDados.mesh[0]);
         saveMeshAvatar.Add(bancoDados.mesh[3]);
 
         saveMaterialCorpo.Add(bancoDados.material[3]);
         saveMaterialCorpo.Add(bancoDados.material[4]);
+        saveMaterialCorpo.Add(bancoDados.material[5]);
+        saveMaterialCorpo.Add(bancoDados.material[22]);
 
         saveMaterialFace.Add(bancoDados.material[6]);
     }
@@ -42,7 +54,7 @@ public class GeneratePersons
     void MeshAvatar(ScriptableBancoDeDados bancoDados, int num)
     {
         bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).sharedMesh =
-            AvatarMesh(IndexValue);
+            AvatarMesh(indexMesh);
     }
 
     public void SpamSalaDosArmarios(ScriptableBancoDeDados bancoDados)
