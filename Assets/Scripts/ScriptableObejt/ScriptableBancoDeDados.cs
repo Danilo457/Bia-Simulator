@@ -21,6 +21,8 @@ public class ScriptableBancoDeDados : ScriptableObject
 
     public List<Sprite> sprites = new List<Sprite>();
 
+    public ModelosPer spritsPer = new ModelosPer();
+
     public NamesHierarchy namesHierarchy = new NamesHierarchy();
 }
 
@@ -51,4 +53,19 @@ public class AddGameObject
 public class NamesHierarchy
 {
     public string[] nameCorpoNemesis;
+}
+
+[Serializable]
+public class ModelosPer
+{
+    public List<Sprite> modelos = new List<Sprite>();
+
+    public List<Mudansas> personalizar = new List<Mudansas>();
+}
+
+[Serializable]
+public class Mudansas
+{
+    public List<Sprite> blusas = new List<Sprite>();
+    public List<Sprite> saias = new List<Sprite>();
 }

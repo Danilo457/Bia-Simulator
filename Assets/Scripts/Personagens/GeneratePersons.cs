@@ -15,13 +15,15 @@ public class GeneratePersons
         get { return modelosIndex; }
         set { modelosIndex = value; }
     }
-    public int IndexSaia
-    {
+    public int IndexSaia {
         get { return saiaIndex; }
         set { saiaIndex = value; }
     }
 
     public List<Transform> spamPosition = new List<Transform>();
+
+    //Dictionary<string, Sprite> myID = new Dictionary<string, Sprite>();
+    public enum ModelosPer { ModeloA1, ModeloA2, ModeloB1, ModeloB2}
 
     public List<Sprite> saveModelosSprites = new List<Sprite>();
     public List<Mesh> saveMeshAvatar = new List<Mesh>();
@@ -35,10 +37,17 @@ public class GeneratePersons
 
     public void AddSavesLists(ScriptableBancoDeDados bancoDados)
     {
+        /* Sprits Visuais do Menu */
         saveModelosSprites.Add(bancoDados.sprites[0]);
+        saveModelosSprites.Add(bancoDados.sprites[1]);
         saveModelosSprites.Add(bancoDados.sprites[2]);
         saveModelosSprites.Add(bancoDados.sprites[3]);
-        saveModelosSprites.Add(bancoDados.sprites[1]);
+
+        //myID.Add("Blusa Branca com Saia Azul", saveModelosSprites[0]);
+        //myID.Add("Blusa Branca com Saia Sinza", saveModelosSprites[1]);
+        //myID.Add("");
+
+        /* ---------------------- */
 
         saveMeshAvatar.Add(bancoDados.mesh[0]);
         saveMeshAvatar.Add(bancoDados.mesh[3]);

@@ -282,14 +282,16 @@ public class Menu : MonoBehaviour
         if (generatePersons.IndexValue > 1)
             generatePersons.IndexValue = 0;
 
-        indexMesh = generatePersons.IndexValue;
-        index = generatePersons.IndexValue;
+        indexMesh = generatePersons.IndexSaia;
+        index = generatePersons.IndexSaia;
 
-        generatePersons.IndexSaia = 0;
+        ValorMesh(generatePersons.IndexSaia);
 
-        ValorMesh(generatePersons.IndexValue);
+        if (generatePersons.IndexValue == 0)
+            preVill.sprite = generatePersons.Modelos((int)GeneratePersons.ModelosPer.ModeloA1);
 
-        preVill.sprite = generatePersons.Modelos(generatePersons.IndexValue);
+        if (generatePersons.IndexValue == 1)
+            preVill.sprite = generatePersons.Modelos((int)GeneratePersons.ModelosPer.ModeloB1);
     }
 
     public void CustonButtonRetroceder()
@@ -299,14 +301,16 @@ public class Menu : MonoBehaviour
         if (generatePersons.IndexValue < 0)
             generatePersons.IndexValue = 1;
 
-        indexMesh = generatePersons.IndexValue;
-        index = generatePersons.IndexValue;
+        indexMesh = generatePersons.IndexSaia;
+        index = generatePersons.IndexSaia;
 
-        generatePersons.IndexSaia = 0;
+        ValorMesh(generatePersons.IndexSaia);
 
-        ValorMesh(generatePersons.IndexValue);
+        if (generatePersons.IndexValue == 0)
+            preVill.sprite = generatePersons.Modelos((int)GeneratePersons.ModelosPer.ModeloA1);
 
-        preVill.sprite = generatePersons.Modelos(generatePersons.IndexValue);
+        if (generatePersons.IndexValue == 1)
+            preVill.sprite = generatePersons.Modelos((int)GeneratePersons.ModelosPer.ModeloB1);
     }
 
     public void CustonSaiaButtonAvansar()
@@ -318,15 +322,9 @@ public class Menu : MonoBehaviour
             if (generatePersons.IndexSaia > 1)
                 generatePersons.IndexSaia = 0;
 
-            if (generatePersons.IndexSaia == 0)
-                generatePersons.IndexValue = 0;
-
-            if (generatePersons.IndexSaia == 1)
-                generatePersons.IndexValue = 3;
-
             index = generatePersons.IndexSaia;
 
-            ValorMesh(generatePersons.IndexValue);
+            ValorMesh(generatePersons.IndexSaia);
 
             preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia);
         }
@@ -338,16 +336,16 @@ public class Menu : MonoBehaviour
                 generatePersons.IndexSaia = 0;
 
             if (generatePersons.IndexSaia == 0)
-                generatePersons.IndexValue = 1;
-
-            if (generatePersons.IndexSaia == 1)
                 generatePersons.IndexValue = 2;
 
-            index = generatePersons.IndexSaia + 1;
+            if (generatePersons.IndexSaia == 1)
+                generatePersons.IndexValue = 3;
+
+            index = generatePersons.IndexValue;
 
             ValorMesh(1);
 
-            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia + 1);
+            preVill.sprite = generatePersons.Modelos(generatePersons.IndexValue);
         }
     }
 
@@ -360,15 +358,9 @@ public class Menu : MonoBehaviour
             if (generatePersons.IndexSaia < 0)
                 generatePersons.IndexSaia = 1;
 
-            if (generatePersons.IndexSaia == 0)
-                generatePersons.IndexValue = 0;
-
-            if (generatePersons.IndexSaia == 1)
-                generatePersons.IndexValue = 3;
-
             index = generatePersons.IndexSaia;
 
-            ValorMesh(generatePersons.IndexValue);
+            ValorMesh(generatePersons.IndexSaia);
 
             preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia);
         }
@@ -380,16 +372,16 @@ public class Menu : MonoBehaviour
                 generatePersons.IndexSaia = 1;
 
             if (generatePersons.IndexSaia == 0)
-                generatePersons.IndexValue = 1;
+                generatePersons.IndexSaia = 2;
 
             if (generatePersons.IndexSaia == 1)
-                generatePersons.IndexValue = 2;
+                generatePersons.IndexSaia = 3;
 
-            index = generatePersons.IndexSaia + 1;
+            index = generatePersons.IndexSaia;
 
             ValorMesh(1);
 
-            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia + 1);
+            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia);
         }
     }
 
