@@ -5,11 +5,14 @@ using System.Collections.Generic;
 
 public class Menu : MonoBehaviour
 {
+    public ScriptableBancoDeDados bancoDados;
+
+    GeneratePersons generatePersons = new GeneratePersons();
+
     MouseController mouseCursor;
+    Spam spamSalaDosArmarios;
 
     [HideInInspector] public bool escape;
-
-    [HideInInspector] public int num;
 
     GameObject fundo;
     [SerializeField] string namePainelMenu;
@@ -20,16 +23,21 @@ public class Menu : MonoBehaviour
     [SerializeField] GameObject spriteGarota;
     [SerializeField] GameObject infoVersion;
     [SerializeField] GameObject panelSettings;
-    [SerializeField] GameObject buttonsPersonPlayer;
+    public GameObject buttonsPersonPlayer;
     [SerializeField] GameObject returnPanelInicial;
-    [SerializeField] GameObject returnPanelConfig;
+    public GameObject returnPanelConfig;
     [SerializeField] GameObject fundoTrocaDeCabelos;
     [SerializeField] GameObject fundoActvCabelo;
     [SerializeField] GameObject blusaTrocaDeCor;
+    public GameObject painelEscolhasCustom;
     [SerializeField] GameObject cursor;
+    [Header("        Custon Personagens")]
+    public Image preVill;
+
+    [Space]
 
     public GameObject controlSettings;
-    public List<Button> buttonsToDisable;
+    public List<Button> buttonsToDisable; // Variavel não atribuida
 
     [Space]
 
@@ -45,11 +53,17 @@ public class Menu : MonoBehaviour
     [HideInInspector] public bool actvCabelo;
     [HideInInspector] public float sensibility;
 
+    [HideInInspector] public bool espera;
+
     bool sceneArmarios;
-    bool boolSettings;
+
+    public int index;
+    public int indexMesh;
 
     void Awake()
     {
+        spamSalaDosArmarios = FindObjectOfType<Spam>();
+
         trocaDeCabelo.texture = textureCabelo[0];
         trocaDeCorBlusa.texture = textureBlusa[0];
 
@@ -67,6 +81,9 @@ public class Menu : MonoBehaviour
         returnPanelConfig.SetActive(false);
         controlSettings.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
+        painelEscolhasCustom.SetActive(false);
+
+        generatePersons.AddSavesLists(bancoDados);
     }
 
     void Start()
@@ -74,6 +91,10 @@ public class Menu : MonoBehaviour
         mouseCursor = FindObjectOfType<MouseController>();
 
         mouseCursor.MouseLockedFalse();
+
+        generatePersons.IndexValue = 0;
+
+        preVill.sprite = generatePersons.Modelos(generatePersons.IndexValue);
     }
 
     void Update()
@@ -96,6 +117,22 @@ public class Menu : MonoBehaviour
 
                 Time.timeScale = 1; // UnPause
             }
+        }
+
+        if (espera)
+        {
+            spamSalaDosArmarios = GameObject.Find("Spam ID 001").GetComponent<Spam>();
+
+            generatePersons.spamPosition.Add(GameObject.Find("Avatar Feminino 001").transform);
+
+            if (spamSalaDosArmarios.spam)
+            {
+                generatePersons.SpamSalaDosArmarios(bancoDados);
+
+                spamSalaDosArmarios.spam = false;
+            }
+
+            espera = false;
         }
     }
 
@@ -145,7 +182,7 @@ public class Menu : MonoBehaviour
         buttonsPersonPlayer.SetActive(false);
         returnPanelConfig.SetActive(true);
 
-        mouseCursor.MouseNoneTrue();
+        mouseCursor.MouseConfined();
     }
 
     public void ButtonTrocaDeCabelo()
@@ -156,7 +193,7 @@ public class Menu : MonoBehaviour
         buttonsPersonPlayer.SetActive(false);
         returnPanelConfig.SetActive(true);
 
-        mouseCursor.MouseNoneTrue();
+        mouseCursor.MouseConfined();
     }
 
     public void ReturnPanelConfig()
@@ -169,6 +206,7 @@ public class Menu : MonoBehaviour
         fundoActvCabelo.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
         controlSettings.SetActive(false);
+        painelEscolhasCustom.SetActive(false);
 
         mouseCursor.MouseLockedFalse();
     }
@@ -180,10 +218,8 @@ public class Menu : MonoBehaviour
         returnPanelInicial.SetActive(true);
         controlSettings.SetActive(true);
 
-        mouseCursor.MouseNoneTrue();
+        mouseCursor.MouseConfined();
     }
-
-
 
     public void ToggleBlusaDaSintura() =>
         actvBlusa = !actvBlusa;
@@ -226,6 +262,131 @@ public class Menu : MonoBehaviour
 
         trocaDeCorBlusa.texture = textureBlusa[indexBlusa];
     }
+
+    /* Parte de Customizar - Avatar, Mesh, Uniforme */
+
+    public void UniformeCustons()
+    {
+        buttonsPersonPlayer.SetActive(false);
+
+        mouseCursor.MouseConfined();
+
+        returnPanelConfig.SetActive(true);
+        painelEscolhasCustom.SetActive(true);
+    }
+
+    public void CustonButtonAvansar()
+    {
+        generatePersons.IndexValue++;
+
+        if (generatePersons.IndexValue > 1)
+            generatePersons.IndexValue = 0;
+
+        indexMesh = generatePersons.IndexSaia;
+        index = generatePersons.IndexSaia;
+
+        ValorMesh(generatePersons.IndexSaia);
+
+        if (generatePersons.IndexValue == 0)
+            preVill.sprite = generatePersons.Modelos((int)GeneratePersons.ModelosPer.ModeloA1);
+
+        if (generatePersons.IndexValue == 1)
+            preVill.sprite = generatePersons.Modelos((int)GeneratePersons.ModelosPer.ModeloB1);
+    }
+
+    public void CustonButtonRetroceder()
+    {
+        generatePersons.IndexValue--;
+
+        if (generatePersons.IndexValue < 0)
+            generatePersons.IndexValue = 1;
+
+        indexMesh = generatePersons.IndexSaia;
+        index = generatePersons.IndexSaia;
+
+        ValorMesh(generatePersons.IndexSaia);
+
+        if (generatePersons.IndexValue == 0)
+            preVill.sprite = generatePersons.Modelos((int)GeneratePersons.ModelosPer.ModeloA1);
+
+        if (generatePersons.IndexValue == 1)
+            preVill.sprite = generatePersons.Modelos((int)GeneratePersons.ModelosPer.ModeloB1);
+    }
+
+    public void CustonSaiaButtonAvansar()
+    {
+        if (generatePersons.IndexValue == 0)
+        {
+            generatePersons.IndexSaia++;
+
+            if (generatePersons.IndexSaia > 1)
+                generatePersons.IndexSaia = 0;
+
+            index = generatePersons.IndexSaia;
+
+            ValorMesh(generatePersons.IndexSaia);
+
+            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia);
+        }
+        else
+        {
+            generatePersons.IndexSaia++;
+
+            if (generatePersons.IndexSaia > 1)
+                generatePersons.IndexSaia = 0;
+
+            if (generatePersons.IndexSaia == 0)
+                generatePersons.IndexValue = 2;
+
+            if (generatePersons.IndexSaia == 1)
+                generatePersons.IndexValue = 3;
+
+            index = generatePersons.IndexValue;
+
+            ValorMesh(1);
+
+            preVill.sprite = generatePersons.Modelos(generatePersons.IndexValue);
+        }
+    }
+
+    public void CustonSaiaButtonRetroceder()
+    {
+        if (generatePersons.IndexValue == 0)
+        {
+            generatePersons.IndexSaia--;
+
+            if (generatePersons.IndexSaia < 0)
+                generatePersons.IndexSaia = 1;
+
+            index = generatePersons.IndexSaia;
+
+            ValorMesh(generatePersons.IndexSaia);
+
+            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia);
+        }
+        else
+        {
+            generatePersons.IndexSaia--;
+
+            if (generatePersons.IndexSaia < 0)
+                generatePersons.IndexSaia = 1;
+
+            if (generatePersons.IndexSaia == 0)
+                generatePersons.IndexSaia = 2;
+
+            if (generatePersons.IndexSaia == 1)
+                generatePersons.IndexSaia = 3;
+
+            index = generatePersons.IndexSaia;
+
+            ValorMesh(1);
+
+            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia);
+        }
+    }
+
+    void ValorMesh(int num) =>
+        generatePersons.indexMesh = num;
 
     public void SensibilitySlider(float value) => sensibility = value;
 

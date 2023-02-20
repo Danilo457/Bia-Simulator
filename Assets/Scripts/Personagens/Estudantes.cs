@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Estudantes : MonoBehaviour
 {
-    [SerializeField] ScriptablePersonagens dadosPer;
-
     Dictionary<string, AnimationClip> myListClips = new Dictionary<string, AnimationClip>();
     Dictionary<string, AudioClip> myListAudios = new Dictionary<string, AudioClip>();
 
-    [SerializeField] Transform targetArmario;
+    Transform targetArmario;
 
     Animation anim;
     AudioSource audioToks;
@@ -18,30 +16,33 @@ public class Estudantes : MonoBehaviour
 
     Rigidbody rb;
 
-    void Awake()
+    public void ListsAnimClips(ScriptableBancoDeDados bancoDados)
     {
-        anim = GetComponent<Animation>();
-        audioToks = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody>();
+    //    myListClips.Add("Anim Parada Normal", dadosPer.alunos.clip[0]);
+    //    myListClips.Add("Anim Parada Estilo 02", dadosPer.alunos.clip[1]);
+    //    myListClips.Add("Anim Parada Abrir Armario", dadosPer.alunos.clip[2]);
 
-        myListClips.Add("Anim Parada Normal", dadosPer.alunos.clip[0]);
-        myListClips.Add("Anim Parada Estilo 02", dadosPer.alunos.clip[1]);
-        myListClips.Add("Anim Parada Abrir Armario", dadosPer.alunos.clip[2]);
+        myListAudios.Add("AudioClip Abrir tranca Armaio", bancoDados.audio[0]);
 
-        myListAudios.Add("AudioClip Abrir tranca Armaio", dadosPer.alunos.audio[0]);
+        myListAudios.TryGetValue("AudioClip Abrir tranca Armaio", out playAudio);
     }
 
-    void Start()
+    public void StartEsts(string name)
     {
+        anim = GameObject.Find(name).GetComponent<Animation>();
+        audioToks = GameObject.Find(name).GetComponent<AudioSource>();
+        rb = GameObject.Find(name).GetComponent<Rigidbody>();
+
+        targetArmario = GameObject.Find("Target Position - " + name).transform;
+
         transform.position = targetArmario.position;
+        transform.rotation = targetArmario.rotation;
 
         rb.mass = 500;
 
-        myListClips.TryGetValue("Anim Parada Abrir Armario", out AnimationClip a);
+    //    myListClips.TryGetValue("Anim Parada Abrir Armario", out AnimationClip a);
 
-        myListAudios.TryGetValue("AudioClip Abrir tranca Armaio", out playAudio);
-
-        anim.Play(a.name);
+        anim.Play("Juntar npc");
     }
 
     public void EventAudioArmarioTranca() {

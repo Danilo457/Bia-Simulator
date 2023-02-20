@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Spam : MonoBehaviour
 {
-    GeneratePersons generatePersons;
+    [SerializeField] bool atvAvatar;
+
+    Menu menu;
 
     [HideInInspector] public bool spam;
 
     void Start()
     {
-        generatePersons = FindObjectOfType<GeneratePersons>();
+        menu = FindObjectOfType<Menu>();
 
-        generatePersons.espera = true;
+        if (atvAvatar)
+            menu.espera = true;
+
         spam = true;
     }
 }

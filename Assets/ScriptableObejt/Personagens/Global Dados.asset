@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b61eebdb224f1a448591e53cb6461a0, type: 3}
   m_Name: Global Dados
   m_EditorClassIdentifier: 
+  avatar: {fileID: 783337837598449463, guid: 4eb3d431f945420439a0d49168be5d18, type: 3}
   listNames:
   - Agatha
   - Alana
@@ -139,8 +140,11 @@ MonoBehaviour:
   - "Z\xE9lia"
   material:
   - {fileID: 2100000, guid: c4558bed453277945a8e16ddb1948157, type: 2}
+  - {fileID: 2100000, guid: ea2f35870a3837e418d35b748652ad9a, type: 2}
   - {fileID: 2100000, guid: 4a561e4eb93be5548ab51757054549ab, type: 2}
   - {fileID: 2100000, guid: a031fd5912052394faf4a74322dc7e0c, type: 2}
+  - {fileID: 2100000, guid: 7d50d4501d750e541a517fd8620fa6a9, type: 2}
+  - {fileID: 2100000, guid: 0297d15d4d4ca2945a974707314857d7, type: 2}
   - {fileID: 2100000, guid: 23845d2a66023f34792156fee184ce36, type: 2}
   - {fileID: 2100000, guid: 8db67e6a71eb40f4388190fa65747f09, type: 2}
   - {fileID: 2100000, guid: b150222b46ac5c347bc4b4b4a08fffac, type: 2}
@@ -152,6 +156,55 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 56ebad324dde25641801f12ec7c380d3, type: 2}
   - {fileID: 2100000, guid: 89c76cf70879e4741955d4d2a45c179f, type: 2}
   - {fileID: 2100000, guid: 27557917cc3862f4db1845e4b2911b7b, type: 2}
+  - {fileID: 2100000, guid: 0fc64c80a13305f479781a913b317410, type: 2}
+  - {fileID: 2100000, guid: 7cbf6786245837d478780989b78d4439, type: 2}
+  - {fileID: 2100000, guid: 82dfed959f868fa46af6b996674b30e5, type: 2}
+  - {fileID: 2100000, guid: 8dcb9b6a1b18a394cab1cd29f11bc265, type: 2}
+  - {fileID: 2100000, guid: 131881179ebcf944bada10898b173395, type: 2}
+  - {fileID: 2100000, guid: 48e17ab5719293e4dbdae8025cf37c73, type: 2}
   mesh:
   - {fileID: 4300000, guid: da7ee523fc619264087e1778ac7444af, type: 2}
-  avatarFeminino: {fileID: 7701179236251244617, guid: 769f01841a22320428b5f324960507ca, type: 3}
+  - {fileID: 4300000, guid: cdd0b92175151f94d9557b270db95741, type: 2}
+  - {fileID: 4300000, guid: 021f15d0839764c4999d9b407c8903bf, type: 2}
+  - {fileID: 4300000, guid: 14b3ba9780f63fd409b89972cd0a00eb, type: 2}
+  - {fileID: 4300000, guid: 9913f3630cd64c34f83ee04862970d12, type: 2}
+  cabelos:
+  - {fileID: 4689019053028156010, guid: 41a362d3bb6e2d24e90006dd435ce2d7, type: 3}
+  - {fileID: 1124833697604439112, guid: 5e3abafb94f24a34b8a50e8f3a5742e3, type: 3}
+  - {fileID: 7213985014256696987, guid: fb689085c2fde6e43bdcb00b3d9f7aa7, type: 3}
+  - {fileID: 589817150856288026, guid: 6bea315285eb3564aa80cb3f29cd1d5d, type: 3}
+  - {fileID: 7733117577549862385, guid: 158367c6ee06162489cd9d17247e2abf, type: 3}
+  - {fileID: 6412351479276720407, guid: 26ba60a9327441d4583475a8596b6284, type: 3}
+  - {fileID: 7908816659358260586, guid: 372c6bcbd5e75de46ac4d8e128a5118f, type: 3}
+  - {fileID: 5611150099964169419, guid: b9f1e7bc88b6adc42ae239ae4e1e3b78, type: 3}
+  clip:
+  - {fileID: 7400000, guid: 18001a373cee2fb4eb79731cc79270f8, type: 2}
+  - {fileID: 7400000, guid: 101fc6a1f28218e4fbfd1970e258df1b, type: 2}
+  - {fileID: 7400000, guid: 1547bcd8b8b43ef43affa351cefb8029, type: 2}
+  - {fileID: 7400000, guid: 0f6a2e6e70ec0cb4c90e133931ecfcfa, type: 2}
+  - {fileID: 7400000, guid: a525f14c715cf6f4b872dfeaf2447985, type: 2}
+  audio:
+  - {fileID: 8300000, guid: 218252c1b1360e142bf0a8f7d6b274ed, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: 2e6590f3e33a64b45b76e2b0f391ce8d, type: 3}
+  - {fileID: 21300000, guid: d26aa2c365eaa01478bc48b22fda0925, type: 3}
+  - {fileID: 21300000, guid: 059df55653fc254498394f29d580ac94, type: 3}
+  - {fileID: 21300000, guid: 838853786ac18c243990ca60c3e6bf2b, type: 3}
+  spritsPer:
+    modelos:
+    - {fileID: 21300000, guid: 2e6590f3e33a64b45b76e2b0f391ce8d, type: 3}
+    - {fileID: 21300000, guid: 059df55653fc254498394f29d580ac94, type: 3}
+    personalizar:
+    - blusas: []
+      saias:
+      - {fileID: 21300000, guid: 2e6590f3e33a64b45b76e2b0f391ce8d, type: 3}
+      - {fileID: 21300000, guid: d26aa2c365eaa01478bc48b22fda0925, type: 3}
+    - blusas: []
+      saias:
+      - {fileID: 21300000, guid: 059df55653fc254498394f29d580ac94, type: 3}
+      - {fileID: 21300000, guid: 838853786ac18c243990ca60c3e6bf2b, type: 3}
+  namesHierarchy:
+    nameCorpoNemesis:
+    - CorpoNemesis - Amai Odayaka
+    - "CorpoNemesis - Al\xEDcia"
+    - Corpo - Player

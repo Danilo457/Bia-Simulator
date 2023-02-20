@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] ScriptablePersonagens dadosPer;
+    [SerializeField] ScriptableBancoDeDados bancoDados;
 
     Menu menu;
 
@@ -14,11 +14,33 @@ public class PlayerManager : MonoBehaviour
     public Dictionary<string, GameObject> myListManager = new Dictionary<string, GameObject>();
     public Dictionary<string, AudioClip> myListAudios = new Dictionary<string, AudioClip>();
 
+    List<Mesh> saveMesh = new List<Mesh>(); // Mesh Corpo
+    List<Material> saveMateralBlusa = new List<Material>(); // Assesorio
+    List<Material> saveMaterialCorpo = new List<Material>(); // Materia Corpo
+
+    Mesh MeshPlayer(int num) { return saveMesh[num]; }
+    Material MaterialBlusa(int num) { return saveMateralBlusa[num]; }
+    Material MaterialCorpo(int num) { return saveMaterialCorpo[num]; }
+
     void Awake()
     {
         menu = FindObjectOfType<Menu>();
 
-        myListAudios.Add("Tranca do Armario", dadosPer.alunos.audio[0]);
+        myListAudios.Add("Tranca do Armario", bancoDados.audio[0]);
+
+        saveMateralBlusa.Add(bancoDados.material[17]);
+        saveMateralBlusa.Add(bancoDados.material[18]);
+        saveMateralBlusa.Add(bancoDados.material[19]);
+        saveMateralBlusa.Add(bancoDados.material[20]);
+        saveMateralBlusa.Add(bancoDados.material[21]);
+
+        saveMesh.Add(bancoDados.mesh[0]);
+        saveMesh.Add(bancoDados.mesh[3]);
+
+        saveMaterialCorpo.Add(bancoDados.material[3]);
+        saveMaterialCorpo.Add(bancoDados.material[4]);
+        saveMaterialCorpo.Add(bancoDados.material[5]);
+        saveMaterialCorpo.Add(bancoDados.material[22]);
     }
 
     void Start()
@@ -36,7 +58,7 @@ public class PlayerManager : MonoBehaviour
         myListManager.Add("Blusa Amarrada na Sintura", acessorios[0]);
 
         myListManager.TryGetValue("Blusa Amarrada na Sintura", out GameObject blusa);
-        blusa.GetComponent<SkinnedMeshRenderer>().material = dadosPer.alunos.material[menu.indexBlusa];
+        blusa.GetComponent<SkinnedMeshRenderer>().material = MaterialBlusa(menu.indexBlusa);
 
         blusa.SetActive(!menu.actvBlusa);
 
@@ -44,5 +66,28 @@ public class PlayerManager : MonoBehaviour
             cabelos[i].SetActive(false);
 
         cabelos[menu.indexCanelo].SetActive(!menu.actvCabelo);
+
+        int ceira = 0;
+
+        //for (int i = 0; i < 2; i++)
+        //    ceira = menu.index % 2;
+
+        if (menu.index == 1) ceira = 1;
+        if (menu.index == 2) ceira = 1;
+        if (menu.index == 3) ceira = 0;
+
+        ModeloEscolha(menu.index, menu.indexMesh, ceira);
+    }
+    
+    void ModeloEscolha(int index, int indexMesh, int local)
+    {
+        GameObject.Find(bancoDados.namesHierarchy.nameCorpoNemesis[2]).GetComponent<SkinnedMeshRenderer>().sharedMesh =
+            MeshPlayer(indexMesh);
+
+        GameObject.Find(bancoDados.namesHierarchy.nameCorpoNemesis[2]).
+            GetComponent<SkinnedMeshRenderer>().materials[local].shader = MaterialCorpo(index).shader;
+
+        GameObject.Find(bancoDados.namesHierarchy.nameCorpoNemesis[2]).
+            GetComponent<SkinnedMeshRenderer>().materials[local].mainTexture = MaterialCorpo(index).mainTexture;
     }
 }
