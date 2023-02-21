@@ -5,13 +5,14 @@ using UnityEngine;
 public class GeneratePersons
 {
     Estudantes estudantes;
+    Menu menu;
 
-    public int indexMesh;
+    public int indexMesh; // Quantidade de Mesh
 
-    int modelosIndex;
+    int modelosIndex; // Quantidade de Modelos
     int saiaIndex;
 
-    public int IndexValue {
+    public int IndexModelo { // Quantidade de Modelos
         get { return modelosIndex; }
         set { modelosIndex = value; }
     }
@@ -22,45 +23,28 @@ public class GeneratePersons
 
     public List<Transform> spamPosition = new List<Transform>();
 
-    //Dictionary<string, Sprite> myID = new Dictionary<string, Sprite>();
-    public enum ModelosPer { ModeloA1, ModeloA2, ModeloB1, ModeloB2}
-
-    public List<Sprite> saveModelosSprites = new List<Sprite>();
     public List<Mesh> saveMeshAvatar = new List<Mesh>();
     public List<Material> saveMaterialCorpo = new List<Material>();
     public List<Material> saveMaterialFace = new List<Material>();
 
-    public Sprite Modelos(int num) { return saveModelosSprites[num]; }
     public Mesh AvatarMesh(int num) { return saveMeshAvatar[num]; }
     public Material AvatarMaterialCorpo(int num) { return saveMaterialCorpo[num]; }
     public Material AvatarMaterialFace(int num) { return saveMaterialFace[num]; }
 
     public void AddSavesLists(ScriptableBancoDeDados bancoDados)
     {
-        /* Sprits Visuais do Menu */
-        saveModelosSprites.Add(bancoDados.sprites[0]);
-        saveModelosSprites.Add(bancoDados.sprites[1]);
-        saveModelosSprites.Add(bancoDados.sprites[2]);
-        saveModelosSprites.Add(bancoDados.sprites[3]);
-
-        //myID.Add("Blusa Branca com Saia Azul", saveModelosSprites[0]);
-        //myID.Add("Blusa Branca com Saia Sinza", saveModelosSprites[1]);
-        //myID.Add("");
-
-        /* ---------------------- */
-
         saveMeshAvatar.Add(bancoDados.mesh[0]);
         saveMeshAvatar.Add(bancoDados.mesh[3]);
 
         saveMaterialCorpo.Add(bancoDados.material[3]);
         saveMaterialCorpo.Add(bancoDados.material[4]);
-        saveMaterialCorpo.Add(bancoDados.material[5]);
         saveMaterialCorpo.Add(bancoDados.material[22]);
+        saveMaterialCorpo.Add(bancoDados.material[5]);
 
         saveMaterialFace.Add(bancoDados.material[6]);
     }
 
-    void MeshAvatar(ScriptableBancoDeDados bancoDados, int num)
+    void MeshAvatar(ScriptableBancoDeDados bancoDados, int num) // Mesh dos NPCs
     {
         bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).sharedMesh =
             AvatarMesh(indexMesh);
@@ -102,17 +86,19 @@ public class GeneratePersons
 
     void MaterialAvatar(ScriptableBancoDeDados bancoDados, int num)
     {
+        menu = Object.FindObjectOfType<Menu>();
+
         bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[0].shader =
-            AvatarMaterialCorpo(modelosIndex).shader;
+            AvatarMaterialCorpo(menu.indexUniforme).shader;
         bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[1].shader =
-            AvatarMaterialCorpo(modelosIndex).shader;
+            AvatarMaterialCorpo(menu.indexUniforme).shader;
         bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[2].shader =
             AvatarMaterialFace(0).shader;
 
         bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[0].mainTexture =
-            AvatarMaterialCorpo(modelosIndex).mainTexture;
+            AvatarMaterialCorpo(menu.indexUniforme).mainTexture;
         bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[1].mainTexture =
-            AvatarMaterialCorpo(modelosIndex).mainTexture;
+            AvatarMaterialCorpo(menu.indexUniforme).mainTexture;
         bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[2].mainTexture =
             AvatarMaterialFace(0).mainTexture;        
     }

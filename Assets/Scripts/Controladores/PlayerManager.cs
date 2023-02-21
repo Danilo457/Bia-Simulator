@@ -39,8 +39,8 @@ public class PlayerManager : MonoBehaviour
 
         saveMaterialCorpo.Add(bancoDados.material[3]);
         saveMaterialCorpo.Add(bancoDados.material[4]);
-        saveMaterialCorpo.Add(bancoDados.material[5]);
         saveMaterialCorpo.Add(bancoDados.material[22]);
+        saveMaterialCorpo.Add(bancoDados.material[5]);
     }
 
     void Start()
@@ -67,16 +67,16 @@ public class PlayerManager : MonoBehaviour
 
         cabelos[menu.indexCanelo].SetActive(!menu.actvCabelo);
 
-        int ceira = 0;
-
         //for (int i = 0; i < 2; i++)
         //    ceira = menu.index % 2;
 
-        if (menu.index == 1) ceira = 1;
-        if (menu.index == 2) ceira = 1;
-        if (menu.index == 3) ceira = 0;
+        int ceira = 0;
 
-        ModeloEscolha(menu.index, menu.indexMesh, ceira);
+        if (menu.indexUniforme == 1) ceira = 1;
+        if (menu.indexUniforme == 2) ceira = 0;
+        if (menu.indexUniforme == 3) ceira = 1;
+
+        ModeloEscolha(menu.indexUniforme, menu.indexMesh, ceira);
     }
     
     void ModeloEscolha(int index, int indexMesh, int local)

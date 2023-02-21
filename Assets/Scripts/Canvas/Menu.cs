@@ -57,8 +57,8 @@ public class Menu : MonoBehaviour
 
     bool sceneArmarios;
 
-    public int index;
-    public int indexMesh;
+    public int indexUniforme; // Material Estilo de Roura Padrão da Escola
+    public int indexMesh; // Mesh do Player
 
     void Awake()
     {
@@ -92,9 +92,9 @@ public class Menu : MonoBehaviour
 
         mouseCursor.MouseLockedFalse();
 
-        generatePersons.IndexValue = 0;
+        generatePersons.IndexModelo = 0;
 
-        preVill.sprite = generatePersons.Modelos(generatePersons.IndexValue);
+        preVill.sprite = bancoDados.spritsModelos.modelos[generatePersons.IndexModelo];
     }
 
     void Update()
@@ -275,117 +275,131 @@ public class Menu : MonoBehaviour
         painelEscolhasCustom.SetActive(true);
     }
 
-    public void CustonButtonAvansar()
+    public void CustonButtonAvansar() // Escolha dos Modelos
     {
-        generatePersons.IndexValue++;
+        generatePersons.IndexModelo++;
 
-        if (generatePersons.IndexValue > 1)
-            generatePersons.IndexValue = 0;
+        if (generatePersons.IndexModelo > 1)
+            generatePersons.IndexModelo = 0;
 
-        indexMesh = generatePersons.IndexSaia;
-        index = generatePersons.IndexSaia;
+        generatePersons.IndexSaia = 0;
 
-        ValorMesh(generatePersons.IndexSaia);
+        Modelos();
 
-        if (generatePersons.IndexValue == 0)
-            preVill.sprite = generatePersons.Modelos((int)GeneratePersons.ModelosPer.ModeloA1);
+        indexMesh = generatePersons.IndexModelo; // Quantidade de Mesh do Player
 
-        if (generatePersons.IndexValue == 1)
-            preVill.sprite = generatePersons.Modelos((int)GeneratePersons.ModelosPer.ModeloB1);
+        ValorMesh(generatePersons.IndexModelo); // Quantidade de Mesh
     }
 
-    public void CustonButtonRetroceder()
+    public void CustonButtonRetroceder() // Escolha dos Modelos
     {
-        generatePersons.IndexValue--;
+        generatePersons.IndexModelo--;
 
-        if (generatePersons.IndexValue < 0)
-            generatePersons.IndexValue = 1;
+        if (generatePersons.IndexModelo < 0)
+            generatePersons.IndexModelo = 1;
 
-        indexMesh = generatePersons.IndexSaia;
-        index = generatePersons.IndexSaia;
+        generatePersons.IndexSaia = 0;
 
-        ValorMesh(generatePersons.IndexSaia);
+        Modelos();
 
-        if (generatePersons.IndexValue == 0)
-            preVill.sprite = generatePersons.Modelos((int)GeneratePersons.ModelosPer.ModeloA1);
+        indexMesh = generatePersons.IndexModelo; // Quantidade de Mesh do Player
 
-        if (generatePersons.IndexValue == 1)
-            preVill.sprite = generatePersons.Modelos((int)GeneratePersons.ModelosPer.ModeloB1);
+        ValorMesh(generatePersons.IndexModelo); // Quantidade de Mesh
     }
 
-    public void CustonSaiaButtonAvansar()
+    public void CustonSaiaButtonAvansar() // Button Troca de Cor da Saia (++)
     {
-        if (generatePersons.IndexValue == 0)
+        switch (generatePersons.IndexModelo)
         {
-            generatePersons.IndexSaia++;
+            case 0:
+                if (generatePersons.IndexSaia < bancoDados.spritsModelos.personalizar[0].saias.Count - 1)
+                {
+                    generatePersons.IndexSaia++;
+                }
+                else
+                {
+                    generatePersons.IndexSaia = 0;
+                }
+                break;
+            case 1:
+                if (generatePersons.IndexSaia < bancoDados.spritsModelos.personalizar[1].saias.Count - 1)
+                {
+                    generatePersons.IndexSaia++;
+                }
+                else
+                {
+                    generatePersons.IndexSaia = 0;
+                }
+                break;
+        }
 
-            if (generatePersons.IndexSaia > 1)
+        Personalizacao();
+    }
+
+    public void CustonSaiaButtonRetroceder() // Button Troca de Cor da Saia (--)
+    {
+        switch (generatePersons.IndexModelo)
+        {
+            case 0:
+                if (generatePersons.IndexSaia > 0)
+                {
+                    generatePersons.IndexSaia--;
+                }
+                else
+                {
+                    generatePersons.IndexSaia = bancoDados.spritsModelos.personalizar[0].saias.Count - 1;
+                }
+                break;
+            case 1:
+                if (generatePersons.IndexSaia > 0)
+                {
+                    generatePersons.IndexSaia--;
+                }
+                else
+                {
+                    generatePersons.IndexSaia = bancoDados.spritsModelos.personalizar[1].saias.Count - 1;
+                }
+                break;
+        }
+
+        Personalizacao();
+    }
+
+    void Modelos()
+    {
+        indexUniforme = generatePersons.IndexModelo; // Material Estilo de Roura Padrão da Escola
+
+        switch (generatePersons.IndexModelo)
+        {
+            case 0:
+                preVill.sprite = bancoDados.spritsModelos.modelos[0];
                 generatePersons.IndexSaia = 0;
-
-            index = generatePersons.IndexSaia;
-
-            ValorMesh(generatePersons.IndexSaia);
-
-            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia);
-        }
-        else
-        {
-            generatePersons.IndexSaia++;
-
-            if (generatePersons.IndexSaia > 1)
+                preVill.sprite = bancoDados.spritsModelos.personalizar[0].saias[0];
+                break;
+            case 1:
+                preVill.sprite = bancoDados.spritsModelos.modelos[0];
                 generatePersons.IndexSaia = 0;
-
-            if (generatePersons.IndexSaia == 0)
-                generatePersons.IndexValue = 2;
-
-            if (generatePersons.IndexSaia == 1)
-                generatePersons.IndexValue = 3;
-
-            index = generatePersons.IndexValue;
-
-            ValorMesh(1);
-
-            preVill.sprite = generatePersons.Modelos(generatePersons.IndexValue);
+                preVill.sprite = bancoDados.spritsModelos.personalizar[1].saias[0];
+                break;
         }
     }
 
-    public void CustonSaiaButtonRetroceder()
+    void Personalizacao()
     {
-        if (generatePersons.IndexValue == 0)
+        switch (generatePersons.IndexModelo)
         {
-            generatePersons.IndexSaia--;
-
-            if (generatePersons.IndexSaia < 0)
-                generatePersons.IndexSaia = 1;
-
-            index = generatePersons.IndexSaia;
-
-            ValorMesh(generatePersons.IndexSaia);
-
-            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia);
-        }
-        else
-        {
-            generatePersons.IndexSaia--;
-
-            if (generatePersons.IndexSaia < 0)
-                generatePersons.IndexSaia = 1;
-
-            if (generatePersons.IndexSaia == 0)
-                generatePersons.IndexSaia = 2;
-
-            if (generatePersons.IndexSaia == 1)
-                generatePersons.IndexSaia = 3;
-
-            index = generatePersons.IndexSaia;
-
-            ValorMesh(1);
-
-            preVill.sprite = generatePersons.Modelos(generatePersons.IndexSaia);
+            case 0:
+                preVill.sprite = bancoDados.spritsModelos.personalizar[0].saias[generatePersons.IndexSaia];
+                indexUniforme = 2; // Material Estilo de Roura Padrão da Escola
+                break;
+            case 1:
+                preVill.sprite = bancoDados.spritsModelos.personalizar[1].saias[generatePersons.IndexSaia];
+                indexUniforme = 3; // Material Estilo de Roura Padrão da Escola
+                break;
         }
     }
 
-    void ValorMesh(int num) =>
+    void ValorMesh(int num) => // Quantidade de Mesh
         generatePersons.indexMesh = num;
 
     public void SensibilitySlider(float value) => sensibility = value;

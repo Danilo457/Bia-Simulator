@@ -19,9 +19,7 @@ public class ScriptableBancoDeDados : ScriptableObject
     public List<AnimationClip> clip = new List<AnimationClip>();
     public List<AudioClip> audio = new List<AudioClip>();
 
-    public List<Sprite> sprites = new List<Sprite>();
-
-    public ModelosPer spritsPer = new ModelosPer();
+    public ModelosPer spritsModelos = new ModelosPer();
 
     public NamesHierarchy namesHierarchy = new NamesHierarchy();
 }
