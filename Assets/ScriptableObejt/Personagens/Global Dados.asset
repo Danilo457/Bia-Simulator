@@ -171,17 +171,19 @@ MonoBehaviour:
   cabelos:
   - {fileID: 4689019053028156010, guid: 41a362d3bb6e2d24e90006dd435ce2d7, type: 3}
   - {fileID: 1124833697604439112, guid: 5e3abafb94f24a34b8a50e8f3a5742e3, type: 3}
-  - {fileID: 7213985014256696987, guid: fb689085c2fde6e43bdcb00b3d9f7aa7, type: 3}
   - {fileID: 589817150856288026, guid: 6bea315285eb3564aa80cb3f29cd1d5d, type: 3}
+  - {fileID: 7213985014256696987, guid: fb689085c2fde6e43bdcb00b3d9f7aa7, type: 3}
   - {fileID: 7733117577549862385, guid: 158367c6ee06162489cd9d17247e2abf, type: 3}
-  - {fileID: 6412351479276720407, guid: 26ba60a9327441d4583475a8596b6284, type: 3}
   - {fileID: 7908816659358260586, guid: 372c6bcbd5e75de46ac4d8e128a5118f, type: 3}
+  - {fileID: 6412351479276720407, guid: 26ba60a9327441d4583475a8596b6284, type: 3}
   - {fileID: 5611150099964169419, guid: b9f1e7bc88b6adc42ae239ae4e1e3b78, type: 3}
   clip:
   - {fileID: 7400000, guid: 18001a373cee2fb4eb79731cc79270f8, type: 2}
+  - {fileID: 7400000, guid: 9a434c912856746429ce55a8eb017e35, type: 2}
   - {fileID: 7400000, guid: 101fc6a1f28218e4fbfd1970e258df1b, type: 2}
   - {fileID: 7400000, guid: 1547bcd8b8b43ef43affa351cefb8029, type: 2}
   - {fileID: 7400000, guid: 0f6a2e6e70ec0cb4c90e133931ecfcfa, type: 2}
+  - {fileID: 7400000, guid: 7b9eab43901cdcf41827d1427a91ca1d, type: 2}
   - {fileID: 7400000, guid: a525f14c715cf6f4b872dfeaf2447985, type: 2}
   audio:
   - {fileID: 8300000, guid: 218252c1b1360e142bf0a8f7d6b274ed, type: 3}

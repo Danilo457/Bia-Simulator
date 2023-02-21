@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Estudantes : MonoBehaviour
 {
-    Dictionary<string, AnimationClip> myListClips = new Dictionary<string, AnimationClip>();
     Dictionary<string, AudioClip> myListAudios = new Dictionary<string, AudioClip>();
 
     Transform targetArmario;
@@ -18,10 +17,6 @@ public class Estudantes : MonoBehaviour
 
     public void ListsAnimClips(ScriptableBancoDeDados bancoDados)
     {
-    //    myListClips.Add("Anim Parada Normal", dadosPer.alunos.clip[0]);
-    //    myListClips.Add("Anim Parada Estilo 02", dadosPer.alunos.clip[1]);
-    //    myListClips.Add("Anim Parada Abrir Armario", dadosPer.alunos.clip[2]);
-
         myListAudios.Add("AudioClip Abrir tranca Armaio", bancoDados.audio[0]);
 
         myListAudios.TryGetValue("AudioClip Abrir tranca Armaio", out playAudio);
@@ -40,9 +35,18 @@ public class Estudantes : MonoBehaviour
 
         rb.mass = 500;
 
-    //    myListClips.TryGetValue("Anim Parada Abrir Armario", out AnimationClip a);
-
-        anim.Play("Juntar npc");
+        switch (name)
+        {
+            case "Amai Odayaka":
+                anim.Play("Juntar npc");
+                break;
+            case "Alícia":
+                anim.Play("Juntar npc");
+                break;
+            case "Carolina":
+                anim.Play("ParadaNormal");
+                break;
+        }
     }
 
     public void EventAudioArmarioTranca() {

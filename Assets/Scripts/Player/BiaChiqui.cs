@@ -100,9 +100,9 @@ public class BiaChiqui : MonoBehaviour
     {
         if (!animAbrirTrancaArmario) {
             if (movimento && Input.GetKey(KeyCode.LeftShift)) 
-                anim.Play(bancoDados.clip[2].name);
+                anim.Play(bancoDados.clip[3].name);
             else if (movimento)
-                anim.Play(bancoDados.clip[1].name);
+                anim.Play(bancoDados.clip[2].name);
             else
                 anim.Play(bancoDados.clip[0].name);
         }
@@ -115,44 +115,13 @@ public class BiaChiqui : MonoBehaviour
         time += Time.deltaTime;
         transform.position = targetPositionArmario.transform.position;
         transform.rotation = targetPositionArmario.transform.rotation;
-        anim.Play(bancoDados.clip[3].name);
+        anim.Play(bancoDados.clip[4].name);
 
         if (time >= 2.0f) {
             time = 0.0f;
             animAbrirTrancaArmario = false;
         }
     }
-
-    /*
-    void Animation() {
-        if (!movimento && !Input.GetKey(KeyCode.LeftShift) || !movimento && Input.GetKey(KeyCode.LeftShift)) {
-            if (!animSegurar && !animAbrirTrancaArmario)
-                anim.Play(bancoDados.clip[0].name);
-            else if (!animAbrirTrancaArmario)
-                anim.Play(bancoDados.clip[4].name);
-        }
-
-        if (animAbrirTrancaArmario) {
-            time += Time.deltaTime;
-
-            transform.position = targetPositionArmario.transform.position;
-            transform.rotation = targetPositionArmario.transform.rotation;
-
-            anim.Play(bancoDados.clip[3].name);
-
-            if (time >= 2.0f) {
-                time = 0.0f;
-                animAbrirTrancaArmario = false;
-            }
-        }
-            
-        if (movimento && !Input.GetKey(KeyCode.LeftShift) && !animAbrirTrancaArmario)
-            anim.Play(bancoDados.clip[1].name);
-
-        if (movimento && Input.GetKey(KeyCode.LeftShift))
-            anim.Play(bancoDados.clip[2].name);
-    }
-    */
 
     void FixedUpdate()
     {

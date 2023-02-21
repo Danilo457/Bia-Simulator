@@ -7,6 +7,11 @@ public class GeneratePersons
     Estudantes estudantes;
     Menu menu;
 
+    Dictionary<string, int> personagensIndices = new Dictionary<string, int>()
+    {
+        { "Amai Odayaka", 0 }, { "Alícia", 1 }, { "Carolina", 2 },
+    };
+
     public int indexMesh; // Quantidade de Mesh
 
     int modelosIndex; // Quantidade de Modelos
@@ -53,38 +58,29 @@ public class GeneratePersons
     public void SpamSalaDosArmarios(ScriptableBancoDeDados bancoDados)
     {
         for (int i = 0; i < bancoDados.listNames.Count; i++)
-            switch (bancoDados.listNames[i])
+        {
+            string nome = bancoDados.listNames[i];
+
+            if (personagensIndices.ContainsKey(nome))
             {
-                case "Amai Odayaka":
-                    Object obj = Object.Instantiate(bancoDados.avatar, spamPosition[0].position, spamPosition[0].rotation);
-                    obj.name = bancoDados.listNames[i];
-
-                    RenomeCorpo(obj.name);
-                    RenomeCabelo(obj.name);
-                    MeshAvatar(bancoDados, 0);
-                    MaterialAvatar(bancoDados, 0);
-                    AddCobelos(bancoDados, 0, obj.name);
-                    Olhos(bancoDados, obj.name, 0);
-                    AddComponents(bancoDados, obj.name);
-
-                    break;
-                case "Alícia":
-                    Object obj2 = Object.Instantiate(bancoDados.avatar, spamPosition[0].position, spamPosition[0].rotation);
-                    obj2.name = bancoDados.listNames[i];
-
-                    RenomeCorpo(obj2.name);
-                    RenomeCabelo(obj2.name);
-                    MeshAvatar(bancoDados, 1);
-                    MaterialAvatar(bancoDados, 1);
-                    AddCobelos(bancoDados, 1, obj2.name);
-                    Olhos(bancoDados, obj2.name, 1);
-                    AddComponents(bancoDados, obj2.name);
-
-                    break;
-                case "":
-
-                    break;
+                SpawnAvatar(nome, bancoDados);
             }
+        }
+    }
+
+    private void SpawnAvatar(string nomePersonagem, ScriptableBancoDeDados bancoDados)
+    {
+        int indice = personagensIndices[nomePersonagem];
+        Object obj = Object.Instantiate(bancoDados.avatar, spamPosition[0].position, spamPosition[0].rotation);
+        obj.name = nomePersonagem;
+
+        RenomeCorpo(obj.name);
+        RenomeCabelo(obj.name);
+        MeshAvatar(bancoDados, indice);
+        MaterialAvatar(bancoDados, indice);
+        AddCobelos(bancoDados, indice, obj.name);
+        Olhos(bancoDados, obj.name, indice);
+        AddComponents(bancoDados, obj.name);
     }
 
     void MaterialAvatar(ScriptableBancoDeDados bancoDados, int num)
