@@ -67,14 +67,10 @@ public class PlayerManager : MonoBehaviour
 
         cabelos[menu.indexCanelo].SetActive(!menu.actvCabelo);
 
-        //for (int i = 0; i < 2; i++)
-        //    ceira = menu.index % 2;
-
         int ceira = 0;
 
-        if (menu.indexUniforme == 1) ceira = 1;
-        if (menu.indexUniforme == 2) ceira = 0;
-        if (menu.indexUniforme == 3) ceira = 1;
+        for (int i = 0; i < 2; i++)
+            ceira = menu.indexUniforme % 2;
 
         ModeloEscolha(menu.indexUniforme, menu.indexMesh, ceira);
     }

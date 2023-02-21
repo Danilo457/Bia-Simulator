@@ -96,6 +96,34 @@ public class BiaChiqui : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, camY + (x * 90), 0), Time.deltaTime * 5);
     }
 
+    void Animation()
+    {
+        if (!animAbrirTrancaArmario) {
+            if (movimento && Input.GetKey(KeyCode.LeftShift)) 
+                anim.Play(bancoDados.clip[2].name);
+            else if (movimento)
+                anim.Play(bancoDados.clip[1].name);
+            else
+                anim.Play(bancoDados.clip[0].name);
+        }
+        else
+            PlayArmarioAnimation();
+    }
+
+    void PlayArmarioAnimation()
+    {
+        time += Time.deltaTime;
+        transform.position = targetPositionArmario.transform.position;
+        transform.rotation = targetPositionArmario.transform.rotation;
+        anim.Play(bancoDados.clip[3].name);
+
+        if (time >= 2.0f) {
+            time = 0.0f;
+            animAbrirTrancaArmario = false;
+        }
+    }
+
+    /*
     void Animation() {
         if (!movimento && !Input.GetKey(KeyCode.LeftShift) || !movimento && Input.GetKey(KeyCode.LeftShift)) {
             if (!animSegurar && !animAbrirTrancaArmario)
@@ -124,7 +152,8 @@ public class BiaChiqui : MonoBehaviour
         if (movimento && Input.GetKey(KeyCode.LeftShift))
             anim.Play(bancoDados.clip[2].name);
     }
-    
+    */
+
     void FixedUpdate()
     {
         if (movimento && !scriptPerson.atvCaixaEscolhas)

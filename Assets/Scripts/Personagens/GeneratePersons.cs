@@ -81,6 +81,9 @@ public class GeneratePersons
                     AddComponents(bancoDados, obj2.name);
 
                     break;
+                case "":
+
+                    break;
             }
     }
 
@@ -88,19 +91,28 @@ public class GeneratePersons
     {
         menu = Object.FindObjectOfType<Menu>();
 
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[0].shader =
-            AvatarMaterialCorpo(menu.indexUniforme).shader;
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[1].shader =
-            AvatarMaterialCorpo(menu.indexUniforme).shader;
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[2].shader =
-            AvatarMaterialFace(0).shader;
+        Material materialCorpo = AvatarMaterialCorpo(menu.indexUniforme);
+        Material materialFace = AvatarMaterialFace(0);
 
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[0].mainTexture =
-            AvatarMaterialCorpo(menu.indexUniforme).mainTexture;
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[1].mainTexture =
-            AvatarMaterialCorpo(menu.indexUniforme).mainTexture;
-        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials[2].mainTexture =
-            AvatarMaterialFace(0).mainTexture;        
+        SetMaterialShader(bancoDados, num, 0, materialCorpo.shader);
+        SetMaterialShader(bancoDados, num, 1, materialCorpo.shader);
+        SetMaterialShader(bancoDados, num, 2, materialFace.shader);
+
+        SetMaterialTexture(bancoDados, num, 0, materialCorpo.mainTexture);
+        SetMaterialTexture(bancoDados, num, 1, materialCorpo.mainTexture);
+        SetMaterialTexture(bancoDados, num, 2, materialFace.mainTexture);
+    }
+
+    void SetMaterialShader(ScriptableBancoDeDados bancoDados, int num, int materialIndex, Shader shader)
+    {
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials
+            [materialIndex].shader = shader;
+    }
+
+    void SetMaterialTexture(ScriptableBancoDeDados bancoDados, int num, int materialIndex, Texture texture)
+    {
+        bancoDados.components.AvatarCuston(bancoDados.namesHierarchy.nameCorpoNemesis[num]).materials
+            [materialIndex].mainTexture = texture;
     }
 
     void AddComponents(ScriptableBancoDeDados bancoDados, string name)

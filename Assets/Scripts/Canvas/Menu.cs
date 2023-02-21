@@ -309,58 +309,16 @@ public class Menu : MonoBehaviour
 
     public void CustonSaiaButtonAvansar() // Button Troca de Cor da Saia (++)
     {
-        switch (generatePersons.IndexModelo)
-        {
-            case 0:
-                if (generatePersons.IndexSaia < bancoDados.spritsModelos.personalizar[0].saias.Count - 1)
-                {
-                    generatePersons.IndexSaia++;
-                }
-                else
-                {
-                    generatePersons.IndexSaia = 0;
-                }
-                break;
-            case 1:
-                if (generatePersons.IndexSaia < bancoDados.spritsModelos.personalizar[1].saias.Count - 1)
-                {
-                    generatePersons.IndexSaia++;
-                }
-                else
-                {
-                    generatePersons.IndexSaia = 0;
-                }
-                break;
-        }
+        int saiasCount = bancoDados.spritsModelos.personalizar[generatePersons.IndexModelo].saias.Count;
+        generatePersons.IndexSaia = (generatePersons.IndexSaia + 1) % saiasCount;
 
         Personalizacao();
     }
 
     public void CustonSaiaButtonRetroceder() // Button Troca de Cor da Saia (--)
     {
-        switch (generatePersons.IndexModelo)
-        {
-            case 0:
-                if (generatePersons.IndexSaia > 0)
-                {
-                    generatePersons.IndexSaia--;
-                }
-                else
-                {
-                    generatePersons.IndexSaia = bancoDados.spritsModelos.personalizar[0].saias.Count - 1;
-                }
-                break;
-            case 1:
-                if (generatePersons.IndexSaia > 0)
-                {
-                    generatePersons.IndexSaia--;
-                }
-                else
-                {
-                    generatePersons.IndexSaia = bancoDados.spritsModelos.personalizar[1].saias.Count - 1;
-                }
-                break;
-        }
+        int saiasCount = bancoDados.spritsModelos.personalizar[generatePersons.IndexModelo].saias.Count;
+        generatePersons.IndexSaia = (generatePersons.IndexSaia + saiasCount - 1) % saiasCount;
 
         Personalizacao();
     }
@@ -369,34 +327,15 @@ public class Menu : MonoBehaviour
     {
         indexUniforme = generatePersons.IndexModelo; // Material Estilo de Roura Padrão da Escola
 
-        switch (generatePersons.IndexModelo)
-        {
-            case 0:
-                preVill.sprite = bancoDados.spritsModelos.modelos[0];
-                generatePersons.IndexSaia = 0;
-                preVill.sprite = bancoDados.spritsModelos.personalizar[0].saias[0];
-                break;
-            case 1:
-                preVill.sprite = bancoDados.spritsModelos.modelos[0];
-                generatePersons.IndexSaia = 0;
-                preVill.sprite = bancoDados.spritsModelos.personalizar[1].saias[0];
-                break;
-        }
+        preVill.sprite = bancoDados.spritsModelos.modelos[generatePersons.IndexModelo];
+        generatePersons.IndexSaia = 0;
+        preVill.sprite = bancoDados.spritsModelos.personalizar[generatePersons.IndexModelo].saias[0];
     }
 
     void Personalizacao()
     {
-        switch (generatePersons.IndexModelo)
-        {
-            case 0:
-                preVill.sprite = bancoDados.spritsModelos.personalizar[0].saias[generatePersons.IndexSaia];
-                indexUniforme = 2; // Material Estilo de Roura Padrão da Escola
-                break;
-            case 1:
-                preVill.sprite = bancoDados.spritsModelos.personalizar[1].saias[generatePersons.IndexSaia];
-                indexUniforme = 3; // Material Estilo de Roura Padrão da Escola
-                break;
-        }
+        preVill.sprite = bancoDados.spritsModelos.personalizar[generatePersons.IndexModelo].saias[generatePersons.IndexSaia];
+        indexUniforme = generatePersons.IndexModelo + 2; // Material Estilo de Roura Padrão da Escola
     }
 
     void ValorMesh(int num) => // Quantidade de Mesh
