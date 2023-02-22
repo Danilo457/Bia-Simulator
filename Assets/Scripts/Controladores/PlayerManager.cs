@@ -77,13 +77,13 @@ public class PlayerManager : MonoBehaviour
     
     void ModeloEscolha(int index, int indexMesh, int local)
     {
-        GameObject.Find(bancoDados.namesHierarchy.nameCorpoNemesis[2]).GetComponent<SkinnedMeshRenderer>().sharedMesh =
+        GameObject.Find("Corpo - Player").GetComponent<SkinnedMeshRenderer>().sharedMesh =
             MeshPlayer(indexMesh);
 
-        GameObject.Find(bancoDados.namesHierarchy.nameCorpoNemesis[2]).
+        GameObject.Find("Corpo - Player").
             GetComponent<SkinnedMeshRenderer>().materials[local].shader = MaterialCorpo(index).shader;
 
-        GameObject.Find(bancoDados.namesHierarchy.nameCorpoNemesis[2]).
+        GameObject.Find("Corpo - Player").
             GetComponent<SkinnedMeshRenderer>().materials[local].mainTexture = MaterialCorpo(index).mainTexture;
     }
 }

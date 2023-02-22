@@ -20,8 +20,6 @@ public class ScriptableBancoDeDados : ScriptableObject
     public List<AudioClip> audio = new List<AudioClip>();
 
     public ModelosPer spritsModelos = new ModelosPer();
-
-    public NamesHierarchy namesHierarchy = new NamesHierarchy();
 }
 
 public class Components
@@ -45,12 +43,6 @@ public class AddGameObject
         GameObject.Find(nameTipo1).AddComponent<MeshRenderer>();
         GameObject.Find(nameTipo2).AddComponent<MeshRenderer>();
     }
-}
-
-[Serializable]
-public class NamesHierarchy
-{
-    public string[] nameCorpoNemesis;
 }
 
 [Serializable]

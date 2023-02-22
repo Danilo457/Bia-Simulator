@@ -6,6 +6,14 @@ public class Estudantes : MonoBehaviour
 {
     Dictionary<string, AudioClip> myListAudios = new Dictionary<string, AudioClip>();
 
+    Dictionary<string, string> animations = new Dictionary<string, string>
+    {
+        {"Amai Odayaka"  , "Juntar npc"   },
+        {"Alícia"        , "Juntar npc"   },
+        {"Carolina"      , "ParadaNormal" },
+        {"Alana"         , "ParadaNormal" }
+    };
+
     Transform targetArmario;
 
     Animation anim;
@@ -35,18 +43,8 @@ public class Estudantes : MonoBehaviour
 
         rb.mass = 500;
 
-        switch (name)
-        {
-            case "Amai Odayaka":
-                anim.Play("Juntar npc");
-                break;
-            case "Alícia":
-                anim.Play("Juntar npc");
-                break;
-            case "Carolina":
-                anim.Play("ParadaNormal");
-                break;
-        }
+        if (animations.ContainsKey(name))
+            anim.Play(animations[name]);
     }
 
     public void EventAudioArmarioTranca() {
