@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -15,11 +16,11 @@ public class PlayerManager : MonoBehaviour
     public Dictionary<string, AudioClip> myListAudios = new Dictionary<string, AudioClip>();
 
     List<Mesh> saveMesh = new List<Mesh>(); // Mesh Corpo
-    List<Material> saveMateralBlusa = new List<Material>(); // Assesorio
+    List<Material> saveMaterialBlusa = new List<Material>(); // Assesorio
     List<Material> saveMaterialCorpo = new List<Material>(); // Materia Corpo
 
     Mesh MeshPlayer(int num) { return saveMesh[num]; }
-    Material MaterialBlusa(int num) { return saveMateralBlusa[num]; }
+    Material MaterialBlusa(int num) { return saveMaterialBlusa[num]; }
     Material MaterialCorpo(int num) { return saveMaterialCorpo[num]; }
 
     void Awake()
@@ -28,19 +29,17 @@ public class PlayerManager : MonoBehaviour
 
         myListAudios.Add("Tranca do Armario", bancoDados.audio[0]);
 
-        saveMateralBlusa.Add(bancoDados.material[17]);
-        saveMateralBlusa.Add(bancoDados.material[18]);
-        saveMateralBlusa.Add(bancoDados.material[19]);
-        saveMateralBlusa.Add(bancoDados.material[20]);
-        saveMateralBlusa.Add(bancoDados.material[21]);
+        // salvar informações dos materiais da blusa
+        List<int> blusaIndices = new List<int> { 17, 18, 19, 20, 21 };
+        saveMaterialBlusa.AddRange(blusaIndices.Select(i => bancoDados.material[i]));
 
-        saveMesh.Add(bancoDados.mesh[0]);
-        saveMesh.Add(bancoDados.mesh[3]);
+        // salvar informações dos meshes
+        List<int> meshIndices = new List<int> { 0, 3 };
+        saveMesh.AddRange(meshIndices.Select(i => bancoDados.mesh[i]));
 
-        saveMaterialCorpo.Add(bancoDados.material[3]);
-        saveMaterialCorpo.Add(bancoDados.material[4]);
-        saveMaterialCorpo.Add(bancoDados.material[22]);
-        saveMaterialCorpo.Add(bancoDados.material[5]);
+        // salvar informações dos materiais do corpo
+        List<int> corpoIndices = new List<int> { 3, 4, 22, 5 };
+        saveMaterialCorpo.AddRange(corpoIndices.Select(i => bancoDados.material[i]));
     }
 
     void Start()
@@ -74,7 +73,7 @@ public class PlayerManager : MonoBehaviour
 
         ModeloEscolha(menu.indexUniforme, menu.indexMesh, ceira);
     }
-    
+
     void ModeloEscolha(int index, int indexMesh, int local)
     {
         GameObject.Find("Corpo - Player").GetComponent<SkinnedMeshRenderer>().sharedMesh =

@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/* Script global responsável por spawnar todos os NPCs com todos os seus respectivos gêneros.  *
+ * Acessórios utilizados, entre outras funcionalidades.                                        */
 public class GeneratePersons
 {
     Estudantes estudantes;
     Menu menu;
 
-    Dictionary<string, int> personagensIndices = new Dictionary<string, int>
-    { /* List Global de Todos os Personagens que ta no Game */
-        { "Amai Odayaka"   , 0 },
-        { "Alícia"         , 1 },
-        { "Carolina"       , 2 },
-        { "Alana"          , 3 }
+    /* List Global de Todos os Personagens que ta no Game */
+    List<string> personagens = new List<string>
+    {
+        "Amai Odayaka", "Alícia", "Carolina", "Alana", "Olivia"
     };
+
+    Dictionary<string, int> personagensIndices = new Dictionary<string, int>();
 
     Dictionary<string, int> personagensMorenosFace = new Dictionary<string, int>
     { /* List de Todos os Personagens Morenos */
@@ -73,6 +75,9 @@ public class GeneratePersons
     {
         menu = Object.FindObjectOfType<Menu>(); // Referencia do Script - Menu
 
+        for (int i = 0; i < personagens.Count; i++) // Conta todos os Nomes da List
+            personagensIndices.Add(personagens[i], i); // Adiciona um index em cada Nome "ID"
+
         for (int i = 0; i < bancoDados.listNames.Count; i++) // Percorrer Toda a List de Nomes
         {
             string nome = bancoDados.listNames[i]; // Coletando 1 nome por Ves ate o fim da List
@@ -90,8 +95,10 @@ public class GeneratePersons
 
         RenomeCorpo(obj.name); // Adiciona um Nome do NPC Junto ao Corpo para depois Procurar
         RenomeCabelo(obj.name); // Adiciona um Nome do NPC Junto ao Local que ficara o Cabelo para depois Procurar
+        RenomeAssesorios(obj.name); // Adiciona um Nome do NPC Junto ao Local Onde Fica os Assesorios para Procurar
         MeshAvatar(bancoDados, obj.name); // Procura o nome do NPC Para Adicionar uma Mesh a ele
         MaterialCorAvatar(bancoDados, obj.name); // Procura o nome do NPC Para Adicionar os Materias a ele
+        AddTodosOsAssesorios(bancoDados, obj.name); // Procurar o nome do NPC Para Acicionar os Componentres dos Assesorios
         AddCobelos(bancoDados, indice, obj.name); // Procura o nome do NPC Para Adicionar um Cabelo
         Olhos(bancoDados, obj.name, indice); // Procura o nome do NPC para Adicionar as Mesh e os Materias nos 2 Olhos
         AddComponents(bancoDados, obj.name); // Procura o nome e Aciona todos os Componentes ao NPC
@@ -101,10 +108,19 @@ public class GeneratePersons
     {
         if (personagensMorenosFace.ContainsKey(name)) // Procurar os Nomes dos NPCs Morenos
         {
-            int num = menu.indexUniforme; // Coleta o Valor do Index
+            int num = menu.indexUniforme; // Coleta o Valor do Index "Material do Corpo"
 
             if (uniformeMap.ContainsKey(num)) // Procura cada Valor
                 num = uniformeMap[num]; // Troca o Valor do Index pelo Valor do Dictionary
+
+            int index = personagensMorenosFace[name]; // Coleta o Valor "Material Blusa"
+
+            if (personagensMorenosFace[name] == 1)      // Personagem A
+                index = 20;
+            else if (personagensMorenosFace[name] == 2) // Personagem B
+                index = 18;
+
+            Bullying(bancoDados, name, index, menu.indexUniforme); // Add a Mesh e os Materiais da Blusa das Bullying
 
             Material materialCorpo = AvatarMaterialCorpo(num);
             Material materialFace = AvatarMaterialFace(personagensMorenosFace[name]);
@@ -134,7 +150,35 @@ public class GeneratePersons
         bancoDados.components.AvatarCuston("CorpoNemesis - " + name).materials
             .ElementAt(2).mainTexture = materialFace.mainTexture;
     }
- 
+
+    void Bullying(ScriptableBancoDeDados bancoDados, string name, int num, int index)
+    { /* Bullyings As Meninas que Fazem Bully - Add os Seus Assesorios */
+        GameObject.Find("Blusa na Sintura - " + name).GetComponent<SkinnedMeshRenderer>().sharedMesh =
+            bancoDados.mesh[5];
+
+        GameObject.Find("Blusa na Sintura - " + name).GetComponent<SkinnedMeshRenderer>().material = 
+            bancoDados.material[num];
+
+        if (index == 1 || index == 3)
+            return;
+
+        /* Add as Puseiras das Bullyngs */
+        GameObject.Find("ScrunchieLeft - " + name).GetComponent<MeshFilter>().mesh = bancoDados.mesh[8];
+        GameObject.Find("ScrunchieLeft - " + name).GetComponent<MeshRenderer>().material = bancoDados.material[27];
+
+        GameObject.Find("ScrunchieRight - " + name).GetComponent<MeshFilter>().mesh = bancoDados.mesh[9];
+        GameObject.Find("ScrunchieRight - " + name).GetComponent<MeshRenderer>().material = bancoDados.material[27];
+    }
+
+    void AddTodosOsAssesorios(ScriptableBancoDeDados bancoDados, string name)
+    { /* Add Todos os Assesorios Padão de todos os NPCs */
+        GameObject.Find("RightMeia - " + name).GetComponent<MeshFilter>().mesh = bancoDados.mesh[6];
+        GameObject.Find("RightMeia - " + name).GetComponent<MeshRenderer>().material = bancoDados.material[26];
+
+        GameObject.Find("LeftMeia - " + name).GetComponent<MeshFilter>().mesh = bancoDados.mesh[7];
+        GameObject.Find("LeftMeia - " + name).GetComponent<MeshRenderer>().material = bancoDados.material[26];
+    }
+
     void AddComponents(ScriptableBancoDeDados bancoDados, string name)
     {
         GameObject.Find(name).AddComponent<Estudantes>(); // ADD Script - Estudantes
@@ -178,5 +222,24 @@ public class GeneratePersons
     { /* Sistema de Renomear o local onde ta o Obj do NPC que Fica o Cabelo Correspontente a Ele(a) */
         Object obj = GameObject.Find("CabelosPer - Nemesis");
         obj.name = "CabelosPer - " + name;
+    }
+
+    void RenomeAssesorios(string name)
+    { /* Sistema de Renomear todos os Assesorios dos NPCs */
+        Object obj = GameObject.Find("Blusa na Sintura - Nemesis");
+        obj.name = "Blusa na Sintura - " + name;
+
+        Object obj2 = GameObject.Find("RightMeia - Nemesis");
+        obj2.name = "RightMeia - " + name;
+
+        Object obj3 = GameObject.Find("LeftMeia - Nemesis");
+        obj3.name = "LeftMeia - " + name;
+
+        /* Renomear os Locais das Puseiras */
+        Object obj4 = GameObject.Find("ScrunchieLeft - Nemesis");
+        obj4.name = "ScrunchieLeft - " + name;
+
+        Object obj5 = GameObject.Find("ScrunchieRight - Nemesis");
+        obj5.name = "ScrunchieRight - " + name;
     }
 }

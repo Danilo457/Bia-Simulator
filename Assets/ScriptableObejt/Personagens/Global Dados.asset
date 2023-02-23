@@ -165,20 +165,27 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 003f6c70f37a6fa4a8d59cf3b648b762, type: 2}
   - {fileID: 2100000, guid: 3033fbbff40ace14782972e631da2999, type: 2}
   - {fileID: 2100000, guid: e8fac32f2649171459049cfbe97fd2d7, type: 2}
+  - {fileID: 2100000, guid: d4e8991c697c0c54d8291407afe9c696, type: 2}
+  - {fileID: 2100000, guid: ad82a11c1ce8ab64296b4478fb827781, type: 2}
   mesh:
   - {fileID: 4300000, guid: da7ee523fc619264087e1778ac7444af, type: 2}
   - {fileID: 4300000, guid: cdd0b92175151f94d9557b270db95741, type: 2}
   - {fileID: 4300000, guid: 021f15d0839764c4999d9b407c8903bf, type: 2}
   - {fileID: 4300000, guid: 14b3ba9780f63fd409b89972cd0a00eb, type: 2}
   - {fileID: 4300000, guid: 9913f3630cd64c34f83ee04862970d12, type: 2}
+  - {fileID: 4300000, guid: 0fdcbe01c4c1d63439fdfdb942895258, type: 2}
+  - {fileID: 4300000, guid: 04a79a66bae8db840af1f618dd9eb565, type: 2}
+  - {fileID: 4300000, guid: e17698fcc62bf3c40a42818cbea4bb80, type: 2}
+  - {fileID: 4300000, guid: 9c92dfa1dda6f864bb9ee3210de673cd, type: 2}
+  - {fileID: 4300000, guid: 24b82ec1153f8da4ca20f51bf4710c9b, type: 2}
   cabelos:
   - {fileID: 4689019053028156010, guid: 41a362d3bb6e2d24e90006dd435ce2d7, type: 3}
   - {fileID: 1124833697604439112, guid: 5e3abafb94f24a34b8a50e8f3a5742e3, type: 3}
   - {fileID: 589817150856288026, guid: 6bea315285eb3564aa80cb3f29cd1d5d, type: 3}
   - {fileID: 7733117577549862385, guid: 158367c6ee06162489cd9d17247e2abf, type: 3}
+  - {fileID: 6412351479276720407, guid: 26ba60a9327441d4583475a8596b6284, type: 3}
   - {fileID: 7213985014256696987, guid: fb689085c2fde6e43bdcb00b3d9f7aa7, type: 3}
   - {fileID: 7908816659358260586, guid: 372c6bcbd5e75de46ac4d8e128a5118f, type: 3}
-  - {fileID: 6412351479276720407, guid: 26ba60a9327441d4583475a8596b6284, type: 3}
   - {fileID: 5611150099964169419, guid: b9f1e7bc88b6adc42ae239ae4e1e3b78, type: 3}
   clip:
   - {fileID: 7400000, guid: 18001a373cee2fb4eb79731cc79270f8, type: 2}
