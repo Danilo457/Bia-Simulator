@@ -45,6 +45,8 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         acessorios.Add(GameObject.Find("Blusa na Sintura - BiaChiqui"));
+        acessorios.Add(GameObject.Find("ScrunchieRight - Player"));
+        acessorios.Add(GameObject.Find("ScrunchieLeft - Player"));
         cabelos.Add(GameObject.Find("YunoHair - BiaChiqui"));
         cabelos.Add(GameObject.Find("AmaiHairRig - BiaChiqui"));
         cabelos.Add(GameObject.Find("Bully_Kashiko - BiaChiqui"));
@@ -53,18 +55,30 @@ public class PlayerManager : MonoBehaviour
         cabelos.Add(GameObject.Find("FemaleHair2 - BiaChiqui"));
         cabelos.Add(GameObject.Find("MusicHair5 - BiaChiqui"));
         cabelos.Add(GameObject.Find("OsanaShortHair - BiaChiqui"));
+        
 
         myListManager.Add("Blusa Amarrada na Sintura", acessorios[0]);
+        myListManager.Add("PuseirasRight", acessorios[1]);
+        myListManager.Add("PuseirasLeft", acessorios[2]);
 
         myListManager.TryGetValue("Blusa Amarrada na Sintura", out GameObject blusa);
         blusa.GetComponent<SkinnedMeshRenderer>().material = MaterialBlusa(menu.indexBlusa);
-
         blusa.SetActive(!menu.actvBlusa);
+
+        myListManager.TryGetValue("PuseirasRight", out GameObject puseiraRight);
+        myListManager.TryGetValue("PuseirasLeft", out GameObject puseiraLeft);
+        puseiraRight.SetActive(!menu.actvPuseira);
+        puseiraLeft.SetActive(!menu.actvPuseira);
+
+        if (menu.indexUniforme == 1 || menu.indexUniforme == 3) {
+            puseiraRight.SetActive(false);
+            puseiraLeft.SetActive(false);
+        }
 
         for (int i = 0; i < cabelos.Count; i++)
             cabelos[i].SetActive(false);
 
-        cabelos[menu.indexCanelo].SetActive(!menu.actvCabelo);
+        cabelos[menu.indexCabelo].SetActive(!menu.actvCabelo);
 
         int ceira = 0;
 

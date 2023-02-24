@@ -47,9 +47,9 @@ public class Menu : MonoBehaviour
     [SerializeField] List<Texture2D> textureCabelo = new List<Texture2D>();
     [SerializeField] List<Texture2D> textureBlusa = new List<Texture2D>();
 
-    [HideInInspector] public int indexCanelo;
+    [HideInInspector] public int indexCabelo;
     [HideInInspector] public int indexBlusa;
-    [HideInInspector] public bool actvBlusa;
+    [HideInInspector] public bool actvBlusa, actvPuseira;
     [HideInInspector] public bool actvCabelo;
     [HideInInspector] public float sensibility;
 
@@ -57,8 +57,16 @@ public class Menu : MonoBehaviour
 
     bool sceneArmarios;
 
-    public int indexUniforme; // Material Estilo de Roura Padrão da Escola
-    public int indexMesh; // Mesh do Player
+    [HideInInspector] public int indexUniforme; // Material Estilo de Roura Padrão da Escola
+    [HideInInspector] public int indexMesh; // Mesh do Player
+
+    /* Sistema de Save "Configurações de Usuario" */
+    public Slider sensibilitySlider;
+    public Toggle fullscreenTogglePuseiras;
+    public Toggle fullscreenToggleBlusa;
+
+    bool fullscreenPuseiras;
+    bool fullscreenBlusa;
 
     void Awake()
     {
@@ -82,6 +90,7 @@ public class Menu : MonoBehaviour
         controlSettings.SetActive(false);
         blusaTrocaDeCor.SetActive(false);
         painelEscolhasCustom.SetActive(false);
+        fundoTrocaDeCabelos.SetActive(false);
 
         generatePersons.AddSavesLists(bancoDados);
     }
@@ -90,11 +99,34 @@ public class Menu : MonoBehaviour
     {
         mouseCursor = FindObjectOfType<MouseController>();
 
+        LoadConfig();
+        UpdateUI();
+
         mouseCursor.MouseLockedFalse();
 
         generatePersons.IndexModelo = 0;
 
         preVill.sprite = bancoDados.spritsModelos.modelos[generatePersons.IndexModelo];
+    }
+
+    public void SaveConfig()
+    { /* Sistema de Save Simples */
+        sensibility = sensibilitySlider.value;
+
+        fullscreenPuseiras = fullscreenTogglePuseiras.isOn;
+        fullscreenBlusa = fullscreenToggleBlusa.isOn;
+
+        SaveSystem.SaveConfig(sensibility, fullscreenPuseiras, fullscreenBlusa);
+    }
+
+    private void LoadConfig() =>
+        SaveSystem.LoadConfig(out sensibility, out fullscreenPuseiras, out fullscreenBlusa);
+
+    private void UpdateUI()
+    { /* Seta todos os Valores Salvos */
+        sensibilitySlider.value = sensibility;
+        fullscreenTogglePuseiras.isOn = fullscreenPuseiras;
+        fullscreenToggleBlusa.isOn = fullscreenBlusa;
     }
 
     void Update()
@@ -145,6 +177,8 @@ public class Menu : MonoBehaviour
         sceneArmarios = true;
 
         mouseCursor.MouseLockedFalse();
+
+        SaveConfig(); // Save
     }
 
     public void MenuInicial() {
@@ -167,6 +201,8 @@ public class Menu : MonoBehaviour
         panelSettings.SetActive(true);
 
         mouseCursor.MouseLockedFalse();
+
+        SaveConfig(); // Save
     }
 
     public void ButtonPersonalizarPlayer()
@@ -209,6 +245,8 @@ public class Menu : MonoBehaviour
         painelEscolhasCustom.SetActive(false);
 
         mouseCursor.MouseLockedFalse();
+
+        SaveConfig(); // Save
     }
 
     public void ControlSettings()
@@ -221,28 +259,31 @@ public class Menu : MonoBehaviour
         mouseCursor.MouseConfined();
     }
 
-    public void ToggleBlusaDaSintura() =>
+    public void ToggleBlusaDaSintura() => // Assesorio do Player "Blusa Amarada a Sintura"
         actvBlusa = !actvBlusa;
+
+    public void TogglePuseiras() => // Assesorio do Player "Puseiras"
+        actvPuseira = !actvPuseira;
 
     public void ToggleCabelo() =>
         actvCabelo = !actvCabelo;
 
     public void ButtonRetroceder() {
-        indexCanelo--;
+        indexCabelo--;
 
-        if (indexCanelo < 0)
-            indexCanelo = 7;
+        if (indexCabelo < 0)
+            indexCabelo = 7;
 
-        trocaDeCabelo.texture = textureCabelo[indexCanelo];
+        trocaDeCabelo.texture = textureCabelo[indexCabelo];
     }
 
     public void ButtonAvansar() {
-        indexCanelo++;
+        indexCabelo++;
 
-        if (indexCanelo > 7)
-            indexCanelo = 0;
+        if (indexCabelo > 7)
+            indexCabelo = 0;
 
-        trocaDeCabelo.texture = textureCabelo[indexCanelo];
+        trocaDeCabelo.texture = textureCabelo[indexCabelo];
     }
 
     public void ButtonRetrocederBlusa() {
@@ -341,7 +382,8 @@ public class Menu : MonoBehaviour
     void ValorMesh(int num) => // Quantidade de Mesh
         generatePersons.indexMesh = num;
 
-    public void SensibilitySlider(float value) => sensibility = value;
+    public void SensibilitySlider(float value) => sensibility = value; // mudar valor - Mouse sensibility
+
 
     public void ExitGame() =>
         Application.Quit();

@@ -10,13 +10,13 @@ public class GeneratePersons
     Estudantes estudantes;
     Menu menu;
 
+    Dictionary<string, int> personagensIndices = new Dictionary<string, int>();
+
     /* List Global de Todos os Personagens que ta no Game */
     List<string> personagens = new List<string>
     {
         "Amai Odayaka", "Alícia", "Carolina", "Alana", "Olivia"
     };
-
-    Dictionary<string, int> personagensIndices = new Dictionary<string, int>();
 
     Dictionary<string, int> personagensMorenosFace = new Dictionary<string, int>
     { /* List de Todos os Personagens Morenos */
@@ -87,7 +87,7 @@ public class GeneratePersons
         }
     }
 
-    private void SpawnAvatar(string nomePersonagem, ScriptableBancoDeDados bancoDados)
+    void SpawnAvatar(string nomePersonagem, ScriptableBancoDeDados bancoDados)
     { /* Sistema que Spawn todos os NPCs do Game "Scene dos Armários" */
         int indice = personagensIndices[nomePersonagem]; // Verifica dodos os nomes que ta no Dictionary e Coleta o Index
         Object obj = Object.Instantiate(bancoDados.avatar, spamPosition[0].position, spamPosition[0].rotation);
