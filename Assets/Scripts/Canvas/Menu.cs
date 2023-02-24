@@ -64,15 +64,17 @@ public class Menu : MonoBehaviour
     public Slider sensibilitySlider;
     public Toggle fullscreenTogglePuseiras;
     public Toggle fullscreenToggleBlusa;
+    public Toggle fullscreenToggleCabeloPlayer;
 
+    int indiceCabelo, indiceBlusa;
     bool fullscreenPuseiras;
     bool fullscreenBlusa;
+    bool fullscreenCabeloPlayer;
 
     void Awake()
     {
         spamSalaDosArmarios = FindObjectOfType<Spam>();
 
-        trocaDeCabelo.texture = textureCabelo[0];
         trocaDeCorBlusa.texture = textureBlusa[0];
 
         spriteMenu.SetActive(true);
@@ -91,6 +93,7 @@ public class Menu : MonoBehaviour
         blusaTrocaDeCor.SetActive(false);
         painelEscolhasCustom.SetActive(false);
         fundoTrocaDeCabelos.SetActive(false);
+        fundoActvCabelo.SetActive(false);
 
         generatePersons.AddSavesLists(bancoDados);
     }
@@ -109,24 +112,37 @@ public class Menu : MonoBehaviour
         preVill.sprite = bancoDados.spritsModelos.modelos[generatePersons.IndexModelo];
     }
 
-    public void SaveConfig()
+    void SaveConfig()
     { /* Sistema de Save Simples */
+        indexCabelo = indiceCabelo;
+        indexBlusa = indiceBlusa;
         sensibility = sensibilitySlider.value;
 
         fullscreenPuseiras = fullscreenTogglePuseiras.isOn;
         fullscreenBlusa = fullscreenToggleBlusa.isOn;
+        fullscreenCabeloPlayer = fullscreenToggleCabeloPlayer.isOn;
 
-        SaveSystem.SaveConfig(sensibility, fullscreenPuseiras, fullscreenBlusa);
+        SaveSystem.SaveConfig(indexCabelo, indexBlusa, sensibility, fullscreenPuseiras, 
+            fullscreenBlusa, fullscreenCabeloPlayer);
     }
 
-    private void LoadConfig() =>
-        SaveSystem.LoadConfig(out sensibility, out fullscreenPuseiras, out fullscreenBlusa);
+    void LoadConfig()
+    {
+        SaveSystem.LoadConfig(out indexCabelo, out indexBlusa, out sensibility, out fullscreenPuseiras, 
+            out fullscreenBlusa, out fullscreenCabeloPlayer);
+    }
 
-    private void UpdateUI()
+    void UpdateUI()
     { /* Seta todos os Valores Salvos */
+        indiceCabelo = indexCabelo;
+        indiceBlusa = indexBlusa;
         sensibilitySlider.value = sensibility;
         fullscreenTogglePuseiras.isOn = fullscreenPuseiras;
         fullscreenToggleBlusa.isOn = fullscreenBlusa;
+        fullscreenToggleCabeloPlayer.isOn = fullscreenCabeloPlayer;
+
+        trocaDeCabelo.texture = textureCabelo[indiceCabelo]; // Carrega o Cabelo "Visual"
+        trocaDeCorBlusa.texture = textureBlusa[indiceBlusa]; // Carrega a Cor Blusa "Visual"
     }
 
     void Update()
@@ -274,6 +290,8 @@ public class Menu : MonoBehaviour
         if (indexCabelo < 0)
             indexCabelo = 7;
 
+        indiceCabelo = indexCabelo; // save o Indice
+
         trocaDeCabelo.texture = textureCabelo[indexCabelo];
     }
 
@@ -282,6 +300,8 @@ public class Menu : MonoBehaviour
 
         if (indexCabelo > 7)
             indexCabelo = 0;
+
+        indiceCabelo = indexCabelo; // save o Indice
 
         trocaDeCabelo.texture = textureCabelo[indexCabelo];
     }
@@ -292,6 +312,8 @@ public class Menu : MonoBehaviour
         if (indexBlusa < 0)
             indexBlusa = 4;
 
+        indiceBlusa = indexBlusa; // save o Indice
+
         trocaDeCorBlusa.texture = textureBlusa[indexBlusa];
     }
 
@@ -300,6 +322,8 @@ public class Menu : MonoBehaviour
 
         if (indexBlusa > 4)
             indexBlusa = 0;
+
+        indiceBlusa = indexBlusa; // save o Indice
 
         trocaDeCorBlusa.texture = textureBlusa[indexBlusa];
     }

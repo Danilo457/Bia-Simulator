@@ -6049,11 +6049,10 @@ MonoBehaviour:
   espera: 0
   indexUniforme: 0
   indexMesh: 0
-  puseiraToggle: {fileID: 26682041}
-  blusaToggle: {fileID: 1583422066}
   sensibilitySlider: {fileID: 748343765}
   fullscreenTogglePuseiras: {fileID: 26682041}
   fullscreenToggleBlusa: {fileID: 1583422066}
+  fullscreenToggleCabeloPlayer: {fileID: 1580587321}
 --- !u!114 &999017282
 MonoBehaviour:
   m_ObjectHideFlags: 0
