@@ -9,6 +9,7 @@ public class GeneratePersons
 {
     Estudantes estudantes;
     Menu menu;
+    SystemPersonagens systemPersonagens;
 
     Dictionary<string, int> personagensIndices = new Dictionary<string, int>();
 
@@ -74,6 +75,7 @@ public class GeneratePersons
     public void SpamSalaDosArmarios(ScriptableBancoDeDados bancoDados)
     {
         menu = Object.FindObjectOfType<Menu>(); // Referencia do Script - Menu
+        systemPersonagens = Object.FindObjectOfType<SystemPersonagens>();
 
         for (int i = 0; i < personagens.Count; i++) // Conta todos os Nomes da List
             personagensIndices.Add(personagens[i], i); // Adiciona um index em cada Nome "ID"
@@ -96,12 +98,15 @@ public class GeneratePersons
         RenomeCorpo(obj.name); // Adiciona um Nome do NPC Junto ao Corpo para depois Procurar
         RenomeCabelo(obj.name); // Adiciona um Nome do NPC Junto ao Local que ficara o Cabelo para depois Procurar
         RenomeAssesorios(obj.name); // Adiciona um Nome do NPC Junto ao Local Onde Fica os Assesorios para Procurar
+        RenomeDetectores(obj.name); // Adiciona um Nome do NPC para cada Detector que Posui
         MeshAvatar(bancoDados, obj.name); // Procura o nome do NPC Para Adicionar uma Mesh a ele
         MaterialCorAvatar(bancoDados, obj.name); // Procura o nome do NPC Para Adicionar os Materias a ele
         AddTodosOsAssesorios(bancoDados, obj.name); // Procurar o nome do NPC Para Acicionar os Componentres dos Assesorios
         AddCobelos(bancoDados, indice, obj.name); // Procura o nome do NPC Para Adicionar um Cabelo
         Olhos(bancoDados, obj.name, indice); // Procura o nome do NPC para Adicionar as Mesh e os Materias nos 2 Olhos
-        AddComponents(bancoDados, obj.name); // Procura o nome e Aciona todos os Componentes ao NPC
+        AddComponents(bancoDados, obj.name, indice); // Procura o nome e Aciona todos os Componentes ao NPC
+
+        systemPersonagens.GetIndice(obj.name);
     }
 
     void MaterialCorAvatar(ScriptableBancoDeDados bancoDados, string name)
@@ -179,12 +184,12 @@ public class GeneratePersons
         GameObject.Find("LeftMeia - " + name).GetComponent<MeshRenderer>().material = bancoDados.material[26];
     }
 
-    void AddComponents(ScriptableBancoDeDados bancoDados, string name)
+    void AddComponents(ScriptableBancoDeDados bancoDados, string name, int indice)
     {
         GameObject.Find(name).AddComponent<Estudantes>(); // ADD Script - Estudantes
 
         estudantes = GameObject.Find(name).GetComponent<Estudantes>();
-        estudantes.StartEsts(name); // Seta o Local do NPC a Animação
+        estudantes.StartEsts(name, indice); // Seta o Local do NPC a Animação
 
         estudantes.ListsAnimClips(bancoDados); // Audios dos NPCs
     }
@@ -241,5 +246,11 @@ public class GeneratePersons
 
         Object obj5 = GameObject.Find("ScrunchieRight - Nemesis");
         obj5.name = "ScrunchieRight - " + name;
+    }
+
+    void RenomeDetectores(string name)
+    {
+        Object obj = GameObject.Find("DetectorCaixaConversar - Nemesis");
+        obj.name = "DetectorCaixaConversar - " + name;
     }
 }

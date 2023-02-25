@@ -25,7 +25,7 @@ public class CanvasManager : MonoBehaviour
         mouse = FindObjectOfType<MouseController>();
         dialogueTrigger = FindObjectOfType<DialogueTrigger>();
 
-        componentsInteracoes[0].SetActive(true);
+        componentsInteracoes[0].SetActive(true); // O Circulo de 8 Escolhas
     }
 
     void Update()
@@ -52,7 +52,7 @@ public class CanvasManager : MonoBehaviour
     public void ButtonSocialize() {
         carregamento = true;
 
-        componentsInteracoes[0].SetActive(false);
+        componentsInteracoes[0].SetActive(false); // O Circulo de 8 Escolhas
         componentsInteracoes[1].SetActive(true);
     }
 

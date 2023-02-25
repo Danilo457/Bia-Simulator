@@ -7,7 +7,8 @@ public class SystemPersonagens : MonoBehaviour
 {
     RectTransform telaIndicativa;
 
-    [SerializeField] Detecta localPlayer;
+    List<Detecta> detecta = new List<Detecta>();
+
     MouseController cursor;
     CanvasManager canvasManager;
 
@@ -25,9 +26,12 @@ public class SystemPersonagens : MonoBehaviour
 
     void Awake()
     {
-        localPlayer.GetComponent<Detecta>();
-
         timeImage = 1.0f;
+    }
+
+    public void GetIndice(string name)
+    {
+        detecta.Add(GameObject.Find("DetectorCaixaConversar - " + name).GetComponent<Detecta>());
     }
 
     void Start()
@@ -46,12 +50,14 @@ public class SystemPersonagens : MonoBehaviour
         telaIndicativa.SetParent(localDestination.transform, true);
         telaIndicativa.anchoredPosition = new Vector2(0, time);
 
-        caixaEscolhas.SetActive(false);
+        caixaEscolhas.SetActive(false); // O Circulo de 8 Escolhas
     }
 
-    void Update()
+    public void UpdateInteracoes(int index)
     {
-        if (time > 0 && localPlayer.local && !atvCaixaEscolhas) {
+        Debug.Log(index);
+
+        if (time > 0 && detecta[index].local && !atvCaixaEscolhas) {
             time -= Time.deltaTime * 100;
 
             telaIndicativa.anchoredPosition = new Vector2(0, time);
@@ -60,10 +66,10 @@ public class SystemPersonagens : MonoBehaviour
                 time = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && timeImage > 0 && localPlayer.local && !atvCaixaEscolhas) {
+        if (Input.GetKeyDown(KeyCode.E) && timeImage > 0 && detecta[index].local && !atvCaixaEscolhas) {
             atvCaixaEscolhas = !atvCaixaEscolhas;
 
-            caixaEscolhas.SetActive(true);
+            caixaEscolhas.SetActive(true); // O Circulo de 8 Escolhas
         }
 
         if (atvCaixaEscolhas && !trava) {
@@ -74,6 +80,8 @@ public class SystemPersonagens : MonoBehaviour
             if (timeImage <= 0) {
                 timeImage = 1.0f;
                 atvCaixaEscolhas = false;
+
+                caixaEscolhas.SetActive(false); // O Circulo de 8 Escolhas
             }
 
             cursor.MouseConfined();
@@ -82,7 +90,7 @@ public class SystemPersonagens : MonoBehaviour
         if (!atvCaixaEscolhas && time < 150)
             cursor.MouseLockedFalse();
 
-        if (!localPlayer.local || atvCaixaEscolhas) {
+        if (!detecta[index].local || atvCaixaEscolhas) {
             time += Time.deltaTime * 150;
 
             telaIndicativa.anchoredPosition = new Vector2(0, time);

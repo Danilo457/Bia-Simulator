@@ -14,6 +14,8 @@ public class Estudantes : MonoBehaviour
         {"Alana"         , "ParadaNormal" }
     };
 
+    SystemPersonagens systemPersonagens;
+
     Transform targetArmario;
 
     Animation anim;
@@ -23,6 +25,8 @@ public class Estudantes : MonoBehaviour
 
     Rigidbody rb;
 
+    int index;
+
     public void ListsAnimClips(ScriptableBancoDeDados bancoDados)
     {
         myListAudios.Add("AudioClip Abrir tranca Armaio", bancoDados.audio[0]);
@@ -30,8 +34,10 @@ public class Estudantes : MonoBehaviour
         myListAudios.TryGetValue("AudioClip Abrir tranca Armaio", out playAudio);
     }
 
-    public void StartEsts(string name)
+    public void StartEsts(string name, int indice)
     {
+        systemPersonagens = FindAnyObjectByType<SystemPersonagens>();
+
         anim = GameObject.Find(name).GetComponent<Animation>();
         audioToks = GameObject.Find(name).GetComponent<AudioSource>();
         rb = GameObject.Find(name).GetComponent<Rigidbody>();
@@ -41,10 +47,17 @@ public class Estudantes : MonoBehaviour
         transform.position = targetArmario.position;
         transform.rotation = targetArmario.rotation;
 
+        index = indice;
+
         rb.mass = 500;
 
         if (animations.ContainsKey(name))
             anim.Play(animations[name]);
+    }
+
+    void Update()
+    {
+        systemPersonagens.UpdateInteracoes(index);
     }
 
     public void EventAudioArmarioTranca() {
