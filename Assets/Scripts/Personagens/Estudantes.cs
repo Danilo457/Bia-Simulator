@@ -8,10 +8,11 @@ public class Estudantes : MonoBehaviour
 
     Dictionary<string, string> animations = new Dictionary<string, string>
     {
-        {"Amai Odayaka"  , "Juntar npc"   },
-        {"Alícia"        , "Juntar npc"   },
-        {"Carolina"      , "ParadaNormal" },
-        {"Alana"         , "ParadaNormal" }
+        {  "Amai Odayaka"  , "Juntar npc"         },
+        {  "Alícia"        ,  "Juntar npc"        },
+        {  "Carolina"      ,  "ParadaNormal"      },
+        {  "Alana"         ,  "ParadaNormal"      },
+        {  "Olivia"        ,  "Parada Estolo 02"  }
     };
 
     SystemPersonagens systemPersonagens;

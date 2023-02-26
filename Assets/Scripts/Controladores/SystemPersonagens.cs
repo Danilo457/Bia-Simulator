@@ -24,6 +24,8 @@ public class SystemPersonagens : MonoBehaviour
 
     [HideInInspector] public bool atvCaixaEscolhas;
 
+    bool entrou;
+
     void Awake() =>
         timeImage = 1.0f;
 
@@ -100,19 +102,24 @@ public class SystemPersonagens : MonoBehaviour
                 canvasManager.carregamento = false;
             }
 
-            Debug.Log($"local: {index}");
-        }
-        else if (!detecta[2].local && detecta[0].local && detecta[1].local 
-            && detecta[3].local && detecta[4].local)
-        {
-            time += Time.deltaTime * 150;
+            entrou = true;
 
-            telaIndicativa.anchoredPosition = new Vector2(0, time);
+            if (entrou && !detecta[index].local)
+            {
+                time += Time.deltaTime * 150;
 
-            if (time > 150)
-                time = 150;
+                telaIndicativa.anchoredPosition = new Vector2(0, time);
 
-            Debug.Log($"saiu: {name}");
+                if (time > 150)
+                    time = 150;
+
+                if (time == 0)
+                    entrou = false;
+
+                Debug.Log($"fora: {index}, time: {time}, entrou: {entrou}");
+            }
+
+            Debug.Log($"dentro: {index}, entrou: {entrou}");
         }
     }
 }
