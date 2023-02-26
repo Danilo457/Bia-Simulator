@@ -6,7 +6,7 @@ public class Detecta : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player"))
             local = true;
     }
 

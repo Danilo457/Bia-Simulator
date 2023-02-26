@@ -15,6 +15,7 @@ public class Estudantes : MonoBehaviour
     };
 
     SystemPersonagens systemPersonagens;
+    MouseController cursor;
 
     Transform targetArmario;
 
@@ -24,6 +25,8 @@ public class Estudantes : MonoBehaviour
     AudioClip playAudio;
 
     Rigidbody rb;
+
+    string nome;
 
     int index;
 
@@ -37,6 +40,7 @@ public class Estudantes : MonoBehaviour
     public void StartEsts(string name, int indice)
     {
         systemPersonagens = FindAnyObjectByType<SystemPersonagens>();
+        cursor = FindObjectOfType<MouseController>();
 
         anim = GameObject.Find(name).GetComponent<Animation>();
         audioToks = GameObject.Find(name).GetComponent<AudioSource>();
@@ -47,6 +51,7 @@ public class Estudantes : MonoBehaviour
         transform.position = targetArmario.position;
         transform.rotation = targetArmario.rotation;
 
+        nome = name;
         index = indice;
 
         rb.mass = 500;
@@ -55,10 +60,8 @@ public class Estudantes : MonoBehaviour
             anim.Play(animations[name]);
     }
 
-    void Update()
-    {
-        systemPersonagens.UpdateInteracoes(index);
-    }
+    void Update() =>
+        systemPersonagens.UpdateInteracoes(nome, index);
 
     public void EventAudioArmarioTranca() {
         audioToks.clip = playAudio;
