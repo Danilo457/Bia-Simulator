@@ -66,6 +66,7 @@ public class Menu : MonoBehaviour
     public Toggle fullscreenToggleBlusa;
     public Toggle fullscreenToggleCabeloPlayer;
 
+    int indexModelo;
     int indiceCabelo, indiceBlusa;
     bool fullscreenPuseiras;
     bool fullscreenBlusa;
@@ -107,9 +108,9 @@ public class Menu : MonoBehaviour
 
         mouseCursor.MouseLockedFalse();
 
-        generatePersons.IndexModelo = 0;
+        indexModelo = 0;
 
-        preVill.sprite = bancoDados.spritsModelos.modelos[generatePersons.IndexModelo];
+        preVill.sprite = bancoDados.spritsModelos.modelos[indexModelo];
     }
 
     void SaveConfig()
@@ -342,39 +343,39 @@ public class Menu : MonoBehaviour
 
     public void CustonButtonAvansar() // Escolha dos Modelos
     {
-        generatePersons.IndexModelo++;
+        indexModelo++;
 
-        if (generatePersons.IndexModelo > 1)
-            generatePersons.IndexModelo = 0;
+        if (indexModelo > 1)
+            indexModelo = 0;
 
         generatePersons.IndexSaia = 0;
 
         Modelos();
 
-        indexMesh = generatePersons.IndexModelo; // Quantidade de Mesh do Player
+        indexMesh = indexModelo; // Quantidade de Mesh do Player
 
-        ValorMesh(generatePersons.IndexModelo); // Quantidade de Mesh
+        ValorMesh(indexModelo); // Quantidade de Mesh
     }
 
     public void CustonButtonRetroceder() // Escolha dos Modelos
     {
-        generatePersons.IndexModelo--;
+        indexModelo--;
 
-        if (generatePersons.IndexModelo < 0)
-            generatePersons.IndexModelo = 1;
+        if (indexModelo < 0)
+            indexModelo = 1;
 
         generatePersons.IndexSaia = 0;
 
         Modelos();
 
-        indexMesh = generatePersons.IndexModelo; // Quantidade de Mesh do Player
+        indexMesh = indexModelo; // Quantidade de Mesh do Player
 
-        ValorMesh(generatePersons.IndexModelo); // Quantidade de Mesh
+        ValorMesh(indexModelo); // Quantidade de Mesh
     }
 
     public void CustonSaiaButtonAvansar() // Button Troca de Cor da Saia (++)
     {
-        int saiasCount = bancoDados.spritsModelos.personalizar[generatePersons.IndexModelo].saias.Count;
+        int saiasCount = bancoDados.spritsModelos.personalizar[indexModelo].saias.Count;
         generatePersons.IndexSaia = (generatePersons.IndexSaia + 1) % saiasCount;
 
         Personalizacao();
@@ -382,7 +383,7 @@ public class Menu : MonoBehaviour
 
     public void CustonSaiaButtonRetroceder() // Button Troca de Cor da Saia (--)
     {
-        int saiasCount = bancoDados.spritsModelos.personalizar[generatePersons.IndexModelo].saias.Count;
+        int saiasCount = bancoDados.spritsModelos.personalizar[indexModelo].saias.Count;
         generatePersons.IndexSaia = (generatePersons.IndexSaia + saiasCount - 1) % saiasCount;
 
         Personalizacao();
@@ -390,17 +391,17 @@ public class Menu : MonoBehaviour
 
     void Modelos()
     {
-        indexUniforme = generatePersons.IndexModelo; // Material Estilo de Roura Padrão da Escola
+        indexUniforme = indexModelo; // Material Estilo de Roura Padrão da Escola
 
-        preVill.sprite = bancoDados.spritsModelos.modelos[generatePersons.IndexModelo];
+        preVill.sprite = bancoDados.spritsModelos.modelos[indexModelo];
         generatePersons.IndexSaia = 0;
-        preVill.sprite = bancoDados.spritsModelos.personalizar[generatePersons.IndexModelo].saias[0];
+        preVill.sprite = bancoDados.spritsModelos.personalizar[indexModelo].saias[0];
     }
 
     void Personalizacao()
     {
-        preVill.sprite = bancoDados.spritsModelos.personalizar[generatePersons.IndexModelo].saias[generatePersons.IndexSaia];
-        indexUniforme = generatePersons.IndexModelo + 2; // Material Estilo de Roura Padrão da Escola
+        preVill.sprite = bancoDados.spritsModelos.personalizar[indexModelo].saias[generatePersons.IndexSaia];
+        indexUniforme = indexModelo + 2; // Material Estilo de Roura Padrão da Escola
     }
 
     void ValorMesh(int num) => // Quantidade de Mesh

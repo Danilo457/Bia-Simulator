@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class AudioManager
@@ -17,7 +15,7 @@ public static class AudioManager
 
         audioSource.Play();
 
-        MonoBehaviour.Destroy(audioSource.gameObject, clip.length);
+        Object.Destroy(audioSource.gameObject, clip.length);
 
         return audioSource;
     }

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
@@ -28,7 +25,7 @@ public class UIManager : MonoBehaviour
     void Start() =>
         anim.GetComponent<Animator>();
 
-    //void NewTalker(DialogueContainer talkerInformations) =>
+    //void NewTalker(DialogueContainer talkerInformations) => // Animação do Button
     //    anim.Play("animation");
 
     void ShowText(string message) =>

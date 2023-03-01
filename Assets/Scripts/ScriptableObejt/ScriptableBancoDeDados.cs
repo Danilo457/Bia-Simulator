@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 [CreateAssetMenu(fileName = "ScriptableObject", menuName = "Scriptable/Banco de Dados")]
 public class ScriptableBancoDeDados : ScriptableObject
@@ -45,7 +43,7 @@ public class AddGameObject
     }
 }
 
-[Serializable]
+[System.Serializable]
 public class ModelosPer
 {
     public List<Sprite> modelos = new List<Sprite>();
@@ -53,7 +51,7 @@ public class ModelosPer
     public List<Mudansas> personalizar = new List<Mudansas>();
 }
 
-[Serializable]
+[System.Serializable]
 public class Mudansas
 {
     public List<Sprite> blusas = new List<Sprite>();

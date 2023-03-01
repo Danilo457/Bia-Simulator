@@ -1,7 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+/* Bibliotecas Bia-Simulator */
+using Conversor;
 
 /* Script global responsável por spawnar todos os NPCs com todos os seus respectivos gêneros.  *
  * Acessórios utilizados, entre outras funcionalidades.                                        */
@@ -11,34 +12,11 @@ public class GeneratePersons
     Menu menu;
     SystemPersonagens systemPersonagens;
 
-    Dictionary<string, int> personagensIndices = new Dictionary<string, int>();
-
-    /* List Global de Todos os Personagens que ta no Game */
-    List<string> personagens = new List<string>
-    {
-        "Amai Odayaka", "Alícia", "Carolina", "Alana", "Olivia"
-    };
-
-    Dictionary<string, int> personagensMorenosFace = new Dictionary<string, int>
-    { /* List de Todos os Personagens Morenos */
-        { "Carolina"       , 1 },
-        { "Alana"          , 2 }
-    };
-
-    Dictionary<int, int> uniformeMap = new Dictionary<int, int>()
-    {
-        { 0, 4 }, { 1, 6 }, { 2, 5 }, { 3, 7 }
-    };
-
     public int indexMesh; // Quantidade de Mesh
 
-    int modelosIndex; // Quantidade de Modelos
     int saiaIndex;
+    int indice;
 
-    public int IndexModelo { // Quantidade de Modelos
-        get { return modelosIndex; }
-        set { modelosIndex = value; }
-    }
     public int IndexSaia {
         get { return saiaIndex; }
         set { saiaIndex = value; }
@@ -62,7 +40,7 @@ public class GeneratePersons
         List<int> corpoIndices = new List<int> { 3, 4, 22, 5, 0, 23, 24, 25 };
         saveMaterialCorpo.AddRange(corpoIndices.Select(i => bancoDados.material[i]));
 
-        List<int> faceIndices = new List<int> { 6, 9, 10 };
+        List<int> faceIndices = new List<int> { 6, 0, 9, 10 }; // { 6, null, 9, 10 }
         saveMaterialFace.AddRange(faceIndices.Select(i => bancoDados.material[i]));
     }
 
@@ -77,21 +55,14 @@ public class GeneratePersons
         menu = Object.FindObjectOfType<Menu>(); // Referencia do Script - Menu
         systemPersonagens = Object.FindObjectOfType<SystemPersonagens>();
 
-        for (int i = 0; i < personagens.Count; i++) // Conta todos os Nomes da List
-            personagensIndices.Add(personagens[i], i); // Adiciona um index em cada Nome "ID"
-
-        for (int i = 0; i < bancoDados.listNames.Count; i++) // Percorrer Toda a List de Nomes
-        {
-            string nome = bancoDados.listNames[i]; // Coletando 1 nome por Ves ate o fim da List
-
-            if (personagensIndices.ContainsKey(nome)) // Coleta so os Nomes Atribuidos ao Dictionary
-                SpawnAvatar(nome, bancoDados); // Instanciar só os Encontrados
+        for (int i = 0; i < systemPersonagens.namesPersonagens.Count; i++) { // Percorre todos os Names
+            indice = i; // Adicionada um ID para Cada Personagem
+            SpawnAvatar(systemPersonagens.namesPersonagens[indice], bancoDados); // Spawn todos os Personagens
         }
     }
 
     void SpawnAvatar(string nomePersonagem, ScriptableBancoDeDados bancoDados)
     { /* Sistema que Spawn todos os NPCs do Game "Scene dos Armários" */
-        int indice = personagensIndices[nomePersonagem]; // Verifica dodos os nomes que ta no Dictionary e Coleta o Index
         Object obj = Object.Instantiate(bancoDados.avatar, spamPosition[0].position, spamPosition[0].rotation);
         obj.name = nomePersonagem; // Atribui o Nome para o Avatar
 
@@ -104,31 +75,29 @@ public class GeneratePersons
         AddTodosOsAssesorios(bancoDados, obj.name); // Procurar o nome do NPC Para Acicionar os Componentres dos Assesorios
         AddCobelos(bancoDados, indice, obj.name); // Procura o nome do NPC Para Adicionar um Cabelo
         Olhos(bancoDados, obj.name, indice); // Procura o nome do NPC para Adicionar as Mesh e os Materias nos 2 Olhos
+        CorDosOlhos(bancoDados, obj.name, indice); // Cor dos Olhos de Cada NPC
         AddComponents(bancoDados, obj.name, indice); // Procura o nome e Aciona todos os Componentes ao NPC
 
-        systemPersonagens.GetIndice(obj.name);
+        systemPersonagens.GetIndice(obj.name); // Procurar Todos os Collider "Detecta" dos NPCs
     }
 
     void MaterialCorAvatar(ScriptableBancoDeDados bancoDados, string name)
     {
-        if (personagensMorenosFace.ContainsKey(name)) // Procurar os Nomes dos NPCs Morenos
+        string indiceTomPele = systemPersonagens.corPele[indice];
+        
+        if (indiceTomPele == "moreno") // Procura todos os Tipos de NPCs Morenos
         {
             int num = menu.indexUniforme; // Coleta o Valor do Index "Material do Corpo"
 
-            if (uniformeMap.ContainsKey(num)) // Procura cada Valor
-                num = uniformeMap[num]; // Troca o Valor do Index pelo Valor do Dictionary
+            Valores.IndiceCorpoMoreno(num); // Coleta o num para Adicionar o Index dos Locais dos Materiais
 
-            int index = personagensMorenosFace[name]; // Coleta o Valor "Material Blusa"
+            int indiceCor = Valores.IndiceBlusaCores(indice); // Cores das Blusa Amarrada a Sintura
 
-            if (personagensMorenosFace[name] == 1)      // Personagem A
-                index = 20;
-            else if (personagensMorenosFace[name] == 2) // Personagem B
-                index = 18;
+            // Add a Mesh e os Materiais da Blusa das Bullying
+            Bullying(bancoDados, name, indiceCor, menu.indexUniforme);
 
-            Bullying(bancoDados, name, index, menu.indexUniforme); // Add a Mesh e os Materiais da Blusa das Bullying
-
-            Material materialCorpo = AvatarMaterialCorpo(num);
-            Material materialFace = AvatarMaterialFace(personagensMorenosFace[name]);
+            Material materialCorpo = AvatarMaterialCorpo(Valores.index);
+            Material materialFace = AvatarMaterialFace(indice);
             SetMaterialProperties(bancoDados, name, materialCorpo, materialFace);
         }
         else
@@ -189,7 +158,7 @@ public class GeneratePersons
         GameObject.Find(name).AddComponent<Estudantes>(); // ADD Script - Estudantes
 
         estudantes = GameObject.Find(name).GetComponent<Estudantes>();
-        estudantes.StartEsts(name, indice); // Seta o Local do NPC a Animação
+        estudantes.StartEsts(bancoDados, name, indice, menu.indexUniforme); // Seta o Local do NPC a Animação
 
         estudantes.ListsAnimClips(bancoDados); // Audios dos NPCs
     }
@@ -212,9 +181,14 @@ public class GeneratePersons
 
         bancoDados.components.MeshIris("RightIris - " + name + num).mesh = bancoDados.mesh[4];
         bancoDados.components.MeshIris("LeftIris - " + name + num).mesh = bancoDados.mesh[4];
+    }
 
-        bancoDados.components.MaterialIris("RightIris - " + name + num).material = bancoDados.material[7];
-        bancoDados.components.MaterialIris("LeftIris - " + name + num).material = bancoDados.material[7];
+    void CorDosOlhos(ScriptableBancoDeDados bancoDados, string name, int indice)
+    { /* Sistema de Adicionar as Cores dos Olhos de Cada NPC */
+        Valores.IndiceIris(indice);
+
+        bancoDados.components.MaterialIris("RightIris - " + name + indice).material = bancoDados.material[Valores.index];
+        bancoDados.components.MaterialIris("LeftIris - " + name + indice).material = bancoDados.material[Valores.index];
     }
 
     void RenomeCorpo(string name)
@@ -246,10 +220,14 @@ public class GeneratePersons
 
         Object obj5 = GameObject.Find("ScrunchieRight - Nemesis");
         obj5.name = "ScrunchieRight - " + name;
+
+        /* Renomear a Bolsa de Bargar o Violão */
+        Object obj6 = GameObject.Find("GuitarCase - Nemesis");
+        obj6.name = "GuitarCase - " + name;
     }
 
     void RenomeDetectores(string name)
-    {
+    { /* Renomear o Collider onde o Player entra e Mostra o Button Para Interagir */
         Object obj = GameObject.Find("DetectorCaixaConversar - Nemesis");
         obj.name = "DetectorCaixaConversar - " + name;
     }

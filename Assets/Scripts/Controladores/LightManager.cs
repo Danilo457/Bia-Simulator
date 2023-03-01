@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class LightManager : MonoBehaviour
 {
@@ -23,7 +21,7 @@ public class LightManager : MonoBehaviour
     }
 }
 
-[Serializable]
+[System.Serializable]
 public class SceneDosArmarios
 {
     public List<Light> luses = new List<Light>();

@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-[Serializable]
+[System.Serializable]
 public class ConfigsDia
 {
     public bool trava;

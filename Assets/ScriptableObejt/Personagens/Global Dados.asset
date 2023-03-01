@@ -167,6 +167,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e8fac32f2649171459049cfbe97fd2d7, type: 2}
   - {fileID: 2100000, guid: d4e8991c697c0c54d8291407afe9c696, type: 2}
   - {fileID: 2100000, guid: ad82a11c1ce8ab64296b4478fb827781, type: 2}
+  - {fileID: 2100000, guid: a22d8787391c3424ca2855ebd18835c0, type: 2}
+  - {fileID: 2100000, guid: 7f5f25dad755ddf4ca21d86d275febd6, type: 2}
+  - {fileID: 2100000, guid: d89fec6738881e446a660bb1264e7dc2, type: 2}
+  - {fileID: 2100000, guid: 7da840c33b42a9349a385794726daf36, type: 2}
   mesh:
   - {fileID: 4300000, guid: da7ee523fc619264087e1778ac7444af, type: 2}
   - {fileID: 4300000, guid: cdd0b92175151f94d9557b270db95741, type: 2}
@@ -178,6 +182,7 @@ MonoBehaviour:
   - {fileID: 4300000, guid: e17698fcc62bf3c40a42818cbea4bb80, type: 2}
   - {fileID: 4300000, guid: 9c92dfa1dda6f864bb9ee3210de673cd, type: 2}
   - {fileID: 4300000, guid: 24b82ec1153f8da4ca20f51bf4710c9b, type: 2}
+  - {fileID: 4300000, guid: dfaaf578524f82c43ad65cb9baca02e9, type: 2}
   cabelos:
   - {fileID: 4689019053028156010, guid: 41a362d3bb6e2d24e90006dd435ce2d7, type: 3}
   - {fileID: 1124833697604439112, guid: 5e3abafb94f24a34b8a50e8f3a5742e3, type: 3}
