@@ -14,8 +14,8 @@ public class GeneratePersons
 
     public int indexMesh; // Quantidade de Mesh
 
-    int saiaIndex;
     int indice;
+    int saiaIndex;
 
     public int IndexSaia {
         get { return saiaIndex; }

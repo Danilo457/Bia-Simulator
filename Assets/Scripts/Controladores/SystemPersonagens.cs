@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections;
 /* Bibliotecas Bia-Simulator */
 using ListasNames;
 
@@ -8,7 +9,7 @@ public class SystemPersonagens : MonoBehaviour
 {
     RectTransform telaIndicativa;
 
-    List<Detecta> detecta = new List<Detecta>();
+    List<DetectaNPCs> detecta = new List<DetectaNPCs>();
 
     MouseController cursor;
     CanvasManager canvasManager;
@@ -26,16 +27,17 @@ public class SystemPersonagens : MonoBehaviour
     float time;
     float timeImage;
 
+    bool playerInsideCollider;
+    bool collidersDisabled;
+
     [HideInInspector] public bool trava;
     [HideInInspector] public bool atvCaixaEscolhas;
-
-    bool entrou;
 
     void Awake() =>
         timeImage = 1.0f;
 
     public void GetIndice(string name) =>
-        detecta.Add(GameObject.Find("DetectorCaixaConversar - " + name).GetComponent<Detecta>());
+        detecta.Add(GameObject.Find("DetectorCaixaConversar - " + name).GetComponent<DetectaNPCs>());
 
     void Start()
     {
@@ -65,31 +67,53 @@ public class SystemPersonagens : MonoBehaviour
         foreach (Personagem corPele in NamesList.personagensList) // Percorre os Tipos de tons de Pele dos NPCs
             this.corPele.Add(corPele.cor);
     }
-        
+
     public void UpdateInteracoes(int index)
     {
         if (detecta[index].local)
         {
+            // desativar todos os outros colliders e atualizar a UI
+            if (!collidersDisabled)
+            {
+                foreach (var detectaObj in detecta)
+                {
+                    if (detectaObj != detecta[index])
+                    {
+                        detectaObj.gameObject.SetActive(false);
+                    }
+                }
+
+                collidersDisabled = true;
+            }
+
             if (!menu.escape)
                 UpdateUI(index);
 
-            entrou = true;
-            
-            Debug.Log($"index: {index}, entrou: {entrou}");
+            playerInsideCollider = true;
+            Debug.Log($"index: {index}, entrou: {playerInsideCollider}");
         }
-        else if (entrou && detecta[index].saiu)
+        else if (playerInsideCollider && detecta[index].saiu)
         {
-            time += Time.deltaTime * 150;
+            // reativar todos os colliders desativados
+            if (collidersDisabled)
+            {
+                foreach (var detectaObj in detecta)
+                {
+                    detectaObj.gameObject.SetActive(true);
+                }
+                collidersDisabled = false;
+            }
 
+            time += Time.deltaTime * 150;
             telaIndicativa.anchoredPosition = new Vector2(0, time);
 
             if (time > 150)
                 time = 150;
 
             if (time == 150)
-                entrou = false;
+                playerInsideCollider = false;
 
-            Debug.Log($"index: {index}, saiu: {entrou}");
+            Debug.Log($"index: {index}, saiu: {playerInsideCollider}");
         }
     }
 
