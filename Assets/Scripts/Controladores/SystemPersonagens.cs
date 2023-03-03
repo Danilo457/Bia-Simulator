@@ -137,6 +137,14 @@ public class SystemPersonagens : MonoBehaviour
             if (time < 0)
                 time = 0;
         }
+        else if (atvCaixaEscolhas)
+        {
+            time += Time.deltaTime * 150;
+            telaIndicativa.anchoredPosition = new Vector2(0, time);
+
+            if (time > 150)
+                time = 150;
+        }
     }
 
     void CheckInput(int index)
