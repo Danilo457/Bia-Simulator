@@ -12,6 +12,7 @@ TagManager:
   - DATA
   - PortaL
   - null
+  - MyCollider
   layers:
   - Default
   - TransparentFX

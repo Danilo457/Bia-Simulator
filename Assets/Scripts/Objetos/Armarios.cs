@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Armarios : MonoBehaviour
 {
-    public BiaChiqui biaChiqui;
+    BiaChiqui biaChiqui;
 
     [SerializeField] Animator anim;
 

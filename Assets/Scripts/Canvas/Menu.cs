@@ -74,8 +74,6 @@ public class Menu : MonoBehaviour
 
     void Awake()
     {
-        spamSalaDosArmarios = FindObjectOfType<Spam>();
-
         trocaDeCorBlusa.texture = textureBlusa[0];
 
         spriteMenu.SetActive(true);

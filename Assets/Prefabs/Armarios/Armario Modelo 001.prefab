@@ -165,7 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24583f3e486fb5c429a1c2e836eb6906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  biaChiqui: {fileID: 0}
   anim: {fileID: 7093091435887220043}
   colliderPorta: {fileID: 5506083661816450679}
   detcArmario: {fileID: 5398678671971514212}

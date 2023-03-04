@@ -9885,7 +9885,7 @@ GameObject:
   - component: {fileID: 2169969309955704738}
   m_Layer: 9
   m_Name: Avatar
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13324,7 +13324,7 @@ GameObject:
   - component: {fileID: 2214474137722236065}
   m_Layer: 9
   m_Name: DetectorCaixaConversar - Nemesis
-  m_TagString: Untagged
+  m_TagString: MyCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13358,7 +13358,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   local: 0
   saiu: 0
-  isDisabled: 0
 --- !u!33 &2214474137722236071
 MeshFilter:
   m_ObjectHideFlags: 0

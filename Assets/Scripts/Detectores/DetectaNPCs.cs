@@ -1,16 +1,31 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DetectaNPCs : MonoBehaviour
 {
+    SystemPersonagens systemPersonagens;
+
     [HideInInspector] public bool local;
     [HideInInspector] public bool saiu;
-    public bool isDisabled = false;
+
+    string nameNPC;
+    int index;
+    internal bool scriptEnabled;
+
+    private void Start() =>
+        systemPersonagens = FindObjectOfType<SystemPersonagens>();
+
+    public void ColetaDados(string name, int indice)
+    {
+        nameNPC = name;
+        index = indice;
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && systemPersonagens.namesPersonagens[index] == nameNPC)
         {
+            gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+
             local = true;
             saiu = false;
         }
@@ -18,7 +33,12 @@ public class DetectaNPCs : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        local = false;
-        saiu = true;
+        if (other.CompareTag("Player") && systemPersonagens.namesPersonagens[index] == nameNPC)
+        {
+            gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+
+            local = false;
+            saiu = true;
+        }
     }
 }

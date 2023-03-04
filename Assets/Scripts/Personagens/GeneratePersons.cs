@@ -11,6 +11,7 @@ public class GeneratePersons
     Estudantes estudantes;
     Menu menu;
     SystemPersonagens systemPersonagens;
+    DetectaNPCs detectaNPCs;
 
     public int indexMesh; // Quantidade de Mesh
 
@@ -78,7 +79,8 @@ public class GeneratePersons
         CorDosOlhos(bancoDados, obj.name, indice); // Cor dos Olhos de Cada NPC
         AddComponents(bancoDados, obj.name, indice); // Procura o nome e Aciona todos os Componentes ao NPC
 
-        systemPersonagens.GetIndice(obj.name); // Procurar Todos os Collider "Detecta" dos NPCs
+        detectaNPCs = GameObject.Find("DetectorCaixaConversar - " + obj.name).GetComponent<DetectaNPCs>();
+        detectaNPCs.ColetaDados(obj.name, indice);
     }
 
     void MaterialCorAvatar(ScriptableBancoDeDados bancoDados, string name)
