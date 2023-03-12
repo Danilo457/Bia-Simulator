@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
 /* Bibliotecas Bia-Simulator */
 using Conversor;
 
@@ -11,7 +12,6 @@ public class GeneratePersons
     Estudantes estudantes;
     Menu menu;
     SystemPersonagens systemPersonagens;
-    DetectaNPCs detectaNPCs;
 
     public int indexMesh; // Quantidade de Mesh
 
@@ -67,10 +67,14 @@ public class GeneratePersons
         Object obj = Object.Instantiate(bancoDados.avatar, spamPosition[0].position, spamPosition[0].rotation);
         obj.name = nomePersonagem; // Atribui o Nome para o Avatar
 
+        // atribui o índice do NPC ao objeto "DetectaNPCs"
+        DetectaNPCs detecta = obj.GetComponentInChildren<DetectaNPCs>();
+        if (detecta != null) detecta.indice = indice;
+
         RenomeCorpo(obj.name); // Adiciona um Nome do NPC Junto ao Corpo para depois Procurar
         RenomeCabelo(obj.name); // Adiciona um Nome do NPC Junto ao Local que ficara o Cabelo para depois Procurar
         RenomeAssesorios(obj.name); // Adiciona um Nome do NPC Junto ao Local Onde Fica os Assesorios para Procurar
-        RenomeDetectores(obj.name); // Adiciona um Nome do NPC para cada Detector que Posui
+        RenomeDetectores(obj.name); // Adiciona um Nome do NPC para cada Detector que Posui "Visual não é nessesario mais"
         MeshAvatar(bancoDados, obj.name); // Procura o nome do NPC Para Adicionar uma Mesh a ele
         MaterialCorAvatar(bancoDados, obj.name); // Procura o nome do NPC Para Adicionar os Materias a ele
         AddTodosOsAssesorios(bancoDados, obj.name); // Procurar o nome do NPC Para Acicionar os Componentres dos Assesorios
@@ -78,9 +82,6 @@ public class GeneratePersons
         Olhos(bancoDados, obj.name, indice); // Procura o nome do NPC para Adicionar as Mesh e os Materias nos 2 Olhos
         CorDosOlhos(bancoDados, obj.name, indice); // Cor dos Olhos de Cada NPC
         AddComponents(bancoDados, obj.name, indice); // Procura o nome e Aciona todos os Componentes ao NPC
-
-        detectaNPCs = GameObject.Find("DetectorCaixaConversar - " + obj.name).GetComponent<DetectaNPCs>();
-        detectaNPCs.ColetaDados(obj.name, indice);
     }
 
     void MaterialCorAvatar(ScriptableBancoDeDados bancoDados, string name)
@@ -187,7 +188,7 @@ public class GeneratePersons
 
     void CorDosOlhos(ScriptableBancoDeDados bancoDados, string name, int indice)
     { /* Sistema de Adicionar as Cores dos Olhos de Cada NPC */
-        Valores.IndiceIris(indice);
+        Valores.IndiceIris(indice); // Seta 1 Material Para a cor dos Olhos
 
         bancoDados.components.MaterialIris("RightIris - " + name + indice).material = bancoDados.material[Valores.index];
         bancoDados.components.MaterialIris("LeftIris - " + name + indice).material = bancoDados.material[Valores.index];
@@ -228,7 +229,7 @@ public class GeneratePersons
         obj6.name = "GuitarCase - " + name;
     }
 
-    void RenomeDetectores(string name)
+    void RenomeDetectores(string name) // Função não usada só coloca os nomes "Visual"
     { /* Renomear o Collider onde o Player entra e Mostra o Button Para Interagir */
         Object obj = GameObject.Find("DetectorCaixaConversar - Nemesis");
         obj.name = "DetectorCaixaConversar - " + name;

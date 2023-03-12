@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bdd823ea66e65442b69ab94c28ad598, type: 3}
+  m_Name: 2 - Amai Odayaka - Resposta de Bia
+  m_EditorClassIdentifier: 
+  dialogos:
+  - name: Bia
+    mensagens:
+    - "Ah, eu adoro hist\xF3ria tamb\xE9m! Acho muito interessante conhecer mais
+      sobre o passado e entender como as coisas evolu\xEDram at\xE9 chegar onde estamos
+      hoje."
+    - "Mas confesso que fiquei com \xE1gua na boca quando voc\xEA mencionou seus
+      doces e bolos. Qual \xE9 o seu favorito?"
+  - name: Amai Odayaka
+    mensagens:
+    - "Eu adoro fazer um bolo de cenoura com cobertura de cream cheese! \xC9 uma
+      receita que passou de gera\xE7\xE3o em gera\xE7\xE3o na minha fam\xEDlia e
+      eu aperfei\xE7oei ao longo dos anos. E voc\xEA, tem algum doce ou sobremesa
+      que gosta muito de comer ou fazer?"
+  - name: Bia
+    mensagens:
+    - "Nossa, deve ser uma del\xEDcia mesmo! Eu adoro doces, principalmente aqueles
+      com um toque especial. Minha av\xF3 costumava fazer um bolo de cenoura com
+      cobertura de chocolate que era simplesmente maravilhoso."
+    - "Acho que o que mais gosto em Hist\xF3ria \xE9 justamente descobrir curiosidades
+      sobre a culin\xE1ria e a alimenta\xE7\xE3o de outras \xE9pocas e culturas.
+      Mas enfim.\nVou ter que ir agora, mas espero te ver por aqui de novo. At\xE9
+      mais!"

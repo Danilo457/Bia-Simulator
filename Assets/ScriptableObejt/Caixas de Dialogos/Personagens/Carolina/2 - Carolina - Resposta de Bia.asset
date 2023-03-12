@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bdd823ea66e65442b69ab94c28ad598, type: 3}
+  m_Name: 2 - Carolina - Resposta de Bia
+  m_EditorClassIdentifier: 
+  dialogos:
+  - name: Bia
+    mensagens:
+    - "Ol\xE1! Meu nome \xE9 Bia e minha mat\xE9ria favorita \xE9 hist\xF3ria. Adoro
+      aprender sobre o passado e como ele influencia o presente. Al\xE9m disso, gosto
+      muito de escrever e estou sempre tentando melhorar minhas habilidades."
+  - name: Carolina
+    mensagens:
+    - "Legal, Bia! Eu sou a Carolina e adoro dan\xE7ar ballet e fazer caminhadas
+      na natureza. Tamb\xE9m sou apaixonada por ler e estou sempre procurando por
+      novos livros interessantes. Este ano, estou animada para aprender sobre geografia
+      e descobrir mais sobre os diferentes pa\xEDses e culturas do mundo."
+  - name: Bia
+    mensagens:
+    - "Que interessante, Carolina! Eu tamb\xE9m adoro ler e aprender sobre outras
+      culturas. E sobre o ballet, voc\xEA faz aulas h\xE1 muito tempo?"
+  - name: Carolina
+    mensagens:
+    - "Sim, eu fa\xE7o aulas de ballet h\xE1 alguns anos e \xE9 uma das minhas paix\xF5es.
+      E voc\xEA, tem algum hobby ou atividade que te faz sentir realizada?"
+  - name: Bia
+    mensagens:
+    - "Sim, adoro escrever e \xE9 algo que fa\xE7o desde crian\xE7a. Tamb\xE9m gosto
+      de praticar esportes e estar ao ar livre. Mas voltando ao assunto da hist\xF3ria,
+      voc\xEA tem algum pa\xEDs ou per\xEDodo hist\xF3rico favorito?"
+  - name: Carolina
+    mensagens:
+    - "Sim, eu sou fascinada pela hist\xF3ria do Egito Antigo e pelas culturas mesopot\xE2micas.
+      Mas tamb\xE9m acho a hist\xF3ria da Gr\xE9cia e Roma Antiga muito interessante.
+      E voc\xEA, tem algum per\xEDodo hist\xF3rico que te chama mais aten\xE7\xE3o?"
+  - name: Bia
+    mensagens:
+    - "Adoro aprender sobre a Idade M\xE9dia e a Revolu\xE7\xE3o Francesa, acho que
+      s\xE3o momentos cruciais da hist\xF3ria mundial. Mas tamb\xE9m tenho curiosidade
+      sobre a hist\xF3ria dos povos ind\xEDgenas do Brasil e suas culturas."
+  - name: Carolina
+    mensagens:
+    - "Que legal, Bia! Realmente, a hist\xF3ria dos povos ind\xEDgenas do Brasil
+      \xE9 muito rica e importante. Precisamos aprender mais sobre ela. Bom, foi
+      \xF3timo conversar com voc\xEA, mas tenho que ir agora. At\xE9 mais!"
+  - name: Bia
+    mensagens:
+    - "Foi um prazer conversar com voc\xEA tamb\xE9m, Carolina. At\xE9 mais!"

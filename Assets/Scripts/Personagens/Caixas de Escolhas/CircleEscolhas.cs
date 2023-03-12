@@ -3,13 +3,11 @@ using TMPro;
 
 public class CircleEscolhas : MonoBehaviour
 {
-    public int id;
-
     Animator anim;
 
-    public string itemName;
+    [SerializeField] string itemName;
 
-    public TextMeshProUGUI itemText;
+    [SerializeField] TextMeshProUGUI itemText;
 
     bool selected;
 

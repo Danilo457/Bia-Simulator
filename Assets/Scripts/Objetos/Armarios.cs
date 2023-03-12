@@ -21,9 +21,7 @@ public class Armarios : MonoBehaviour
         menu = FindObjectOfType<Menu>();
 
         anim.GetComponent<Animator>();
-
         detcArmario.GetComponent<DetectaArmario>();
-
         colliderPorta.GetComponent<BoxCollider>();
     }
 

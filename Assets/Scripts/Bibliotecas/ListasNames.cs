@@ -19,13 +19,13 @@ namespace ListasNames
     {
         public string name { get; set; }
         public string anim { get; set; }
-        public string cor { get; set; }
+        public string cor  { get; set; }
 
         public Personagem(string name, string anim, string cor)
         {
             this.name = name;
             this.anim = anim;
-            this.cor = cor;
+            this.cor  = cor;
         }
     }
 }

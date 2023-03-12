@@ -10,7 +10,7 @@ public class ScriptableDialogos : ScriptableObject
 [System.Serializable]
 public class Dialogos
 {
-    public string assunto;
+    public string name;
 
     [TextArea(5,10)] public List<string> mensagens = new List<string>();
 }

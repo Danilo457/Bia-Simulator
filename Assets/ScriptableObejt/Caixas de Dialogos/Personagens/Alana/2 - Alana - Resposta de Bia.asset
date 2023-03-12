@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bdd823ea66e65442b69ab94c28ad598, type: 3}
+  m_Name: 2 - Alana - Resposta de Bia
+  m_EditorClassIdentifier: 
+  dialogos:
+  - name: Bia
+    mensagens:
+    - "Ol\xE1 Alana, meu nome \xE9 Bia. Minha mat\xE9ria favorita \xE9 biologia.
+      Eu adoro aprender sobre a vida e como tudo funciona."
+  - name: Alana
+    mensagens:
+    - "Que legal, eu tamb\xE9m gosto bastante de biologia. Mas falando em coisas
+      curiosas, eu ouvi dizer que voc\xEA \xE9 vista parada em alguns lugares da
+      escola por v\xE1rios minutos. Isso \xE9 verdade?"
+  - name: Bia
+    mensagens:
+    - "Ah, isso... \xE9 um pouco estranho mesmo. \xC0s vezes, eu preciso de um tempo
+      sozinha para pensar ou apenas observar as coisas ao meu redor. \xC9 uma forma
+      de relaxar e me concentrar."
+  - name: Alana
+    mensagens:
+    - "Entendi. Eu nunca te vi parada por a\xED, mas agora que sei o motivo, n\xE3o
+      vou achar t\xE3o estranho se te encontrar assim."
+  - name: Bia
+    mensagens:
+    - "Pois \xE9, sou meio misteriosa \xE0s vezes. Mas fico feliz que voc\xEA entendeu.
+      E voc\xEA, tem algum hobby ou algo curioso sobre voc\xEA?"
+  - name: Alana
+    mensagens:
+    - "Bom, eu gosto muito de escrever e sempre estou criando hist\xF3rias. Mas acho
+      que n\xE3o sou t\xE3o misteriosa quanto voc\xEA, haha."
+  - name: Bia
+    mensagens:
+    - "\xC9 interessante, gosto de ler tamb\xE9m. Quem sabe um dia eu leia uma das
+      suas hist\xF3rias."
+  - name: Alana
+    mensagens:
+    - "Ent\xE3o, at\xE9 mais! A gente se v\xEA por a\xED."

@@ -22,27 +22,28 @@ public class ScriptableBancoDeDados : ScriptableObject
 
 public class Components
 {
-    public SkinnedMeshRenderer AvatarCuston(string name) { 
+    public SkinnedMeshRenderer AvatarCuston(string name) { /* Corpo dos NPCs onde fica Mesh Matireais */
         return GameObject.Find(name).GetComponent<SkinnedMeshRenderer>(); }
 
-    public MeshFilter MeshIris(string name) { 
+    public MeshFilter MeshIris(string name) { /* Mesh Iris dos Olhos de Todos os NPCs */
         return GameObject.Find(name).GetComponent<MeshFilter>(); }
 
-    public MeshRenderer MaterialIris(string name) { 
+    public MeshRenderer MaterialIris(string name) { /* Material para Cor dos Olhos de Cada NPC */
         return GameObject.Find(name).GetComponent<MeshRenderer>(); }
 }
 
-public class AddGameObject
-{
+public class AddGameObject // Add Componentes
+{ /* nameTipo1 e nameTipo2 - Caso queira por 2 dua ves tipo os Olhos */
     public void AddMesh(string nameTipo1, string nameTipo2) {
-        GameObject.Find(nameTipo1).AddComponent<MeshFilter>();
+        GameObject.Find(nameTipo1).AddComponent<MeshFilter>(); // MeshFilter a Mesh
         GameObject.Find(nameTipo2).AddComponent<MeshFilter>();
 
-        GameObject.Find(nameTipo1).AddComponent<MeshRenderer>();
+        GameObject.Find(nameTipo1).AddComponent<MeshRenderer>(); // MeshRenderer o Renderer
         GameObject.Find(nameTipo2).AddComponent<MeshRenderer>();
     }
 }
 
+/* Modo Visual do Menu Sprits das Imagens Para Modelos do Player */
 [System.Serializable]
 public class ModelosPer
 {

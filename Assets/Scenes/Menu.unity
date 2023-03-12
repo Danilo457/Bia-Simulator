@@ -6000,6 +6000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bancoDados: {fileID: 11400000, guid: 03bf93ad9a1d4ca4f8386a48fbaf5476, type: 2}
   escape: 0
+  espera: 0
+  fundo: {fileID: 0}
   namePainelMenu: Painel do menu Essencial
   spriteMenu: {fileID: 1165166627}
   painelInicial: {fileID: 983204362}
@@ -6023,6 +6025,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  sensibilitySlider: {fileID: 748343765}
+  fullscreenTogglePuseiras: {fileID: 26682041}
+  fullscreenToggleBlusa: {fileID: 1583422066}
+  fullscreenToggleCabeloPlayer: {fileID: 1580587321}
   trocaDeCabelo: {fileID: 1495851516}
   trocaDeCorBlusa: {fileID: 1075431512}
   textureCabelo:
@@ -6040,19 +6046,17 @@ MonoBehaviour:
   - {fileID: 2800000, guid: aab674923098d924c915c8c2204e12f6, type: 3}
   - {fileID: 2800000, guid: 505e86d57a76a1144b5f9b12acad9c66, type: 3}
   - {fileID: 2800000, guid: 3e467e16381020f4491d08d404b1882e, type: 3}
+  indexUniforme: 0
+  indexMesh: 0
   indexCabelo: 0
   indexBlusa: 0
   actvBlusa: 0
   actvPuseira: 0
   actvCabelo: 0
   sensibility: 5
-  espera: 0
-  indexUniforme: 0
-  indexMesh: 0
-  sensibilitySlider: {fileID: 748343765}
-  fullscreenTogglePuseiras: {fileID: 26682041}
-  fullscreenToggleBlusa: {fileID: 1583422066}
-  fullscreenToggleCabeloPlayer: {fileID: 1580587321}
+  fullscreenPuseiras: 0
+  fullscreenBlusa: 0
+  fullscreenCabeloPlayer: 0
 --- !u!114 &999017282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10725,7 +10729,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: vs 0.1.5
+  m_text: vs 0.1.6
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -150628,127 +150632,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2767389152561035086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4461025439214552937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Root: {fileID: 4461025439214490435}
-  m_UpdateRate: 60
-  m_Damping: 1
-  m_DampingDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Elasticity: 0.3
-  m_ElasticityDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Stiffness: 0.7
-  m_StiffnessDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Inert: 0.6
-  m_InertDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Radius: 0
-  m_RadiusDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_EndLength: 0
-  m_EndOffset: {x: 0, y: 0, z: 0}
-  m_Gravity: {x: 0, y: 0, z: 0}
-  m_Force: {x: 0, y: 0, z: 0}
-  m_Colliders: []
-  m_Exclusions: []
-  m_FreezeAxis: 0
-  m_DistantDisable: 0
-  m_ReferenceObject: {fileID: 0}
-  m_DistanceToObject: 20
---- !u!114 &2767389153134261151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4461025439214552938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Root: {fileID: 4461025439214490437}
-  m_UpdateRate: 60
-  m_Damping: 0.5
-  m_DampingDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Elasticity: 0.3
-  m_ElasticityDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Stiffness: 0.71
-  m_StiffnessDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Inert: 0.6
-  m_InertDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Radius: 0
-  m_RadiusDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_EndLength: 0
-  m_EndOffset: {x: 0, y: 0, z: 0}
-  m_Gravity: {x: 0, y: 0.01, z: 0}
-  m_Force: {x: 0, y: 0.0001, z: 0}
-  m_Colliders: []
-  m_Exclusions:
-  - {fileID: 4461025439214490454}
-  - {fileID: 4461025439214490434}
-  - {fileID: 4461025439214490438}
-  m_FreezeAxis: 0
-  m_DistantDisable: 0
-  m_ReferenceObject: {fileID: 0}
-  m_DistanceToObject: 20
 --- !u!1 &3659576928250904913
 GameObject:
   m_ObjectHideFlags: 0
@@ -151647,7 +151530,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4461025439214490435}
-  - component: {fileID: 2767389152561035086}
   m_Layer: 13
   m_Name: LeftPigtail
   m_TagString: Untagged
@@ -151664,7 +151546,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4461025439214490436}
-  - component: {fileID: 2767389153134261151}
   m_Layer: 13
   m_Name: Armature
   m_TagString: Untagged
@@ -151953,7 +151834,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4461025439214490432}
-  - component: {fileID: 4461025439214552959}
   m_Layer: 13
   m_Name: RightPigtail
   m_TagString: Untagged
@@ -151994,65 +151874,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4461025439214552959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4461025439214552956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Root: {fileID: 4461025439214490432}
-  m_UpdateRate: 60
-  m_Damping: 1
-  m_DampingDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Elasticity: 0.3
-  m_ElasticityDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Stiffness: 0.7
-  m_StiffnessDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Inert: 0.6
-  m_InertDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_Radius: 0
-  m_RadiusDistrib:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_EndLength: 0
-  m_EndOffset: {x: 0, y: 0, z: 0}
-  m_Gravity: {x: 0, y: 0, z: 0}
-  m_Force: {x: 0, y: 0, z: 0}
-  m_Colliders: []
-  m_Exclusions: []
-  m_FreezeAxis: 0
-  m_DistantDisable: 0
-  m_ReferenceObject: {fileID: 0}
-  m_DistanceToObject: 20
 --- !u!137 &4461025439214679228
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

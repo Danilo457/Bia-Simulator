@@ -5,72 +5,72 @@ using System.Collections.Generic;
 
 public class Menu : MonoBehaviour
 {
+    // Variáveis de Referência a Outros Scripts
     public ScriptableBancoDeDados bancoDados;
-
     GeneratePersons generatePersons = new GeneratePersons();
-
     MouseController mouseCursor;
     Spam spamSalaDosArmarios;
 
+    // Variáveis de Controle Geral
     [HideInInspector] public bool escape;
+    [HideInInspector] public bool espera;
+    bool sceneArmarios;
 
-    GameObject fundo;
+    // Variáveis de Interface do Usuário
+    [Header("Interface do Usuário")]
+    [SerializeField] GameObject fundo;
     [SerializeField] string namePainelMenu;
-    [Header("        Menu Inicial")]
     [SerializeField] GameObject spriteMenu;
     [SerializeField] GameObject painelInicial;
     [SerializeField] GameObject painelTitulo;
     [SerializeField] GameObject spriteGarota;
     [SerializeField] GameObject infoVersion;
     [SerializeField] GameObject panelSettings;
-    public GameObject buttonsPersonPlayer;
+    [SerializeField] GameObject buttonsPersonPlayer;
     [SerializeField] GameObject returnPanelInicial;
-    public GameObject returnPanelConfig;
+    [SerializeField] GameObject returnPanelConfig;
     [SerializeField] GameObject fundoTrocaDeCabelos;
     [SerializeField] GameObject fundoActvCabelo;
     [SerializeField] GameObject blusaTrocaDeCor;
-    public GameObject painelEscolhasCustom;
+    [SerializeField] GameObject painelEscolhasCustom;
     [SerializeField] GameObject cursor;
-    [Header("        Custon Personagens")]
     public Image preVill;
 
-    [Space]
-
-    public GameObject controlSettings;
-    public List<Button> buttonsToDisable; // Variavel não atribuida
-
-    [Space]
-
-    [SerializeField] RawImage trocaDeCabelo;
-    [SerializeField] RawImage trocaDeCorBlusa;
-
-    [SerializeField] List<Texture2D> textureCabelo = new List<Texture2D>();
-    [SerializeField] List<Texture2D> textureBlusa = new List<Texture2D>();
-
-    [HideInInspector] public int indexCabelo;
-    [HideInInspector] public int indexBlusa;
-    [HideInInspector] public bool actvBlusa, actvPuseira;
-    [HideInInspector] public bool actvCabelo;
-    [HideInInspector] public float sensibility;
-
-    [HideInInspector] public bool espera;
-
-    bool sceneArmarios;
-
-    [HideInInspector] public int indexUniforme; // Material Estilo de Roura Padrão da Escola
-    [HideInInspector] public int indexMesh; // Mesh do Player
-
-    /* Sistema de Save "Configurações de Usuario" */
+    // Variáveis de Configurações de Usuário
+    [Header("Configurações de Usuário")]
+    [SerializeField] GameObject controlSettings;
+    [SerializeField] List<Button> buttonsToDisable; // Variável não atribuída
     public Slider sensibilitySlider;
     public Toggle fullscreenTogglePuseiras;
     public Toggle fullscreenToggleBlusa;
     public Toggle fullscreenToggleCabeloPlayer;
 
-    int indexModelo;
-    int indiceCabelo, indiceBlusa;
-    bool fullscreenPuseiras;
-    bool fullscreenBlusa;
-    bool fullscreenCabeloPlayer;
+    // Variáveis de Texturas e Materiais
+    [Header("Texturas e Materiais")]
+    [SerializeField] RawImage trocaDeCabelo;
+    [SerializeField] RawImage trocaDeCorBlusa;
+    [SerializeField] List<Texture2D> textureCabelo = new List<Texture2D>();
+    [SerializeField] List<Texture2D> textureBlusa = new List<Texture2D>();
+    [HideInInspector] public int indexUniforme; // Material Estilo de Roupa Padrão da Escola
+    [HideInInspector] public int indexMesh; // Mesh do Player
+
+    // Variáveis de Customização do Personagem
+    [Header("Customização do Personagem")]
+    [HideInInspector] public int indexCabelo;
+    [HideInInspector] public int indexBlusa;
+    [HideInInspector] public bool actvBlusa, actvPuseira;
+    [HideInInspector] public bool actvCabelo;
+
+    // Variáveis de Sensibilidade do Mouse
+    [Header("Sensibilidade do Mouse")]
+    [HideInInspector] public float sensibility;
+
+    // Variáveis de Índices
+    [HideInInspector] int indexModelo;
+    [HideInInspector] int indiceCabelo, indiceBlusa;
+    [HideInInspector] public bool fullscreenPuseiras;
+    [HideInInspector] public bool fullscreenBlusa;
+    [HideInInspector] public bool fullscreenCabeloPlayer;
 
     void Awake()
     {
@@ -155,20 +155,13 @@ public class Menu : MonoBehaviour
             if (sceneArmarios)
                 fundo.GetComponent<Image>().enabled = escape;
 
-            if (escape) { /* Cursor Mouse */
-                mouseCursor.MouseNoneTrue();
-
-                Time.timeScale = 0; // Pause
-            }else {
-                mouseCursor.MouseLockedFalse();
-
-                Time.timeScale = 1; // UnPause
-            }
+            mouseCursor.SetCursorState(!escape); // Ativa ou desativa o Cursor
+            Time.timeScale = escape ? 0 : 1; /* Pause : UnPause */
         }
 
         if (espera)
         {
-            spamSalaDosArmarios = GameObject.Find("Spam ID 001").GetComponent<Spam>();
+            spamSalaDosArmarios = FindObjectOfType<Spam>();
 
             generatePersons.spamPosition.Add(GameObject.Find("Avatar Feminino 001").transform);
 
@@ -183,11 +176,9 @@ public class Menu : MonoBehaviour
         }
     }
 
-    public void LoadScene(string name) {
+    public void LoadScene(string name) { // Button New Game
         SceneManager.LoadSceneAsync(name);
-#pragma warning disable CS0618 // O tipo ou membro � obsoleto
-        Application.LoadLevelAdditive("Essencial");
-#pragma warning restore CS0618 // O tipo ou membro � obsoleto
+        SceneManager.LoadScene("Essencial", LoadSceneMode.Additive);
 
         sceneArmarios = true;
 

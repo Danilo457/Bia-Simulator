@@ -19,9 +19,7 @@ public class PortaPiquena : MonoBehaviour
         menu = FindObjectOfType<Menu>();
 
         anim = GetComponent<Animator>();
-
         detecta.GetComponent<Detecta>();
-
         boxColl = GetComponent<BoxCollider>();
     }
 

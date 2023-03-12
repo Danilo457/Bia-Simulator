@@ -8,12 +8,17 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager instance;
 
     public static event Action ResetText;
+    public static event Action ResetNameText;
+    public static event Action<string> ShowName;
     public static event Action<string> ShowMessage;
     public static event Action<bool> UIState;
 
     DialogueContainer currentDialogue;
-    MouseController mouse;
+    MouseController   mouse;
     SystemPersonagens systemPersonagens;
+    CanvasManager canvasManager;
+
+    string names;
 
     bool endCurrentTalk = true;
     bool buttonClicked = false;
@@ -24,23 +29,27 @@ public class DialogueManager : MonoBehaviour
 
         mouse = FindObjectOfType<MouseController>();
         systemPersonagens = FindObjectOfType<SystemPersonagens>();
+        canvasManager = FindObjectOfType<CanvasManager>();
     }
 
-    public void StartConversation(DialogueContainer container) {
+    public void StartConversation(DialogueContainer container, int indice) {
         currentDialogue = container;
-        StartCoroutine(StartDialogue());
+        StartCoroutine(StartDialogue(indice));
         UIState?.Invoke(true);
     }
 
-    IEnumerator StartDialogue() {
-        for (int i = 0; i < currentDialogue._talker[0].dialogos.Count; i++) {
+    IEnumerator StartDialogue(int indice) {
+        for (int i = 0; i < currentDialogue._talker[indice].dialogos.Count; i++) {
             ResetText?.Invoke();
-            StartCoroutine(ShowDialogue(currentDialogue._talker[0].dialogos[i].mensagens));
+            ResetNameText?.Invoke();
+            names = currentDialogue._talker[indice].dialogos[i].name;
+            StartCoroutine(ShowDialogue(currentDialogue._talker[indice].dialogos[i].mensagens));
 
             yield return new WaitUntil(() => endCurrentTalk);
         }
 
-        DialogueFim();
+        canvasManager.componentsInteracoes[1].SetActive(true); // Caixa de Escolhas Assunto
+        mouse.MouseLockedFalse();
 
         UIState?.Invoke(false);
     }
@@ -50,25 +59,28 @@ public class DialogueManager : MonoBehaviour
 
         foreach(var message in messages)
         {
-            ShowAllMessage(message);
+            ShowAllMessage(message, names);
             yield return new WaitUntil(() => buttonClicked);
         }
 
         endCurrentTalk = true;
     }
 
-    void ShowAllMessage(string message) {
+    void ShowAllMessage(string message, string name) {
+        ShowName?.Invoke(name);
         ShowMessage?.Invoke(message);
         buttonClicked = false;
     }
 
-    void DialogueFim() {
+    public void DialogueFim() 
+    { /* Encerrar Comversa */
         mouse.MouseLockedFalse();
 
         systemPersonagens.trava = false;
         systemPersonagens.atvCaixaEscolhas = false;
+        canvasManager.componentsInteracoes[1].SetActive(false); // Caixa de Escolhas Assunto
     }
 
-    public void ButtonWasClicked() =>
+    public void ButtonWasClicked() => // Button Avansar na Comversa
         buttonClicked = true;
 }

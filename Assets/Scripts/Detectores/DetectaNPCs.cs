@@ -2,41 +2,41 @@ using UnityEngine;
 
 public class DetectaNPCs : MonoBehaviour
 {
+    Estudantes estudantes;
     SystemPersonagens systemPersonagens;
+    CanvasManager canvasManager;
+
+    public int indice; // variável para armazenar o índice do NPC
 
     [HideInInspector] public bool local;
     [HideInInspector] public bool saiu;
 
-    string nameNPC;
-    int index;
-    internal bool scriptEnabled;
-
-    private void Start() =>
-        systemPersonagens = FindObjectOfType<SystemPersonagens>();
-
-    public void ColetaDados(string name, int indice)
+    void Start()
     {
-        nameNPC = name;
-        index = indice;
+        systemPersonagens = FindObjectOfType<SystemPersonagens>();
+        canvasManager = FindObjectOfType<CanvasManager>();
+
+        estudantes = GameObject.Find(systemPersonagens.namesPersonagens[indice]).GetComponent<Estudantes>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && systemPersonagens.namesPersonagens[index] == nameNPC)
+        if (other.CompareTag("Player"))
         {
-            gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-
             local = true;
             saiu = false;
+
+            systemPersonagens.EntrouTrigger(this,estudantes, indice);
+
+            canvasManager.Indice(indice); // Leva o Indice para o Dialogo
+            canvasManager.AtualizaOpcoesEscolhas(estudantes); // Leva a Referencia Script Estudantes
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && systemPersonagens.namesPersonagens[index] == nameNPC)
+        if (other.CompareTag("Player"))
         {
-            gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
-
             local = false;
             saiu = true;
         }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 /* Bibliotecas Bia-Simulator */
 using ListasNames;
 
@@ -9,8 +9,10 @@ public class SystemPersonagens : MonoBehaviour
 {
     RectTransform telaIndicativa;
 
+    DetectaNPCs detecta;
     MouseController cursor;
     CanvasManager canvasManager;
+    Estudantes estudantes;
     Menu menu;
 
     GameObject localDestination;
@@ -24,21 +26,32 @@ public class SystemPersonagens : MonoBehaviour
 
     float time;
     float timeImage;
+    int indice;
 
     bool playerInsideCollider;
-    bool collidersDisabled;
 
     [HideInInspector] public bool trava;
     [HideInInspector] public bool atvCaixaEscolhas;
 
-    void Awake() =>
+    void Awake()
+    {
+        menu = FindObjectOfType<Menu>();
+        cursor = FindObjectOfType<MouseController>();
+
         timeImage = 1.0f;
+
+        Scene("Menu");
+    }
+
+    void Scene(string name)
+    {
+        if (menu == null) /* Verifica se a Scene não é a do Menu e Loga nela */
+            SceneManager.LoadSceneAsync(name);
+    }
 
     void Start()
     {
-        cursor = FindObjectOfType<MouseController>();
         canvasManager = FindObjectOfType<CanvasManager>();
-        menu = FindObjectOfType<Menu>();
 
         telaIndicativa = GameObject.Find("Indicador de Tecla para das Interações").GetComponent<RectTransform>();
         localDestination = GameObject.Find("Pai do Indicador");
@@ -63,44 +76,27 @@ public class SystemPersonagens : MonoBehaviour
             this.corPele.Add(corPele.cor);
     }
 
-    private List<GameObject> scriptsDisabled = new List<GameObject>();
-
-    public void DisableOtherScripts()
+    void Update()
     {
-        // Desativa os scripts dos NPCs que ainda não foram desativados
-        GameObject[] scriptsToDisable = GameObject.FindGameObjectsWithTag("MyCollider");
-        foreach (GameObject detecta in scriptsToDisable)
-        {
-            if (!scriptsDisabled.Contains(detecta) && !detecta.GetComponent<DetectaNPCs>().local)
-            {
-                detecta.GetComponent<DetectaNPCs>().scriptEnabled = detecta.GetComponent<DetectaNPCs>().enabled;
-                detecta.GetComponent<DetectaNPCs>().enabled = false;
-                scriptsDisabled.Add(detecta);
-            }
-        }
+        if (detecta != null && estudantes.indice < 2) // indice < 3 como Interropitor "Temporario"
+            UpdateInteracoes(detecta, indice);
     }
 
-    public void EnableAllScripts()
+    public void EntrouTrigger(DetectaNPCs detecta, Estudantes estudantes, int indice)
     {
-        // Ativa os scripts dos NPCs que foram desativados
-        foreach (GameObject detecta in scriptsDisabled)
-        {
-            detecta.GetComponent<DetectaNPCs>().enabled = detecta.GetComponent<DetectaNPCs>().scriptEnabled;
-        }
-        scriptsDisabled.Clear(); // Limpa a lista de NPCs com scripts desativados
+        this.detecta = detecta;
+        this.indice = indice;
+        this.estudantes = estudantes;
     }
 
-    public void UpdateInteracoes(DetectaNPCs detecta, int index)
+    void UpdateInteracoes(DetectaNPCs detecta, int indice)
     {
         if (detecta.local)
         {
             if (!menu.escape)
-                UpdateUI(detecta);
+                UpdateUI(detecta, indice);
 
             playerInsideCollider = true;
-            Debug.Log($"index: {index}, entrou: {detecta.local}");
-
-            DisableOtherScripts(); // Desativa todos os Colliders
         }
         else if (playerInsideCollider && detecta.saiu)
         {
@@ -112,17 +108,13 @@ public class SystemPersonagens : MonoBehaviour
 
             if (time == 150)
                 playerInsideCollider = false;
-
-            EnableAllScripts();
-
-            Debug.Log($"index: {index}, saiu: {detecta.local}");
         }
     }
 
-    void UpdateUI(DetectaNPCs detecta)
+    void UpdateUI(DetectaNPCs detecta, int indice)
     {
         UpdateTime(detecta);
-        CheckInput(detecta);
+        CheckInput(detecta, indice);
         UpdateChoices();
         UpdateCursor();
         CheckLoading();
@@ -149,7 +141,7 @@ public class SystemPersonagens : MonoBehaviour
         }
     }
 
-    void CheckInput(DetectaNPCs detecta)
+    void CheckInput(DetectaNPCs detecta, int indice)
     {
         if (Input.GetKeyDown(KeyCode.E) && timeImage > 0 && detecta.local && !atvCaixaEscolhas)
         {

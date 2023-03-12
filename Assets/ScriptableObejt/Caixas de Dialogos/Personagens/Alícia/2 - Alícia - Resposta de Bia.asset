@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bdd823ea66e65442b69ab94c28ad598, type: 3}
+  m_Name: "2 - Al\xEDcia - Resposta de Bia"
+  m_EditorClassIdentifier: 
+  dialogos:
+  - name: Bia
+    mensagens:
+    - "Ol\xE1, Al\xEDcia! Meu nome \xE9 Bia e eu gosto muito de hist\xF3ria. Acho
+      incr\xEDvel como podemos aprender sobre as experi\xEAncias e conquistas das
+      pessoas do passado e como isso moldou o mundo em que vivemos hoje. Qual o per\xEDodo
+      da hist\xF3ria que mais te interessa?"
+  - name: "Al\xEDcia"
+    mensagens:
+    - "Ah, eu gosto bastante do per\xEDodo da Renascen\xE7a e das grandes navega\xE7\xF5es,
+      acho fascinante como o mundo mudou naquela \xE9poca. Mas, voltando ao assunto
+      que a gente estava falando antes, eu ouvi algumas pessoas comentando que voc\xEA
+      fica parada em lugares da escola por um tempo, isso \xE9 verdade?"
+  - name: Bia
+    mensagens:
+    - "Bom, \xE9 um pouco complicado de explicar, mas eu gosto de observar as pessoas
+      e os lugares ao meu redor. Acho que isso me ajuda a pensar melhor e a ter ideias
+      criativas. Mas entendo que pode parecer um pouco estranho para algumas pessoas."
+  - name: "Al\xEDcia"
+    mensagens:
+    - "N\xE3o se preocupe, eu tamb\xE9m gosto de observar as coisas e pensar sobre
+      elas. Acho que \xE9 importante ter esse tempo para refletir e se inspirar.
+      Mas agora eu preciso ir, foi um prazer conversar com voc\xEA, Bia. At\xE9 mais!"

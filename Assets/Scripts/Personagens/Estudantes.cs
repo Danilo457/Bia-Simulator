@@ -8,7 +8,6 @@ public class Estudantes : MonoBehaviour
     Dictionary<string, AudioClip> myListAudios = new Dictionary<string, AudioClip>();
 
     SystemPersonagens systemPersonagens;
-    DetectaNPCs detecta;
 
     Transform targetArmario;
 
@@ -19,7 +18,7 @@ public class Estudantes : MonoBehaviour
 
     Rigidbody rb;
 
-    [HideInInspector] public int index;
+    [HideInInspector] public int indice;
 
     public void ListsAnimClips(ScriptableBancoDeDados bancoDados)
     {
@@ -38,12 +37,8 @@ public class Estudantes : MonoBehaviour
 
         targetArmario = GameObject.Find("Target Position - " + name).transform;
 
-        detecta = GameObject.Find("DetectorCaixaConversar - " + name).GetComponent<DetectaNPCs>();
-
         transform.position = targetArmario.position;
         transform.rotation = targetArmario.rotation;
-
-        index = indice;
 
         rb.mass = 500;
 
@@ -79,9 +74,6 @@ public class Estudantes : MonoBehaviour
         GameObject.Find("CorpoNemesis - " + name).GetComponent<SkinnedMeshRenderer>()
             .materials[num].mainTexture = bancoDados.material[Valores.index].mainTexture;
     }
-
-    void Update() =>
-        systemPersonagens.UpdateInteracoes(detecta, index);
 
     public void EventAudioArmarioTranca() { /* Evento "Acontece na Animação Abrir Armario" */
         audioToks.clip = playAudio;

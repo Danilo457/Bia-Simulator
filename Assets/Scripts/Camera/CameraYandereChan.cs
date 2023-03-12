@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraYandereChan : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class CameraYandereChan : MonoBehaviour
     [SerializeField] List<string> nameObjtsCamAtravesa = new List<string>();
     RaycastHit hit = new RaycastHit();
 
+    [SerializeField] int indiceScene;
+
     float x;
     float y;
 
@@ -28,12 +31,18 @@ public class CameraYandereChan : MonoBehaviour
         scriptPerson = FindObjectOfType<SystemPersonagens>();
 
         targetCamYan = GameObject.Find("targetComeraBiaChiqui").transform;
+
+        Scene("Menu");
     }
 
-    private void Start()
+    void Scene(string name)
     {
-        mouseSensivity = menu.sensibility;
+        if (menu == null) /* Verifica se a Scene não é a do Menu e Loga nela */
+            SceneManager.LoadSceneAsync(name);
     }
+
+    void Start() =>
+        mouseSensivity = menu.sensibility;
 
     void LateUpdate()
     {
@@ -49,13 +58,14 @@ public class CameraYandereChan : MonoBehaviour
 
         transform.position = targetCamYan.position - transform.forward * distanceFromTarget;
 
-        if (Physics.Linecast(targetCamYan.position, transform.position, out hit)) {
-            for (int i = 0; i < nameObjtsCamAtravesa.Count; i++) {
+        if (Physics.Linecast(targetCamYan.position, transform.position, out hit))
+        {
+            // Objeto atingido não é um NPC ou NPC está atrás de uma parede
+            for (int i = 0; i < nameObjtsCamAtravesa.Count; i++)
+            {
                 if (hit.collider.name == nameObjtsCamAtravesa[i])
                     transform.position = hit.point + transform.forward * 0;
             }
-
-            //Debug.Log(hit.collider.name);
         }
     }
 }

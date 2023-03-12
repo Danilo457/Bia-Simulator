@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bdd823ea66e65442b69ab94c28ad598, type: 3}
+  m_Name: 2 - Olivia - Resposta de Bia
+  m_EditorClassIdentifier: 
+  dialogos:
+  - name: Bia
+    mensagens:
+    - "Sim, eu gosto bastante de m\xFAsica, mas minha mat\xE9ria favorita \xE9 hist\xF3ria.
+      Adoro saber mais sobre o passado e como as coisas evolu\xEDram at\xE9 chegar
+      onde estamos hoje."
+  - name: Olivia
+    mensagens:
+    - "Que legal! Eu tamb\xE9m gosto de hist\xF3ria, mas confesso que minha paix\xE3o
+      \xE9 mesmo a m\xFAsica. Mas sabe, Bia, ouvi um boato sobre voc\xEA... dizem
+      que \xE0s vezes voc\xEA fica parada em lugares da escola por v\xE1rios minutos,
+      sem motivo aparente. \xC9 verdade?"
+  - name: Bia
+    mensagens:
+    - "Ah, sim, isso. Bem, eu sou uma pessoa um pouco introspectiva e gosto de observar
+      as coisas ao meu redor. \xC0s vezes fico perdida em meus pensamentos e acabo
+      ficando parada em algum lugar sem perceber."
+  - name: Olivia
+    mensagens:
+    - "Entendi, \xE9 bem interessante. Eu nunca fiquei tanto tempo parada assim em
+      um lugar, sempre tenho algo para fazer ou ver. Mas acho que isso faz parte
+      da nossa personalidade, n\xE9?"
+  - name: Bia
+    mensagens:
+    - "Com certeza. Cada um tem sua maneira \xFAnica de ver e lidar com as coisas.
+      E falando em personalidade, Olivia, voc\xEA \xE9 uma garota muito misteriosa.
+      Dizem por a\xED que voc\xEA tem um ar enigm\xE1tico e que guarda muitos segredos."
+  - name: Olivia
+    mensagens:
+    - "Ah, \xE9 mesmo? Bom, acho que todos temos um pouco de mist\xE9rio, n\xE3o
+      \xE9 mesmo? Mas confesso que gosto de manter algumas coisas s\xF3 para mim.
+      \xC9 como se fosse um segredo meu com o universo."
+  - name: Bia
+    mensagens:
+    - "Entendo perfeitamente. Acho que cada um tem seus pr\xF3prios mist\xE9rios
+      e segredos. E falando nisso, preciso ir agora. Foi \xF3timo conversar com voc\xEA,
+      Olivia. At\xE9 mais!"
+  - name: Olivia
+    mensagens:
+    - "At\xE9 mais, Bia. Foi um prazer conversar com voc\xEA tamb\xE9m."

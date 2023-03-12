@@ -13356,6 +13356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820e536d1891487469e22b9831397cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indice: 0
   local: 0
   saiu: 0
 --- !u!33 &2214474137722236071
@@ -13373,7 +13374,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2214474137722236067}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

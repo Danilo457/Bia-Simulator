@@ -9,15 +9,11 @@ public class LightManager : MonoBehaviour
 
     void Awake()
     {
-        myListLights.Add("light Sala Armarios 01", lights.luses[0]);
-        myListLights.Add("light Sala Armarios 02", lights.luses[1]);
-        myListLights.Add("light Sala Armarios 03", lights.luses[2]);
-        myListLights.Add("light Sala Armarios 04", lights.luses[3]);
-        myListLights.Add("light Sala Armarios 05", lights.luses[4]);
-        myListLights.Add("light Sala Armarios 06", lights.luses[5]);
-        myListLights.Add("light Sala Armarios 07", lights.luses[6]);
-        myListLights.Add("light Sala Armarios 08", lights.luses[7]);
-        myListLights.Add("light Sala Armarios 09", lights.luses[8]);
+        for (int i = 0; i < lights.luses.Count; i++)
+        {
+            string key = $"light Sala Armarios {i + 1:00}";
+            myListLights.Add(key, lights.luses[i]);
+        }
     }
 }
 
